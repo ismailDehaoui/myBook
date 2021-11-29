@@ -11,6 +11,8 @@
   </title>
 
   <link href="{{asset('../assets/css/mon-css.css')}}" rel="stylesheet" />
+  <link href="{{asset('../assets/css/sweetalert2.min.css')}}" rel="stylesheet" />
+  <link href="{{asset('../assets/css/toastr.min.css')}}" rel="stylesheet" />
 
 
   <!--     Fonts and icons     -->
@@ -25,7 +27,6 @@
   <!-- CSS Files -->
   <link id="pagestyle" href="{{asset('../assets/css/material-dashboard.css?v=3.0.0')}}" rel="stylesheet" />
 
-  
 
 </head>
 
@@ -394,13 +395,15 @@
   </div>
   @include('sweetalert::alert');
   <!--   Core JS Files   -->
-  <script src="{{asset('../assets/js/jquery.min.js')}}"></script>
+   <script src="{{asset('../assets/js/jquery.min.js')}}"></script>
   <script src="{{asset('../assets/js/core/popper.min.js')}}"></script>
   <script src="{{asset('../assets/js/core/bootstrap.min.js')}}"></script>
   <script src="{{asset('../assets/js/plugins/perfect-scrollbar.min.js')}}"></script>
   <script src="{{asset('../assets/js/plugins/smooth-scrollbar.min.js')}}"></script>
   <script src="{{asset('../assets/js/plugins/chartjs.min.js')}}"></script>
   <script src="{{asset('../assets/js/my-js.js')}}"></script>
+  <script src="{{asset('../assets/js/sweetalert2.min.js')}}"></script>
+  <script src="{{asset('../assets/js/toastr.min.js')}}"></script>
  
 
   <script>
