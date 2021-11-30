@@ -1,6 +1,6 @@
-const { toSafeInteger } = require("lodash");
+/*const { toSafeInteger } = require("lodash");
 const toastrMin = require("./toastr.min");
-
+*/
 $(document).ready(function() {
   $.ajaxSetup({
     headers: {
@@ -76,7 +76,7 @@ $(document).ready(function() {
           $('#auteur').append(new Option(data.auteurAdded, data.idAuteur, false, true))
             $(form)[0].reset();
             $('#myModal2').modal('toggle');
-            toastr.success(data.msg);
+            //toastr.success(data.msg);
             //alert(data.msg);
           }
         },

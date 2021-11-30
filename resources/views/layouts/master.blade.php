@@ -50,28 +50,46 @@
             <span class="nav-link-text ms-1">Tableau de bord</span>
           </a>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link text-white " href="{{URL('/catégories')}}">
+          <a class="nav-link text-white" href="{{url('/categories')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">table_view</i>
+              <i class="material-icons opacity-10">category</i>
             </div>
             <span class="nav-link-text ms-1">Mes catégories</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="{{URL('/livres')}}">
+         <li class="nav-item">
+          <a class="nav-link text-white " href="{{url('/livres')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">receipt_long</i>
+              <i class="material-icons opacity-10">menu_book</i>
             </div>
             <span class="nav-link-text ms-1">Mes livres</span>
           </a>
         </li>
+        
         <li class="nav-item">
-          <a class="nav-link text-white " href="{{asset('../pages/virtual-reality.html')}}">
+          <a class="nav-link text-white " href="{{url('/abonnees')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">view_in_ar</i>
+              <i class="material-icons opacity-10">groups</i>
             </div>
-            <span class="nav-link-text ms-1">Virtual Reality</span>
+            <span class="nav-link-text ms-1">Les abonnés</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="{{asset('../pages/billing.html')}}">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">vpn_key</i>
+            </div>
+            <span class="nav-link-text ms-1">Les mots clés</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="{{asset('../pages/billing.html')}}">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">how_to_vote</i>
+            </div>
+            <span class="nav-link-text ms-1">Les emprunts</span>
           </a>
         </li>
         <li class="nav-item">

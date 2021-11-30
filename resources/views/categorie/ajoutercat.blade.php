@@ -4,10 +4,12 @@
   <div class="row">
         <div class="col-6">
             <div class="card card-plain">
-                <div class="card-header">
-                  <h4 class="font-weight-bolder">Ajouter Catégorie</h4>
-                <p>Ajouter une catégorie qui n'existe pas déja</p>  
-                </div>
+                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                 <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                  <h6 class="text-white text-capitalize ps-3">Ajouter Catégorie</h6>
+              </div>
+              <p>Ajouter une catégorie qui n'existe pas déja!</p>
+              </div>
                 <p class="card-body">
                   <form action="{{url('ajouter')}}" method="POST" >
                   	{{ csrf_field()}}
@@ -28,7 +30,9 @@
                 </div>
               </div>
             </div>
-    </div></div>
+    </div>
+  </div>
+
 @endsection('content')
 @Section('gest')
 <li class="nav-item">
