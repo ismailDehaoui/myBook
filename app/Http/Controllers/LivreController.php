@@ -164,9 +164,4 @@ class LivreController extends Controller
         return redirect('/livres');
     }
 
-    //Supprimer un livre
-    public function destroy(){
-
-    }
-
 }
