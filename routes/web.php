@@ -65,7 +65,10 @@ Route::post('motscles', 'MotscleController@store');
 
 
 
-
+//authentification
+Route::get('/', function () {
+    return view('auth.login');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

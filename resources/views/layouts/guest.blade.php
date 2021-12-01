@@ -17,8 +17,12 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
     <body>
+               <main class="main-content  mt-0">
+    <div class="page-header align-items-start min-vh-100" style="background-image: url('https://cdn.britannica.com/92/216092-131-5FF4D1E7/custom-library.jpg');">
+     </div></main>
+    </body>
         <div class="font-sans text-gray-900 antialiased">
             {{ $slot }}
         </div>
-    </body>
+    
 </html>
