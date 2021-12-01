@@ -80,7 +80,7 @@
             <span class="nav-link-text ms-1">Tableau de bord</span>
           </a>
         </li>
-
+        @yield('admin')
         <li class="nav-item">
           <a class="nav-link text-white" href="{{url('/categories')}}">
 >>>>>>> 5af81ea2dc22088dc610f6ce83ffe293839f7f35
@@ -135,6 +135,7 @@
         <li class="nav-item">
           <a class="nav-link text-white " href="{{asset('../pages/billing.html')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+<<<<<<< HEAD
               <i class="material-icons opacity-10">vpn_key</i>
             </div>
             <span class="nav-link-text ms-1">Les mots clés</span>
@@ -144,6 +145,8 @@
           <a class="nav-link text-white " href="{{asset('../pages/billing.html')}}">
 >>>>>>> 5af81ea2dc22088dc610f6ce83ffe293839f7f35
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+=======
+>>>>>>> 2d986dcdfacbe2027f30b3c95c279579aa5a3233
               <i class="material-icons opacity-10">how_to_vote</i>
             </div>
             <span class="nav-link-text ms-1">Les emprunts</span>
@@ -168,6 +171,17 @@
             <span class="nav-link-text ms-1">RTL</span>
           </a>
         </li>
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="{{asset('../pages/profile.html')}}">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">account_circle</i>
+            </div>
+            <span class="nav-link-text ms-1">Profile</span>
+          </a>
+        </li>
         <li class="nav-item">
           <a class="nav-link text-white " href="{{asset('../pages/notifications.html')}}">
 >>>>>>> 5af81ea2dc22088dc610f6ce83ffe293839f7f35
@@ -177,18 +191,20 @@
             <span class="nav-link-text ms-1">Notifications</span>
           </a>
         </li>
-        <li class="nav-item mt-3">
-          <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
-        </li>
         <li class="nav-item">
+<<<<<<< HEAD
 <<<<<<< HEAD
           <a class="nav-link text-white " href="./pages/profile.html">
 =======
           <a class="nav-link text-white " href="{{asset('../pages/profile.html')}}">
 >>>>>>> 5af81ea2dc22088dc610f6ce83ffe293839f7f35
+=======
+          <a class="nav-link text-white " href="{{url('/histo')}}">
+>>>>>>> 2d986dcdfacbe2027f30b3c95c279579aa5a3233
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">person</i>
+              <i class="material-icons opacity-10">history_toggle_off</i>
             </div>
+<<<<<<< HEAD
             <span class="nav-link-text ms-1">Profile</span>
           </a>
         </li>
@@ -214,6 +230,9 @@
               <i class="material-icons opacity-10">assignment</i>
             </div>
             <span class="nav-link-text ms-1">Sign Up</span>
+=======
+            <span class="nav-link-text ms-1">Historique</span>
+>>>>>>> 2d986dcdfacbe2027f30b3c95c279579aa5a3233
           </a>
         </li>
       </ul>

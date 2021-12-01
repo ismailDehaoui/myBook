@@ -99,7 +99,10 @@ Route::post('emprunts/ajouter', 'EmpruntController@store');
 
 >>>>>>> 5af81ea2dc22088dc610f6ce83ffe293839f7f35
 
-
+//authentification
+Route::get('/', function () {
+    return view('auth.login');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

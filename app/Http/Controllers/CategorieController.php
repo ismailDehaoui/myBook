@@ -110,7 +110,14 @@ class CategorieController extends Controller
     return redirect('/catsupp');
   }
   function confirm($id){
-       $l = Categorie::find($id);
+        $l = Categorie::find($id);
+       $user = auth()->user();
+       $l->acteur = $user->id;
+       $l->save();
+       $livres = Livre::where('categories_id',$id)->get();
+       foreach ($livres as $li) {
+         $li->delete();
+       }
        $l->delete();
        return redirect('/categories');
   }

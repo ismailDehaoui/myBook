@@ -16,8 +16,10 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
+    <body class="font-sans antialiased" style="background-image: url('https://cdn.britannica.com/92/216092-131-5FF4D1E7/custom-library.jpg'); background-repeat: no-repeat; background-size: 100%">
+
+
+        <div class="min-h-screen bg-gray-100" >
             @include('layouts.navigation')
 
             <!-- Page Heading -->
@@ -26,9 +28,8 @@
                     {{ $header }}
                 </div>
             </header>
-
             <!-- Page Content -->
-            <main>
+            <main style="background-image: url('https://cdn.britannica.com/92/216092-131-5FF4D1E7/custom-library.jpg');" >
                 {{ $slot }}
             </main>
         </div>
