@@ -14,17 +14,6 @@
           <h6 class="text-white text-capitalize ps-3">Emprunt</h6>
         </div>
       </div>
-      <div>
-        <h6 class="text-black text-capitalize ps-3">Nombre de emprunt
-          <select id="ncat" onchange="choix(this.selectedIndex)">
-            <option value="3" selected>3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-          </select>
-        </h6>
-      </div>
       <div class="card-body px-0 pb-2">
         <div class="table-responsive p-0">
           <table class="table align-items-center mb-0">
@@ -125,3 +114,13 @@
   </div>
 </div>
 @endsection('content')
+@Section('admin')
+<li class="nav-item">
+          <a class="nav-link text-white active bg-gradient-primary" href="{{url('/affgest')}}">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">engineering</i>
+            </div>
+            <span class="nav-link-text ms-1">Les utilisateurs</span>
+          </a>
+        </li>
+@endsection('admin')

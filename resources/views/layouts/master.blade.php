@@ -63,11 +63,8 @@
           </a>
         </li>
         <li class="nav-item">
-<<<<<<< HEAD
           <a class="nav-link text-white " href="{{url('emprunts')}}">
-=======
-          <a class="nav-link text-white " href="{{asset('../pages/billing.html')}}">
->>>>>>> 816580ea891486fc62044bf0827b3524245b0970
+
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">how_to_vote</i>
             </div>
@@ -135,18 +132,11 @@
             </div>
           </div>
           <ul class="navbar-nav  justify-content-end">
-<<<<<<< HEAD
             <li class="nav-item dropdown pe-2 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fa fa-user me-sm-1"></i>
                 <?php $user = auth()->user();?>
                 <span class="d-sm-inline d-none">{{ $user->name; }}</span>
-=======
-            <li class="nav-item d-flex align-items-center">
-              <a href="{{url('/deconnexion')}}" class="nav-link text-body font-weight-bold px-0">
-                <i class="material-icons opacity-10">logout</i>
-                <span class="d-sm-inline d-none">Se déconnecter</span>
->>>>>>> 816580ea891486fc62044bf0827b3524245b0970
               </a>
             </li>
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
@@ -242,11 +232,8 @@
     </nav>
     <!-- End Navbar -->
     <div class="container-fluid py-4">
-<<<<<<< HEAD
        <div class="container mt-2">
-=======
-      <div class="container mt-2">
->>>>>>> 816580ea891486fc62044bf0827b3524245b0970
+
                        @if($errors->any())
                            @foreach($errors->all() as $error)
                               <div class="alert alert-danger" role="alert">
@@ -370,10 +357,6 @@
   <script src="{{asset('../assets/js/plugins/perfect-scrollbar.min.js')}}"></script>
   <script src="{{asset('../assets/js/plugins/smooth-scrollbar.min.js')}}"></script>
   <script src="{{asset('../assets/js/plugins/chartjs.min.js')}}"></script>
-<<<<<<< HEAD
-  <script src="{{asset('../assets/js/my-js.js')}}"></script>
-=======
->>>>>>> 816580ea891486fc62044bf0827b3524245b0970
   <script>
     var ctx = document.getElementById("chart-bars").getContext("2d");
 
