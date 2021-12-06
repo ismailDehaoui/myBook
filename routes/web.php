@@ -20,11 +20,6 @@ use App\Http\Controllers\AuteurController;
 |
 */
 
-
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
-
 //categories
 
 Route::get('/cat', function () {
