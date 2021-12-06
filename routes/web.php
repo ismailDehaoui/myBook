@@ -2,12 +2,19 @@
 
 use Illuminate\Support\Facades\Route;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 816580ea891486fc62044bf0827b3524245b0970
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\LivreController;
 use App\Http\Controllers\AbonneeController;
+<<<<<<< HEAD
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuteurController;
+=======
+>>>>>>> 816580ea891486fc62044bf0827b3524245b0970
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +27,26 @@ use App\Http\Controllers\AuteurController;
 |
 */
 
+<<<<<<< HEAD
+=======
+
+/*Route::get('/', function () {
+    return view('welcome');
+});*/
+
+
+
+
+//routes catégories
+
+Route::get('catégories', 'CategorieController@index');
+Route::get('catégories/ajouter', 'CategorieController@create');
+Route::post('catégories', 'CategorieController@store');
+Route::get('catégories/{id}/modifier', 'CategorieController@edit');
+Route::put('catégories/{id}', 'CategorieController@update');
+Route::delete('catégories/{id}', 'CategorieController@destroy');
+
+>>>>>>> 816580ea891486fc62044bf0827b3524245b0970
 //categories
 
 Route::get('/cat', function () {
@@ -56,6 +83,7 @@ Route::get('livres/{id}/modifier', 'LivreController@edit');
 Route::put('livres/{id}', 'LivreController@update');
 Route::delete('livres/{id}', 'LivreController@destroy');
 
+<<<<<<< HEAD
 
 
 //Auteur
@@ -66,13 +94,15 @@ Route::post('auteurs','AuteurController@store')->name('auteurs.ajouter');
 
 
 
+=======
+>>>>>>> 816580ea891486fc62044bf0827b3524245b0970
 //MotCle
 
 Route::post('motscles', 'MotscleController@store')->name('motscles.ajouter');
 
 
 //Abonnées
-Route::get('/abonnées','AbonneeController@listAbonnees');
+Route::get('/abonnees','AbonneeController@listAbonnees');
 Route::get('abonnée/créer','AbonneeController@create');
 Route::get('abonnée/{id}/profile', 'AbonneeController@profile');
 Route::post('abonnée/ajouterAbonnée','AbonneeController@store');

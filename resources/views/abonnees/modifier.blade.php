@@ -7,7 +7,7 @@
                 <div class="card-header">
                   <h4 class="font-weight-bolder">Modifier abounnée</h4>  
                 </div>
-                <form action="{{url('modifier/'.$abonnee->id)}}" method="POST" >
+                <form action="{{url('modifier/'.$abonnee->id)}}" method="POST"  enctype="multipart/form-data">
                     <input type="hidden" name="_method" value="PUT">
                   	{{ csrf_field()}}
                     <div class="row">
@@ -16,9 +16,9 @@
                                 <label for="nom" class="form-label">Nom</label>
                                 <input 
                                   type="text" 
-                                  class="form-control border border-primary" 
+                                  class="form-control border px-2 border-primary" 
                                   name="nom" 
-                                  value ="{{$abonnee->nom_abonnee}}" 
+                                  value ="{{$abonnee->nom}}" 
                                   required
                                 >
                             </div>
@@ -26,9 +26,9 @@
                                 <label for="prenom" class="form-label">Prénom</label>
                                 <input 
                                   type="text" 
-                                  class="form-control border border-primary" 
+                                  class="form-control border px-2 border-primary" 
                                   name="prenom" 
-                                  value="{{$abonnee->prenom_abonnee}}" 
+                                  value="{{$abonnee->prenom}}" 
                                   required
                                 >                               
                             </div>
@@ -36,10 +36,9 @@
                                 <label for="email" class="form-label">Email</label>
                                 <input 
                                   type="email" 
-                                  class="form-control border border-primary" 
+                                  class="form-control border px-2 border-primary" 
                                   name="email" 
-                                  value="{{$abonnee->email_abonnee}}" 
-                                  placeholder="exemple@gamil.com" 
+                                  value="{{$abonnee->email}}" 
                                   required
                                 >                                
                             </div>
@@ -48,8 +47,8 @@
                                 <input 
                                   type="date"  
                                   name="date_naissance" 
-                                  class="form-control border border-primary" 
-                                  value="{{$abonnee->date_naissance_abonnee}}"  
+                                  class="form-control border px-2 border-primary" 
+                                  value="{{$abonnee->date_naissance}}"  
                                   required
                                 >
                             </div>  
@@ -58,14 +57,22 @@
                                 <input 
                                   type="text"  
                                   name="adresse" 
-                                  class="form-control border border-primary" 
-                                  value="{{$abonnee->adresse_abonnee}}"
+                                  class="form-control px-2 border border-primary" 
+                                  value="{{$abonnee->adresse}}"
                                   required
                                 >
                             </div>
                             <div class="form-group my-3">
-                                <label for="image">Image</label>
-                                <input type="file" name="image" class="form-control border border-primary">
+                              <p class="input-group-outline mb-9">
+                                <label class="form-label">
+                                Photo</label>
+                                <img 
+                                    src="{{asset('storage/Admin/'.$abonnee->photo)}}" 
+                                    class="avatar avatar-lg px-2 me-3 border-radius-lg" 
+                                    required>
+                                <br/><br/>
+                                <input type="file" class="form-control border border-primary" name="image"  accept="image/jpg,image/jpeg,image/png">
+                                </p>
                             </div>  
                         </div>
                         <div class="text-center">
@@ -75,7 +82,7 @@
                   </form>
                 <div class="card-footer text-center pt-0 px-lg-2 px-1">
                   <p class="mb-2 text-sm mx-auto">
-                    <a href="{{url('/')}}" class="text-primary text-gradient font-weight-bold">Retournez aux abounnées</a>
+                    <a href="{{url('/abonnees')}}" class="text-primary text-gradient font-weight-bold">Retournez aux abounnées</a>
                   </p>
                 </div>
               </div>

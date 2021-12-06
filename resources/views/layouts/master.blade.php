@@ -63,7 +63,11 @@
           </a>
         </li>
         <li class="nav-item">
+<<<<<<< HEAD
           <a class="nav-link text-white " href="{{url('emprunts')}}">
+=======
+          <a class="nav-link text-white " href="{{asset('../pages/billing.html')}}">
+>>>>>>> 816580ea891486fc62044bf0827b3524245b0970
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">how_to_vote</i>
             </div>
@@ -131,35 +135,19 @@
             </div>
           </div>
           <ul class="navbar-nav  justify-content-end">
+<<<<<<< HEAD
             <li class="nav-item dropdown pe-2 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fa fa-user me-sm-1"></i>
                 <?php $user = auth()->user();?>
                 <span class="d-sm-inline d-none">{{ $user->name; }}</span>
+=======
+            <li class="nav-item d-flex align-items-center">
+              <a href="{{url('/deconnexion')}}" class="nav-link text-body font-weight-bold px-0">
+                <i class="material-icons opacity-10">logout</i>
+                <span class="d-sm-inline d-none">Se déconnecter</span>
+>>>>>>> 816580ea891486fc62044bf0827b3524245b0970
               </a>
-              <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
-                <li class="mb-0">
-                  <a class="dropdown-item border-radius-md" href="javascript:;">
-                    <i class="fa fa-user me-sm-1"></i>
-                    <span class="d-sm-inline d-none">Profile</span>
-                  </a>
-                </li>
-                <li class="mb-0">
-                  <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <x-dropdown-link :href="route('logout')"
-                            onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                                        <span class="dropdown-item border-radius-md">
-                                          <i class="fas fa-sign-out-alt me-sm-1"></i>
-                                          <span class="d-sm-inline d-none">
-                        {{ __('Se déconnecter') }}
-                      </span>
-                                        </span>
-                    </x-dropdown-link>
-                </form>
-                </li>
-              </ul>
             </li>
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
@@ -254,7 +242,11 @@
     </nav>
     <!-- End Navbar -->
     <div class="container-fluid py-4">
+<<<<<<< HEAD
        <div class="container mt-2">
+=======
+      <div class="container mt-2">
+>>>>>>> 816580ea891486fc62044bf0827b3524245b0970
                        @if($errors->any())
                            @foreach($errors->all() as $error)
                               <div class="alert alert-danger" role="alert">
@@ -378,7 +370,10 @@
   <script src="{{asset('../assets/js/plugins/perfect-scrollbar.min.js')}}"></script>
   <script src="{{asset('../assets/js/plugins/smooth-scrollbar.min.js')}}"></script>
   <script src="{{asset('../assets/js/plugins/chartjs.min.js')}}"></script>
+<<<<<<< HEAD
   <script src="{{asset('../assets/js/my-js.js')}}"></script>
+=======
+>>>>>>> 816580ea891486fc62044bf0827b3524245b0970
   <script>
     var ctx = document.getElementById("chart-bars").getContext("2d");
 
