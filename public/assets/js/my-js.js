@@ -1,8 +1,3 @@
-
-/*const { toSafeInteger } = require("lodash");
-const toastrMin = require("./toastr.min");
-*/
-
 $(document).ready(function() {
   $.ajaxSetup({
     headers: {
@@ -10,23 +5,6 @@ $(document).ready(function() {
     }
   });
 
-  $("#butsave").click(function(e){
-    e.preventDefault();
-    
-    $.ajax({
-      url: "/motscles",
-      data:
-      {
-        'motcle': $('#motcle').val(),
-        "_token": "{{ csrf_token }}",
-      },
-      method : 'POST',
-      success : function(){
-        console.log("succes");
-      },
-      error: function(){
-        console.log("echec");
-      }
 
   //ajouter Mot cle
   $("#addKeyword").submit(function(e){
@@ -62,7 +40,6 @@ $(document).ready(function() {
        
       
       
-
     })
 
     })
@@ -97,7 +74,7 @@ $(document).ready(function() {
             $(form)[0].reset();
             $('#myModal2').modal('toggle');
             //toastr.success(data.msg);
-            //alert(data.msg);
+            alert(data.msg);
           }
         },
         error: function(){
@@ -112,9 +89,7 @@ $(document).ready(function() {
 
 
 
-
 });
-
 
 
 
@@ -150,4 +125,4 @@ function ajouterMotCle(){
      
     req.send(data);
    }
-   
+   */

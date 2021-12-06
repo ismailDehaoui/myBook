@@ -13,7 +13,7 @@ class AbonneeController extends Controller{
     
     public function profile($id){
         $abonnee  = Abonnee::find($id);
-        $emprunts = Emprunt::where('abonnees_id',$id)->paginate(5);
+        $emprunts = Emprunt::where('id',$id)->paginate(5);
         return view('abonnees.profile',['abonnee'=>$abonnee,'emprunts'=>$emprunts]); 
     }
 
@@ -23,15 +23,15 @@ class AbonneeController extends Controller{
     } 
     
     public function store(Request $request){   
-      if (Abonnee::where('email_abonnee', $request->input('email'))->exists()) {
+      if (Abonnee::where('email', $request->input('email'))->exists()) {
              echo "Error";
         }else{
         $abonnee                         = new Abonnee();
-        $abonnee->nom_abonnee            = $request->input('nom');
-    	  $abonnee->prenom_abonnee         = $request->input('prenom');
-        $abonnee->email_abonnee          = $request->input('email');
-        $abonnee->adresse_abonnee        = $request->input('adresse');
-        $abonnee->date_naissance_abonnee = $request->input('date_naissance');       
+        $abonnee->nom           = $request->input('nom');
+    	  $abonnee->prenom         = $request->input('prenom');
+        $abonnee->email          = $request->input('email');
+        $abonnee->adresse        = $request->input('adresse');
+        $abonnee->date = $request->input('date_naissance');       
         $filenameWithExt                 = $request->file('image')->getClientOriginalName();
         // Get just filename
         $filename                        = pathinfo($filenameWithExt, PATHINFO_FILENAME);
@@ -41,8 +41,8 @@ class AbonneeController extends Controller{
         $fileNameToStore                 = $filename.'_'.time().'.'.$extension;
         // Upload Image
         $path                            = $request->file('image')->storeAs('public/Admin', $fileNameToStore);
-        $abonnee->image                  = $fileNameToStore;
-        $abonnee->date_expiration        = date(NOW());
+        $abonnee->photo                 = $fileNameToStore;
+       // $abonnee->date_expiration        = date(NOW());
         $abonnee->created_at             = date(NOW());
         $abonnee->save();
     	  return redirect('/abonnées');
@@ -55,7 +55,7 @@ class AbonneeController extends Controller{
     }
 
       public function update(Request $request,$id){
-        if (Abonnee::where('email_Abonnee', $request->input('email'))->exists()) {
+        if (Abonnee::where('email', $request->input('email'))->exists()) {
              echo "Error";
         }else{
         $abonnee = Abonnee::find($id);

@@ -1,14 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-<<<<<<< HEAD
 
-=======
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\LivreController;
 use App\Http\Controllers\AbonneeController;
->>>>>>> 5af81ea2dc22088dc610f6ce83ffe293839f7f35
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AuteurController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,18 +25,6 @@ use App\Http\Controllers\AbonneeController;
     return view('welcome');
 });*/
 
-
-
-<<<<<<< HEAD
-//routes catégories
-
-Route::get('catégories', 'CategorieController@index');
-Route::get('catégories/ajouter', 'CategorieController@create');
-Route::post('catégories', 'CategorieController@store');
-Route::get('catégories/{id}/modifier', 'CategorieController@edit');
-Route::put('catégories/{id}', 'CategorieController@update');
-Route::delete('catégories/{id}', 'CategorieController@destroy');
-=======
 //categories
 
 Route::get('/cat', function () {
@@ -62,7 +49,7 @@ Route::put('modifier/{id}',[CategorieController::class,'update']);
 Route::get('mod/{id}/edit',[CategorieController::class,'edit']);
 Route::get('/supprimer{id}',[CategorieController::class,'supp']);
 Route::get('/confirmersupp/{id}',[CategorieController::class,'confirm']);
->>>>>>> 5af81ea2dc22088dc610f6ce83ffe293839f7f35
+
 
 
 //routes livres
@@ -74,15 +61,21 @@ Route::get('livres/{id}/modifier', 'LivreController@edit');
 Route::put('livres/{id}', 'LivreController@update');
 Route::delete('livres/{id}', 'LivreController@destroy');
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 5af81ea2dc22088dc610f6ce83ffe293839f7f35
+
+//Auteur
+
+
+
+Route::post('auteurs','AuteurController@store')->name('auteurs.ajouter');
+
+
+
 //MotCle
 
-Route::post('motscles', 'MotscleController@store');
+Route::post('motscles', 'MotscleController@store')->name('motscles.ajouter');
 
-<<<<<<< HEAD
+
 //Abonnées
 Route::get('/abonnées','AbonneeController@listAbonnees');
 Route::get('abonnée/créer','AbonneeController@create');
@@ -95,11 +88,27 @@ Route::get('mod/{id}/edit','AbonneeController@edit');
 Route::get('emprunts','EmpruntController@index');
 Route::get('emprunts/créer', 'EmpruntController@create');
 Route::post('emprunts/ajouter', 'EmpruntController@store');
-=======
-
->>>>>>> 5af81ea2dc22088dc610f6ce83ffe293839f7f35
 
 //authentification
+
+Route::get('/deconnexion','UserController@logout');
+
+Route::get('/affgest','UserController@listGest');
+Route::get('/ajoutergestionnaire',function(){
+	return view('authentification.ajoutergest');
+});
+Route::post('/ajoutgest',[UserController::class,'store']);
+Route::get('/editgest{id}',[UserController::class,'editgest']);
+Route::put('modifiergest/{id}',[UserController::class,'update']);
+
+Route::get('/suppressiongest{id}',[UserController::class,'suppgest']);
+Route::get('/confirmersuppgest{id}',[UserController::class,'confirmgest']);
+
+
+
+
+
+//auth
 Route::get('/', function () {
     return view('auth.login');
 });

@@ -163,5 +163,20 @@ class LivreController extends Controller
 
         return redirect('/livres');
     }
-
+    //Ne les supprimez pas
+     function afficherLivres($id){
+        $l = Livre::where('categories_id',$id)->paginate(5);
+        $c = Categorie::find($id);
+        if(count($l) == 0){
+             Alert::info('Categorie '.$c->nom_categorie.' n\'a pas de livres!!');
+             return redirect('/categories');
+        }
+        else
+          return view('categorie.CatLivres',['cat'=>$c],['livre'=>$l]);
+    }
+       public function listLivressupp(){
+      
+      $l = Livre::onlyTrashed()->paginate(6);
+        return view('Historique.livresupp', ['livres'=>$l]);
+    } 
 }
