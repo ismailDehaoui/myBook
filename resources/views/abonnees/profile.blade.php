@@ -10,14 +10,14 @@
         <div class="row gx-4 mb-2">
           <div class="col-auto">
             <div class="avatar avatar-xl position-relative">
-              <img src="{{asset('storage/Admin/'.$abonnee->image)}}" class="avatar avatar-sm me-3 border-radius-lg"  >
+              <img src="{{asset('storage/Admin/'.$abonnee->photo)}}" class="avatar avatar-sm me-3 border-radius-lg"  >
             </div>
           </div>
         
           <div class="col-auto my-auto">
             <div class="h-100">
               <h5 class="mb-1">
-                {{$abonnee->nom_abonnee}} {{$abonnee->prenom_abonnee}}
+                {{$abonnee->nom}} {{$abonnee->prenom}}
               </h5>
               
             </div>
@@ -50,17 +50,17 @@
                         <strong class="text-dark">
                             Email:
                         </strong>
-                         <br> {{$abonnee->email_abonnee}}
+                         <br> {{$abonnee->email}}
                     </li>
                     <li class="list-group-item border-0 ps-0 text-sm">
                         <strong class="text-dark">
                             Adresse:
                         </strong>
-                         <br> {{$abonnee->adresse_abonnee}}
+                         <br> {{$abonnee->adresse}}
                     </li>
                     <li class="list-group-item border-0 ps-0 pb-0">
                       <strong class="text-dark text-sm">Date de naissance:</strong>
-                      <br>{{$abonnee->date_naissance_abonnee}}
+                      <br>{{$abonnee->date_naissance}}
                     </li>   
                   </ul>
                 </div>             
@@ -85,23 +85,18 @@
                       </tr>
                     </thead>
                     <tbody>
-                       @foreach($emprunts as $emprunt)
-                          <?php 
-                                
-                                 $livre = \App\Models\Livres::find($emprunt->livres_id);
-                          ?>
                       <tr>
                         <th>
                           <div class="d-flex px-2 py-1">
                             <div class="d-flex flex-column justify-content-center">
-                              <h6 class="mb-0 text-sm">{{$livre->titre;}}</h6>
+                              <h6 class="mb-0 text-sm">dd</h6>
                             </div>
                           </div>
                         </th>
                         <th>
                           <div class="d-flex px-2 py-1">
                             <div class="d-flex flex-column justify-content-center">
-                              <h6 class="mb-0 text-sm">{{$emprunt->date_debut}}</h6>
+                              <h6 class="mb-0 text-sm">dd</h6>
                             </div>
                           </div>  
                         </th>
@@ -116,24 +111,16 @@
                           <div class="d-flex px-2 py-1">
                             <div class="d-flex flex-column justify-content-center">
                               <h6 class="mb-0 text-sm">
-                                <?php
-                                  if($emprunt->estRendu)
-                                    echo 'oui';
-                                   else {
-                                     echo "non";
-                                   } 
-                                ?>
+                                dd
                               </h6>
                             </div>
                           </div>
                         </th>
                       </tr>
-                    @endforeach   
+                    
                     </tbody>
                   </table>
-                  <div class="pagination">
-    {{$emprunts->links()}}
-  </div>
+       
                 </div>
               </div>
             </div>
