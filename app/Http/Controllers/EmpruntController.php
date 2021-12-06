@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Abonnee;
 use Illuminate\Http\Request;
 use  App\Models\Emprunt;
-use App\Models\Livres;
+use App\Models\Livre;
+
 
 class EmpruntController extends Controller{
 
     public function create(){
         $abonnees = Abonnee::orderBy('nom_abonnee')->get();
-        $Livres    = Livres::orderBy('titre')->get();
+        $Livres    = Livre::orderBy('titre')->get();
         return view('emprunts.create',['abonnees'=> $abonnees, 'livres'=>$Livres]);
     }
 
