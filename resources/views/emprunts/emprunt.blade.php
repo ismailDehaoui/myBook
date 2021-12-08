@@ -31,7 +31,7 @@
             <tbody>
               
               @foreach($emprunts as $emprunt)
-              <?php $abonne = \App\Models\Abonnee::find($emprunt->abonnees_id); 
+              <?php $abonne = \App\Models\Abonnee::find($emprunt->abonnes_id); 
                     $livre = \App\Models\Livres::find($emprunt->livres_id);
               ?>
                 <tr>
@@ -40,7 +40,7 @@
                       <div class="d-flex flex-column justify-content-center">
                         <a href="{{url('abonnée/'.$emprunt->abonnees_id.'/profile')}}">
                           <h6 class="mb-0 text-sm">
-                            {{$abonne->nom_abonnee}}                
+                            {{$abonne->nom}}                
                           </h6>
                         </a>
                       </div>
@@ -51,7 +51,7 @@
                       <div class="d-flex flex-column justify-content-center">
                         <a href="">
                           <h6 class="mb-0 text-sm">
-                            {{$abonne->prenom_abonnee}}
+                            {{$abonne->prenom}}
                           </h6>
                         </a>
                       </div>

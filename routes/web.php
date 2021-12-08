@@ -19,7 +19,6 @@ use App\Http\Controllers\AuteurController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 //categories
 
 Route::get('/cat', function () {
@@ -111,3 +110,4 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+ 

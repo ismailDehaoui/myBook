@@ -24,13 +24,13 @@ class CategorieController extends Controller
         return view('categorie.categories', ['categories'=>$cat]);
     } */
    public function store(Request $request){
-        if (Categorie::where('nom_categorie', $request->input('nom'))->exists()) {
+        if (Categorie::where('nom', $request->input('nom'))->exists()) {
             Alert::error('Categorie déja existe!');
             return redirect('/ajoutercat');
         }
         else{
       $cat = new Categorie();
-      $cat->nom_categorie = $request->input('nom');
+      $cat->nom = $request->input('nom');
       $cat->created_at =date(NOW());
       $cat->save();
        Alert::success('Categorie est bien ajoutée');
@@ -44,13 +44,13 @@ class CategorieController extends Controller
     }
 
        public function update(Request $request,$id){
-        if (Categorie::where('nom_categorie', $request->input('nom'))->exists()) {
+        if (Categorie::where('nom', $request->input('nom'))->exists()) {
              Alert::error('Categorie déja existe');
              return redirect('/categories');
         }
         else{
       $cat = Categorie::find($id);
-      $cat->nom_categorie = $request->input('nom');
+      $cat->nom = $request->input('nom');
       $cat->updated_at =date(NOW());
       $cat->save();
        Alert::success('Categorie est bien modifiée');
