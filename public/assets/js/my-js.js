@@ -1,6 +1,3 @@
-const { toSafeInteger } = require("lodash");
-const toastrMin = require("./toastr.min");
-
 $(document).ready(function() {
   $.ajaxSetup({
     headers: {
@@ -19,6 +16,7 @@ $(document).ready(function() {
       method: $(form).attr('method'),
       data: new FormData(form),
       processData: false,
+      
       dataType: 'json',
       contentType: false,
       beforeSend: function(){
@@ -34,11 +32,12 @@ $(document).ready(function() {
         $('#mot-cle').append(new Option(data.keyWordAdded, data.idKeyword, false, true))
           $(form)[0].reset();
           $('#myModal').modal('toggle');
-          alert(data.msg);
+          toastr.success(data.msg);
+          //alert(data.msg);
         }
       },
       error: function(){
-        alert("error");
+        toastr.error("Quelque chose ne va pas!");
       }
        
       
@@ -81,7 +80,7 @@ $(document).ready(function() {
           }
         },
         error: function(){
-          alert("error");
+          toastr.error("Quelque chose ne va pas!");
         }
          
         

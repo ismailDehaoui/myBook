@@ -26,7 +26,7 @@ class LivreController extends Controller
     //Lister les livres
     public function index(){
         $livres = Livre::paginate(10);
-        $categories = Categorie::all();
+        //$categories = Categorie::all();
         return view('livre.index', ['livres'=>$livres]);
     }
 

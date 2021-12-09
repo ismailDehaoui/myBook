@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Categorie;
+use App\Models\Livre;
+
+use function GuzzleHttp\Promise\each;
 
 class CategorieController extends Controller
 {
@@ -37,9 +40,11 @@ class CategorieController extends Controller
     }
 
     //Supprimer un livre
-    public function destroy(Request $request, $id){
+    public function destroy($id){
         $categorie = Categorie::find($id);
-        $categorie->delete;
+        //$livres = Livre::where('categories_id', $id)->all();
+        $categorie->delete();
+        
         return redirect('catégories');
     }
 

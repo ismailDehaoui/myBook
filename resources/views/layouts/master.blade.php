@@ -12,10 +12,11 @@
 
   <link href="{{asset('../assets/css/mon-css.css')}}" rel="stylesheet" />
   <link href="{{asset('../assets/css/sweetalert2.min.css')}}" rel="stylesheet" />
-  <link href="{{asset('../assets/css/toastr.min.css')}}" rel="stylesheet" />
+
+ 
 
 
-  <!--     Fonts and icons     -->
+  
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
   <!-- Nucleo Icons -->
   <link href="{{asset('../assets/css/nucleo-icons.css')}}" rel="stylesheet" />
@@ -27,6 +28,7 @@
   <!-- CSS Files -->
   <link id="pagestyle" href="{{asset('../assets/css/material-dashboard.css?v=3.0.0')}}" rel="stylesheet" />
 
+  <link href="{{asset('../assets/css/toastr.min.css')}}" rel="stylesheet" />
 
 </head>
 
@@ -55,7 +57,7 @@
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
-            <span class="nav-link-text ms-1">Mes catégories</span>
+            <span class="nav-link-text ms-1">Catégories</span>
           </a>
         </li>
         <li class="nav-item">
@@ -63,15 +65,16 @@
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">receipt_long</i>
             </div>
-            <span class="nav-link-text ms-1">Mes livres</span>
+            <span class="nav-link-text ms-1">Livres</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="{{asset('../pages/virtual-reality.html')}}">
+          <a class="nav-link text-white " href="{{URL('/abonnés')}}">
+            
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">view_in_ar</i>
             </div>
-            <span class="nav-link-text ms-1">Virtual Reality</span>
+            <span class="nav-link-text ms-1">Abonnés</span>
           </a>
         </li>
         <li class="nav-item">
@@ -395,15 +398,17 @@
   </div>
   @include('sweetalert::alert');
   <!--   Core JS Files   -->
-   <script src="{{asset('../assets/js/jquery.min.js')}}"></script>
+  <script src="{{asset('../assets/js/jquery.min.js')}}"></script>
   <script src="{{asset('../assets/js/core/popper.min.js')}}"></script>
   <script src="{{asset('../assets/js/core/bootstrap.min.js')}}"></script>
   <script src="{{asset('../assets/js/plugins/perfect-scrollbar.min.js')}}"></script>
   <script src="{{asset('../assets/js/plugins/smooth-scrollbar.min.js')}}"></script>
   <script src="{{asset('../assets/js/plugins/chartjs.min.js')}}"></script>
+  <script src="{{asset('../assets/js/toastr.min.js')}}"></script>
   <script src="{{asset('../assets/js/my-js.js')}}"></script>
   <script src="{{asset('../assets/js/sweetalert2.min.js')}}"></script>
-  <script src="{{asset('../assets/js/toastr.min.js')}}"></script>
+
+
  
 
   <script>
@@ -670,3 +675,4 @@
 </body>
 
 </html>
+

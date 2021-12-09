@@ -18,7 +18,7 @@
                         <form action="{{ url('catégories') }}" method="POST">
                             {{ csrf_field() }}
                             <div class="form-group my-3">
-                                <label for="nom-categorie">Catégorie</label>
+                                <label for="nom-categorie">Nom Catégorie</label>
                                 <input type="text" name="nom-categorie" class="form-control border border-primary" required>
                             </div>
             
