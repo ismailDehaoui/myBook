@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+<<<<<<< HEAD
 use App\Models\Auteur;
+=======
+>>>>>>> 19a07d2e862c8323cd6cc8d1b4c4b57daa37a495
 use Illuminate\Http\Request;
 
 class AuteurController extends Controller
@@ -24,4 +27,5 @@ class AuteurController extends Controller
             }
         }    
     }
+    //
 }
