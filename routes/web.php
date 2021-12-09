@@ -66,8 +66,6 @@ Route::post('auteurs','AuteurController@store')->name('auteurs.ajouter');
 //MotCle
 
 Route::post('motscles', 'MotscleController@store')->name('motscles.ajouter');
-<<<<<<< HEAD
-=======
 
 
 //Abonnées
@@ -97,7 +95,6 @@ Route::put('modifiergest/{id}',[UserController::class,'update']);
 
 Route::get('/suppressiongest{id}',[UserController::class,'suppgest']);
 Route::get('/confirmersuppgest{id}',[UserController::class,'confirmgest']);
->>>>>>> 19a07d2e862c8323cd6cc8d1b4c4b57daa37a495
 
 //Auteur
 

@@ -3,11 +3,8 @@ namespace  App\Http\Controllers;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use App\Models\Motscle;
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 19a07d2e862c8323cd6cc8d1b4c4b57daa37a495
 class MotscleController extends Controller
 
 {

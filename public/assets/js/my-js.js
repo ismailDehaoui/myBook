@@ -16,7 +16,7 @@ $(document).ready(function() {
       method: $(form).attr('method'),
       data: new FormData(form),
       processData: false,
-      
+
       dataType: 'json',
       contentType: false,
       beforeSend: function(){
@@ -75,8 +75,8 @@ $(document).ready(function() {
           $('#auteur').append(new Option(data.auteurAdded, data.idAuteur, false, true))
             $(form)[0].reset();
             $('#myModal2').modal('toggle');
-            //toastr.success(data.msg);
-            alert(data.msg);
+            toastr.success(data.msg);
+            //alert(data.msg);
           }
         },
         error: function(){
