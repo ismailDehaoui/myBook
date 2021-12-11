@@ -1,12 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\LivreController;
 use App\Http\Controllers\AbonneeController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AuteurController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,23 +19,6 @@ use App\Http\Controllers\AbonneeController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
-
-
-
-
-//routes catégories
-
-Route::get('catégories', 'CategorieController@index');
-Route::get('catégories/ajouter', 'CategorieController@create');
-Route::post('catégories', 'CategorieController@store');
-Route::get('catégories/{id}/modifier', 'CategorieController@edit');
-Route::put('catégories/{id}', 'CategorieController@update');
-Route::delete('catégories/{id}', 'CategorieController@destroy');
 
 //categories
 
@@ -72,9 +56,18 @@ Route::get('livres/{id}/modifier', 'LivreController@edit');
 Route::put('livres/{id}', 'LivreController@update');
 Route::delete('livres/{id}', 'LivreController@destroy');
 
+
+
+//Auteur
+
+
+
+Route::post('auteurs','AuteurController@store')->name('auteurs.ajouter');
+
 //MotCle
 
-Route::post('motscles', 'MotscleController@store');
+Route::post('motscles', 'MotscleController@store')->name('motscles.ajouter');
+
 
 //Abonnées
 Route::get('/abonnees','AbonneeController@listAbonnees');
@@ -90,6 +83,25 @@ Route::get('emprunts/créer', 'EmpruntController@create');
 Route::post('emprunts/ajouter', 'EmpruntController@store');
 
 //authentification
+
+Route::get('/deconnexion','UserController@logout');
+
+Route::get('/affgest','UserController@listGest');
+Route::get('/ajoutergestionnaire',function(){
+	return view('authentification.ajoutergest');
+});
+Route::post('/ajoutgest',[UserController::class,'store']);
+Route::get('/editgest{id}',[UserController::class,'editgest']);
+Route::put('modifiergest/{id}',[UserController::class,'update']);
+
+Route::get('/suppressiongest{id}',[UserController::class,'suppgest']);
+Route::get('/confirmersuppgest{id}',[UserController::class,'confirmgest']);
+
+
+
+
+
+//auth
 Route::get('/', function () {
     return view('auth.login');
 });

@@ -10,7 +10,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 class CategorieController extends Controller
 {
    public function listCategories($n=0){
-        $cat = Categorie::paginate(3);
+      $cat = Categorie::paginate(3);
         return view('categorie.categories', ['categories'=>$cat],['n'=>$n]);
     } 
     public function listCategoriesupp(){
@@ -29,18 +29,18 @@ class CategorieController extends Controller
             return redirect('/ajoutercat');
         }
         else{
-        $cat = new Categorie();
-        $cat->nom = $request->input('nom');
-        $cat->created_at =date(NOW());
-        $cat->save();
+      $cat = new Categorie();
+      $cat->nom = $request->input('nom');
+      $cat->created_at =date(NOW());
+      $cat->save();
        Alert::success('Categorie est bien ajoutée');
-        return redirect('/ajoutercat');
+      return redirect('/ajoutercat');
       }}
 
       
       public function edit($id){
-        $cat = Categorie::find($id);
-        return view('categorie.modifiercat', ['cat'=>$cat]);
+      $cat = Categorie::find($id);
+      return view('categorie.modifiercat', ['cat'=>$cat]);
     }
 
        public function update(Request $request,$id){
@@ -49,12 +49,12 @@ class CategorieController extends Controller
              return redirect('/categories');
         }
         else{
-        $cat = Categorie::find($id);
-        $cat->nom = $request->input('nom');
-        $cat->updated_at =date(NOW());
-        $cat->save();
+      $cat = Categorie::find($id);
+      $cat->nom = $request->input('nom');
+      $cat->updated_at =date(NOW());
+      $cat->save();
        Alert::success('Categorie est bien modifiée');
-        return redirect('/categories');
+      return redirect('/categories');
       }}
   function supp($id){
    Alert::error('Etes vous sure?','La categorie sera supprimée!')->showConfirmButton('<a class=""  href="/confirmersupp/'.$id.'" >
@@ -69,7 +69,7 @@ class CategorieController extends Controller
     return redirect('/catsupp');
   }
   function confirm($id){
-        $l = Categorie::find($id);
+       $l = Categorie::find($id);
        $user = auth()->user();
        $l->acteur = $user->id;
        $l->save();

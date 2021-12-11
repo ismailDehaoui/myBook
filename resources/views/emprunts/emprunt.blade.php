@@ -14,17 +14,6 @@
           <h6 class="text-white text-capitalize ps-3">Emprunt</h6>
         </div>
       </div>
-      <div>
-        <h6 class="text-black text-capitalize ps-3">Nombre de emprunt
-          <select id="ncat" onchange="choix(this.selectedIndex)">
-            <option value="3" selected>3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-          </select>
-        </h6>
-      </div>
       <div class="card-body px-0 pb-2">
         <div class="table-responsive p-0">
           <table class="table align-items-center mb-0">
@@ -42,16 +31,18 @@
             <tbody>
               
               @foreach($emprunts as $emprunt)
-              <?php $abonne = \App\Models\Abonnee::find($emprunt->abonnees_id); 
-                    $livre = \App\Models\Livres::find($emprunt->livres_id);
+              <?php 
+                    $abonne = \App\Models\Abonnee::find($emprunt->abonnes_id); 
+                    $livre = \App\Models\Livre::find($emprunt->livres_id);
               ?>
+              
                 <tr>
                   <td>
                     <div class="d-flex px-2 py-1">
                       <div class="d-flex flex-column justify-content-center">
                         <a href="{{url('abonnée/'.$emprunt->abonnees_id.'/profile')}}">
                           <h6 class="mb-0 text-sm">
-                            {{$abonne->nom_abonnee}}                
+                            {{$abonne->nom}}                
                           </h6>
                         </a>
                       </div>
@@ -62,7 +53,7 @@
                       <div class="d-flex flex-column justify-content-center">
                         <a href="">
                           <h6 class="mb-0 text-sm">
-                            {{$abonne->prenom_abonnee}}
+                            {{$abonne->prenom}}
                           </h6>
                         </a>
                       </div>
@@ -125,3 +116,17 @@
   </div>
 </div>
 @endsection('content')
+<?php 
+  $user = auth()->user();?>
+  @if($user->est_super_admin)
+    @Section('admin')
+      <li class="nav-item">
+        <a class="nav-link text-white " href="{{url('/affgest')}}">
+          <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="material-icons opacity-10">engineering</i>
+          </div>
+          <span class="nav-link-text ms-1">Les utilisateurs</span>
+        </a>
+      </li>
+    @endsection('admin')
+  @endif

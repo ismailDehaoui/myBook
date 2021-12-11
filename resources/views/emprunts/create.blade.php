@@ -22,12 +22,12 @@
                             <label for="nom" class="form-label">Nom Abonné(e)</label>
                             <select id="nom" name="abonnee" class="form-control px-2 border border-primary" required >
                                 @foreach ($abonnees as $abonnee)
-                                    <option value="{{ $abonnee->id }}">{{ $abonnee->nom_abonnee .' '. $abonnee->prenom_abonnee }}</option>
+                                    <option value="{{ $abonnee->id }}">{{ $abonnee->nom .' '. $abonnee->prenom }}</option>
                                 @endforeach
                             </select>           
                         </div>
                         <div class="form-group my-3">
-                            <label for="livre" class="form-label">Livre</label>
+                            <label  for="livre" class="form-label">Livre</label>
                             <select id="livre" name="livre[]" class="form-control px-2 border border-primary" required  multiple="">
                               @foreach ($livres as $livre)
                                 <option value="{{ $livre->id }}"> {{ $livre->titre }} </option>
@@ -60,3 +60,17 @@
  </div>
  
 @endsection('content')
+<?php 
+  $user = auth()->user();?>
+  @if($user->est_super_admin)
+    @Section('admin')
+      <li class="nav-item">
+        <a class="nav-link text-white " href="{{url('/affgest')}}">
+          <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="material-icons opacity-10">engineering</i>
+          </div>
+          <span class="nav-link-text ms-1">Les utilisateurs</span>
+        </a>
+      </li>
+    @endsection('admin')
+  @endif

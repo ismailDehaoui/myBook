@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,7 +64,8 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="{{asset('../pages/billing.html')}}">
+          <a class="nav-link text-white " href="{{url('emprunts')}}">
+
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">how_to_vote</i>
             </div>
@@ -131,10 +133,11 @@
             </div>
           </div>
           <ul class="navbar-nav  justify-content-end">
-            <li class="nav-item d-flex align-items-center">
-              <a href="{{url('/deconnexion')}}" class="nav-link text-body font-weight-bold px-0">
-                <i class="material-icons opacity-10">logout</i>
-                <span class="d-sm-inline d-none">Se déconnecter</span>
+            <li class="nav-item dropdown pe-2 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa fa-user me-sm-1"></i>
+                <?php $user = auth()->user();?>
+                <span class="d-sm-inline d-none">{{ $user->name; }}</span>
               </a>
             </li>
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
@@ -230,7 +233,8 @@
     </nav>
     <!-- End Navbar -->
     <div class="container-fluid py-4">
-      <div class="container mt-2">
+       <div class="container mt-2">
+
                        @if($errors->any())
                            @foreach($errors->all() as $error)
                               <div class="alert alert-danger" role="alert">
