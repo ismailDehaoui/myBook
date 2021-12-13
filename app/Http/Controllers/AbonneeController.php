@@ -34,7 +34,7 @@ class AbonneeController extends Controller{
         $abonnee->email          = $request->input('email');
         $abonnee->adresse        = $request->input('adresse');
 
-        $abonnee->date = $request->input('date_naissance');       
+        $abonnee->date_naissance = $request->input('date_naissance');       
         $filenameWithExt                 = $request->file('image')->getClientOriginalName();
         // Get just filename
         $filename                        = pathinfo($filenameWithExt, PATHINFO_FILENAME);

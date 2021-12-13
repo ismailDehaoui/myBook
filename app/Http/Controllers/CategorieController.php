@@ -77,11 +77,15 @@ class CategorieController extends Controller
        $livres = Livre::where('categories_id',$id)->get();
        foreach ($livres as $li) {
          $emp = Emprunt::where('livres_id',$li->id)->get();
-           if($emp->count() != 0)
-            Alert::error('Categorie a deja des livres  empruntés');
-         //$li->delete();
+           if($emp->count() != 0){
+            Alert::error('Categorie a déja des livres  empruntés');
+           return redirect('/categories');}   
        }
-       //$l->delete();
+        foreach ($livres as $li) {
+         $li->delete();    
+       }
+      
+       $l->delete();
        return redirect('/categories');
   }
 }

@@ -100,19 +100,6 @@ Route::get('/confirmersuppgest{id}',[UserController::class,'confirmgest']);
 
 Route::post('auteurs', 'AuteurController@store')->name('auteurs.ajouter');
 
-//Abonnées
-
-Route::get('/abonnés','AbonneController@index');
-
-Route::get('abonnés/ajouter','AbonneController@create');
-
-Route::get('abonnée/{id}/profile', 'AbonneController@profile');
-
-Route::post('abonnés','AbonneController@store');
-
-Route::put('modifier/{id}','AbonneController@update');    
-
-Route::get('mod/{id}/edit','AbonneController@edit');
 
 //Route::get('abonnés/{id}/qrcode', 'QrCodeController@index');
 
