@@ -26,6 +26,7 @@ class CreateLivresTable extends Migration
             $table->timestamps();
             $table->dateTime('deleted_at')->nullable();
             $table->foreignId('categories_id')->constrained('categories')->onDelete('cascade')->onUpdate('cascade');
+             $table->integer('acteur')->default(0);
 
         });
     }

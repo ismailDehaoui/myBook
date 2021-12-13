@@ -8,7 +8,7 @@
           <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                <h6 class="text-white text-capitalize ps-3">{{$cat->nom}}</h6>
+                <h6 class="text-white text-capitalize ps-3">Livres de {{$cat->nom}}</h6>
               </div>
             </div>
             <div class="card-body px-0 pb-2">
@@ -18,6 +18,7 @@
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Titre</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">ISBN</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nombre d'exemplaires</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Editeur</th>
                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Langue</th>
                     </tr>
@@ -39,6 +40,9 @@
                       </td>
                       <td>
                         <p class="text-xs font-weight-bold mb-0">{{$c->ISBN}}</p>
+                      </td>
+                        <td>
+                        <p class="text-xs font-weight-bold mb-0">{{$c->nombre_exemplaires_disponibles}}</p>
                       </td>
                       <td>
                         <p class="text-xs font-weight-bold mb-0">{{$c->editeur}}</p>

@@ -19,6 +19,7 @@
                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ISBN</th>
                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Editeur</th>
                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Catégorie</th>
+                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Acteur</th>
                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Langue</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Date d'ajout</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Date de suppression</th>
@@ -31,7 +32,7 @@
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div>
-                             <img src="{{asset('storage/Admin/'.$c->photo)}}" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
+                             <img src="{{asset('storage/images/livres/'.$c->photo)}}" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
                           </div>
                           <div class="d-flex flex-column justify-content-center">
                             <h6 class="mb-0 text-sm">{{$c->titre}}</h6>
@@ -47,7 +48,11 @@
                       <td>
                         <p class="text-xs font-weight-bold mb-0">{{$categorie->nom_categorie}}</p>
                       </td>
-                      
+                       <?php $act = \App\Models\User::where('id',$c->acteur)->get();?>
+                      <td>
+                        <img src="{{asset('storage/Admin/'.$act[0]->photo)}}" class="avatar avatar-lg me-3 border-radius-lg" alt="user1">
+                         <br/><p class="text-xs font-weight-bold mb-0">{{$act[0]->name}}</p>
+                      </td>
                       <td>
                         <p class="text-xs font-weight-bold mb-0">{{$c->langue}}</p>
                       </td>

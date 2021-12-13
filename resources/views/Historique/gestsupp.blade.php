@@ -22,7 +22,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                  	 @foreach($gest as $c)
+                     @foreach($gest as $c)
                     <tr>
                       <td>
                         <div class="d-flex px-2 py-1">
@@ -37,9 +37,10 @@
                         <td>
                         <p class="text-xs font-weight-bold mb-0">{{$c->email}}</p>
                       </td>
-                       <?php $act = \App\Models\User::where('id',$c->acteur)->get('name');?>
+                       <?php $act = \App\Models\User::where('id',$c->acteur)->get();?>
                       <td>
-                        <p class="text-xs font-weight-bold mb-0">{{$act}}</p>
+                        <img src="{{asset('storage/Admin/'.$act[0]->photo)}}" class="avatar avatar-lg me-3 border-radius-lg" alt="user1">
+                         <br/><p class="text-xs font-weight-bold mb-0">{{$act[0]->name}}</p>
                       </td>
                       <td>
                         <p class="text-xs font-weight-bold mb-0">{{$c->created_at}}</p>

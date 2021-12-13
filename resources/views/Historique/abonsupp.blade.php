@@ -39,7 +39,7 @@
                       </td>
                        <?php $act = \App\Models\User::where('id',$c->acteur)->get('name');?>
                       <td>
-                        <p class="text-xs font-weight-bold mb-0">{{$act}}</p>
+                        <p class="text-xs font-weight-bold mb-0">{{$act}</p>
                       </td>
                       <td>
                         <p class="text-xs font-weight-bold mb-0">{{$c->created_at}}</p>
