@@ -120,6 +120,20 @@ Route::get('mod/{id}/edit','AbonneController@edit');
 
 Route::get('/generate-qrcode', 'QrCodeController@index');
 
+//Histo
+Route::put('/res{id}',[CategorieController::class,'restore']);
+Route::get('/histo',function(){
+	return view('Historique.histo');
+});
+Route::get('/catsupp',[CategorieController::class,'listCategoriesupp']);
+Route::get('/gestsupp',[UserController::class,'listGestsupp']);
+Route::put('/gestres{id}',[UserController::class,'restoregest']);
+
+Route::get('/abonsupp',[AbonneeController::class,'listAbonsupp']);
+Route::put('/abonres{id}',[AbonneeController::class,'restoreabon']);
+Route::get('/lsupp',[LivreController::class,'listLivressupp']);
+
+
 
 //auth
 Route::get('/', function () {
