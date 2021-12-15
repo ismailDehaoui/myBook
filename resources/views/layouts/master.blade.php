@@ -1,3 +1,4 @@
+<?php $user = auth()->user();?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -83,7 +84,7 @@
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="{{asset('../pages/profile.html')}}">
+          <a class="nav-link text-white " href="{{url('user/'.$user->id.'/profile')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">account_circle</i>
             </div>
@@ -132,13 +133,37 @@
             </div>
           </div>
           <ul class="navbar-nav  justify-content-end">
-            <li class="nav-item dropdown pe-2 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa fa-user me-sm-1"></i>
-                <?php $user = auth()->user();?>
-                <span class="d-sm-inline d-none">{{ $user->name; }}</span>
-              </a>
-            </li>
+           <li class="nav-item dropdown pe-2 d-flex align-items-center">
+
+ <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+<i class="fa fa-user me-sm-1"></i>
+<?php $user = auth()->user();?>
+<span class="d-sm-inline d-none">{{ $user->name; }}</span>
+</a>
+<ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+<li class="mb-0">
+<a class="dropdown-item border-radius-md" href="{{url('user/'.$user->id.'/profile')}}">
+<i class="fa fa-user me-sm-1"></i>
+<span class="d-sm-inline d-none">Profile</span>
+</a>
+</li>
+<li class="mb-0">
+<form method="POST" action="{{ route('logout') }}">
+@csrf
+<x-dropdown-link :href="route('logout')"
+onclick="event.preventDefault();
+this.closest('form').submit();">
+<span class="dropdown-item border-radius-md">
+<i class="fas fa-sign-out-alt me-sm-1"></i>
+<span class="d-sm-inline d-none">
+{{ __('Se déconnecter') }}
+</span>
+</span>
+</x-dropdown-link>
+</form>
+</li>
+</ul>
+</li>
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
                 <div class="sidenav-toggler-inner">
