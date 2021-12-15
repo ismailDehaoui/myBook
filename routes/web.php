@@ -19,7 +19,6 @@ use App\Http\Controllers\AuteurController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 //categories
 
 Route::get('/cat', function () {
@@ -97,8 +96,29 @@ Route::put('modifiergest/{id}',[UserController::class,'update']);
 Route::get('/suppressiongest{id}',[UserController::class,'suppgest']);
 Route::get('/confirmersuppgest{id}',[UserController::class,'confirmgest']);
 
+//Auteur
 
+Route::post('auteurs', 'AuteurController@store')->name('auteurs.ajouter');
 
+//Abonnées
+/*
+    Route::get('/abonnés','AbonneController@index');
+
+    Route::get('abonnés/ajouter','AbonneController@create');
+
+    Route::get('abonnée/{id}/profile', 'AbonneController@profile');
+
+    Route::post('abonnés','AbonneController@store');
+
+    Route::put('modifier/{id}','AbonneController@update');    
+
+    Route::get('mod/{id}/edit','AbonneController@edit');
+*/
+//Route::get('abonnés/{id}/qrcode', 'QrCodeController@index');
+
+//QrCode
+
+Route::get('/generate-qrcode', 'QrCodeController@index');
 
 
 //auth
@@ -111,3 +131,4 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+ 

@@ -19,7 +19,7 @@
                         <form action="{{ url('catégories') }}" method="POST">
                             {{ csrf_field() }}
                             <div class="form-group my-3">
-                                <label for="nom-categorie">Catégorie</label>
+                                <label for="nom-categorie">Nom Catégorie</label>
                                 <input type="text" name="nom-categorie" class="form-control border border-primary" required>
                             </div>
             
@@ -84,10 +84,6 @@
             <span class="nav-link-text ms-1">Les utilisateurs</span>
           </a>
         </li>
-<<<<<<< HEAD
-@endsection('gest')
->>>>>>> 5af81ea2dc22088dc610f6ce83ffe293839f7f35
-=======
 @endsection('admin')
 @endif
->>>>>>> 2d986dcdfacbe2027f30b3c95c279579aa5a3233
+

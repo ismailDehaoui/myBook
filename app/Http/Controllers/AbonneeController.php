@@ -66,10 +66,12 @@ class AbonneeController extends Controller{
         $abonnee->prenom         = $request->input('prenom');
         $abonnee->email          = $request->input('email');
         $abonnee->adresse        = $request->input('adresse');
-        $abonnee->date_naissance = $request->input('date_de_naissance');
+        $abonnee->date_naissance = $request->input('date_naissance');
         $abonnee->updated_at     = date(NOW());
         $abonnee->save();
-        return redirect('/');
+        Alert::success('Les modifications est bien ');
+    	  return redirect('/abonnees');
+
       }
     }
 }
