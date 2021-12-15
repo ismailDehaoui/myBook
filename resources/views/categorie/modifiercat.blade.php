@@ -16,7 +16,7 @@
                   	{{ csrf_field()}}
                     <p class=" input-group-outline mb-3">
                       <label class="form-label">Nom_Catégorie</label>
-                      <input type="text" class="px-2 form-control border border-primary" name="nom" value="{{$cat->nom_categorie}}" required="true">
+                      <input type="text" class="px-2 form-control border border-primary" name="nom" value="{{$cat->nom}}" required="true">
                     </p>
                     
                     <div class="text-center">

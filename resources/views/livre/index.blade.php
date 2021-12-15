@@ -51,7 +51,7 @@
                         <p class="text-xs font-weight-bold mb-0">{{ $livre->ISBN }}</p>
                       </td>
                       <td class="align-middle text-center text-sm">
-                        <p class="text-xs font-weight-bold mb-0">{{ $categorie->nom }}</p>
+                        <p class="text-xs font-weight-bold mb-0"> {{ $categorie->nom }} </p>
                       </td>
                       <td class="align-middle text-center text-sm">
                         @if ($livre->nombre_exemplaires_disponibles > 0)
@@ -66,18 +66,18 @@
                           {{ csrf_field() }}
                           {{ method_field('DELETE') }}
 
+                          <div class="btn-group">
+                            <a href="{{url('/livres/'.$livre->id.'/modifier')}}" class="btn btn-secondary">
+                              <i class="fas fa-edit me-sm-1"></i>
+                              modifier
+                            </a>
+                            <button type="submit" class="btn btn-danger">
+                              <i class="material-icons text-sm me-sm-1">delete</i>  
+                              supprimer
+                            </button>
+                          </div>
 
-                          <a href="{{url('/livres/'.$livre->id.'/modifier')}}" class="btn btn-secondary">
-                            <i class="fas fa-edit me-sm-1"></i>
-                            modifier
-                          </a>
-                          &nbsp;&nbsp;
-
-
-                          <button type="submit" class="btn btn-danger">
-                            <i class="material-icons text-sm me-sm-1">delete</i>  
-                            supprimer
-                          </button>
+                          
                             
                         </form>
                         

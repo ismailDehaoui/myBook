@@ -3,17 +3,6 @@
 @Section('content')
 <div class="row">
         <div class="col-12">
-        <div>
-           <h6 class="text-black text-capitalize ps-3">Nombre de catégories
-           <select id="ncat" onchange="choix(this.selectedIndex)">
-            <option value="3" selected>3</option>
-             <option value="4">4</option>
-             <option value="5">5</option>
-             <option value="6">6</option>
-             <option value="7">7</option>
-           </select>
-           </h6>
-        </div>
         </br>
           <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">

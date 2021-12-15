@@ -14,16 +14,9 @@ class AbonneeController extends Controller{
     
     public function profile($id){
         $abonnee  = Abonnee::find($id);
-<<<<<<< HEAD
         $emprunts = Emprunt::where('id',$id)->paginate(5);
         return view('abonnees.profile',['abonnee'=>$abonnee,'emprunts'=>$emprunts]); 
     }
-=======
-       // $emprunts = Emprunt::where('abonnees_id',$id)->paginate(5);
-        //return view('abonnees.profile',['abonnee'=>$abonnee,'emprunts'=>$emprunts]); 
-        return view('abonnees.profile',['abonnee'=>$abonnee]);
-      }
->>>>>>> 816580ea891486fc62044bf0827b3524245b0970
 
     public function listAbonnees(){
     	$abonnee = Abonnee::paginate(3);
@@ -32,22 +25,16 @@ class AbonneeController extends Controller{
     
     public function store(Request $request){   
       if (Abonnee::where('email', $request->input('email'))->exists()) {
-<<<<<<< HEAD
-             echo "Error";
-=======
         Alert::error('Email déja existe!');
->>>>>>> 816580ea891486fc62044bf0827b3524245b0970
+
         }else{
         $abonnee                         = new Abonnee();
         $abonnee->nom           = $request->input('nom');
     	  $abonnee->prenom         = $request->input('prenom');
         $abonnee->email          = $request->input('email');
         $abonnee->adresse        = $request->input('adresse');
-<<<<<<< HEAD
-        $abonnee->date = $request->input('date_naissance');       
-=======
+
         $abonnee->date_naissance = $request->input('date_naissance');       
->>>>>>> 816580ea891486fc62044bf0827b3524245b0970
         $filenameWithExt                 = $request->file('image')->getClientOriginalName();
         // Get just filename
         $filename                        = pathinfo($filenameWithExt, PATHINFO_FILENAME);
@@ -57,13 +44,9 @@ class AbonneeController extends Controller{
         $fileNameToStore                 = $filename.'_'.time().'.'.$extension;
         // Upload Image
         $path                            = $request->file('image')->storeAs('public/Admin', $fileNameToStore);
-<<<<<<< HEAD
+
         $abonnee->photo                 = $fileNameToStore;
        // $abonnee->date_expiration        = date(NOW());
-=======
-        $abonnee->photo                  = $fileNameToStore;
-        
->>>>>>> 816580ea891486fc62044bf0827b3524245b0970
         $abonnee->created_at             = date(NOW());
         $abonnee->save();
         Alert::success('Abonnée est bien ajoutée');

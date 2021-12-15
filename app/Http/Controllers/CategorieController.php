@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Categorie;
 use App\Models\Livre;
+use App\Models\Emprunt;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 class CategorieController extends Controller
@@ -24,13 +25,13 @@ class CategorieController extends Controller
         return view('categorie.categories', ['categories'=>$cat]);
     } */
    public function store(Request $request){
-        if (Categorie::where('nom_categorie', $request->input('nom'))->exists()) {
+        if (Categorie::where('nom', $request->input('nom'))->exists()) {
             Alert::error('Categorie déja existe!');
             return redirect('/ajoutercat');
         }
         else{
       $cat = new Categorie();
-      $cat->nom_categorie = $request->input('nom');
+      $cat->nom = $request->input('nom');
       $cat->created_at =date(NOW());
       $cat->save();
        Alert::success('Categorie est bien ajoutée');
@@ -44,13 +45,13 @@ class CategorieController extends Controller
     }
 
        public function update(Request $request,$id){
-        if (Categorie::where('nom_categorie', $request->input('nom'))->exists()) {
+        if (Categorie::where('nom', $request->input('nom'))->exists()) {
              Alert::error('Categorie déja existe');
              return redirect('/categories');
         }
         else{
       $cat = Categorie::find($id);
-      $cat->nom_categorie = $request->input('nom');
+      $cat->nom = $request->input('nom');
       $cat->updated_at =date(NOW());
       $cat->save();
        Alert::success('Categorie est bien modifiée');
@@ -75,8 +76,15 @@ class CategorieController extends Controller
        $l->save();
        $livres = Livre::where('categories_id',$id)->get();
        foreach ($livres as $li) {
-         $li->delete();
+         $emp = Emprunt::where('livres_id',$li->id)->get();
+           if($emp->count() != 0){
+            Alert::error('Categorie a déja des livres  empruntés');
+           return redirect('/categories');}   
        }
+        foreach ($livres as $li) {
+         $li->delete();    
+       }
+      
        $l->delete();
        return redirect('/categories');
   }

@@ -19,7 +19,6 @@ use App\Http\Controllers\AuteurController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 //categories
 
 Route::get('/cat', function () {
@@ -101,7 +100,29 @@ Route::get('/modifierpassword{id}',[UserController::class,'editpassword']);
 Route::get('/suppressiongest{id}',[UserController::class,'suppgest']);
 Route::get('/confirmersuppgest{id}',[UserController::class,'confirmgest']);
 
+//Auteur
 
+Route::post('auteurs', 'AuteurController@store')->name('auteurs.ajouter');
+
+
+//Route::get('abonnés/{id}/qrcode', 'QrCodeController@index');
+
+//QrCode
+
+Route::get('/generate-qrcode', 'QrCodeController@index');
+
+//Histo
+Route::put('/res{id}',[CategorieController::class,'restore']);
+Route::get('/histo',function(){
+	return view('Historique.histo');
+});
+Route::get('/catsupp',[CategorieController::class,'listCategoriesupp']);
+Route::get('/gestsupp',[UserController::class,'listGestsupp']);
+Route::put('/gestres{id}',[UserController::class,'restoregest']);
+
+Route::get('/abonsupp',[AbonneeController::class,'listAbonsupp']);
+Route::put('/abonres{id}',[AbonneeController::class,'restoreabon']);
+Route::get('/lsupp',[LivreController::class,'listLivressupp']);
 
 
 
@@ -115,3 +136,4 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+ 

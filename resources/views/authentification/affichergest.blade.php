@@ -104,9 +104,11 @@
         </div>
       </div>
 @endsection('content')
+<?php $user = auth()->user();?>
+@if($user->est_super_admin)
 @Section('admin')
 <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="{{url('/affgest')}}">
+          <a class="nav-link text-white " href="{{url('/affgest')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">engineering</i>
             </div>
@@ -114,4 +116,5 @@
           </a>
         </li>
 @endsection('admin')
+@endif
 

@@ -23,6 +23,7 @@ class CreateAbonnesTable extends Migration
             $table->binary('photo');
             $table->timestamps();
             $table->dateTime('deleted_at')->nullable();
+             $table->integer('acteur')->default(0);
         });
     }
 
