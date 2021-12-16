@@ -3,14 +3,14 @@
 @Section('content')
   
     <div class="row">
-        <div class="col-6">
-                <div class="card card-plain">
+         <div class="col-md-12">
+          <div class="row">
+           <div class="col-md-6">
+            <div class="card  my-4">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                  <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                  <h6 class="text-white text-capitalize ps-3">Modifier utilisateur</h6> 
-              </div>
-               <p> <br/>   </p>   
-            </div>
+                  <h6 class="text-white text-capitalize ps-3">Modifier Profile</h6> 
+              </div>  
                 <p class="card-body">
                   <form action="{{url('modifierpass/'.$pass->id)}}" method="POST" ENCTYPE="multipart/form-data">
                     <input type="hidden" name="_method" value="PUT">
@@ -40,7 +40,7 @@
                       Confirmer le nouveau mot de passe</label>
                       <input type="password" class="px-2 form-control border border-primary" name="password_confirmation">
                     </p>
-                     <p class="input-group-outline mb-9">
+                     <p class="input-group-outline mb-5">
                       <label class="form-label">
                       Photo</label>
                         <img src="{{asset('storage/Admin/'.$pass->photo)}}" class="avatar avatar-lg me-3 border-radius-lg" alt="user1">
@@ -54,20 +54,10 @@
                 </p>
                 <div class="card-footer text-center pt-0 px-lg-2 px-1">
                   <p class="mb-2 text-sm mx-auto">
-                    <a href="{{url('/affpass')}}" class="text-primary text-gradient font-weight-bold">Retournez aux utilisateurs</a>
+                    <a href="{{url('user/'.$pass->id.'/profile')}}" class="text-primary text-gradient font-weight-bold">Retournez au Profile</a>
                   </p>
                 </div>
-              </div>
+             </div> </div></div></div>
             </div>
     </div></div>
 @endsection('content')
-@Section('admin')
-<li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="{{url('/affpass')}}">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">engineering</i>
-            </div>
-            <span class="nav-link-text ms-1">Les utilisateurs</span>
-          </a>
-        </li>
-@endsection('admin')
