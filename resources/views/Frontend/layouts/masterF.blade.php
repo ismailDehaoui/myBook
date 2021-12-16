@@ -121,6 +121,7 @@
   <main>
     <div class="page-section">
       <div class="container">
+       @yield('content')
         <div class="text-center">
           <h2 class="title-section mb-3">Restez en contact</h2>
           <p>Dites simplement bonjour ou envoyez-nous un message. Vous pouvez nous envoyer manuellement un e-mail sur<a href="mailto:MonLivre13@mail.com">MonLivre13@mail.com</a></p>

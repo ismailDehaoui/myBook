@@ -114,13 +114,3 @@
   </div>
 </div>
 @endsection('content')
-@Section('admin')
-<li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="{{url('/affgest')}}">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">engineering</i>
-            </div>
-            <span class="nav-link-text ms-1">Les utilisateurs</span>
-          </a>
-        </li>
-@endsection('admin')

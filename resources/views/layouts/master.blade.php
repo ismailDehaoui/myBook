@@ -44,7 +44,7 @@
     <div class="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="{{asset('../pages/dashboard.html')}}">
+          <a class="nav-link text-white active bg-gradient-primary" href="{{url('/dash')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">dashboard</i>
             </div>
@@ -52,7 +52,17 @@
           </a>
         </li>
         <ul class="navbar-nav">
-         @yield('admin')
+         <?php $user = auth()->user();?>
+            @if($user->est_super_admin)
+            <li class="nav-item">
+                      <a class="nav-link text-white " href="{{url('/affgest')}}">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                          <i class="material-icons opacity-10">engineering</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Les utilisateurs</span>
+                      </a>
+                    </li>
+            @endif
         <li class="nav-item">
           <a class="nav-link text-white" href="{{url('/categories')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -287,7 +297,16 @@
     <!-- End Navbar -->
 
     <div class="container-fluid py-4">
-
+         <div class="container mt-2">
+                       @if($errors->any())
+                           @foreach($errors->all() as $error)
+                              <div class="alert alert-danger" role="alert">
+                                  {{$error}}
+                              </div>
+                           @endforeach
+                       @endif
+                    </div>
+                    <br/><br/>
     @yield('content')
 
       <footer class="footer py-4  ">

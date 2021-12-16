@@ -19,6 +19,10 @@ use App\Http\Controllers\AuteurController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// Dashboard
+Route::get('/dash',[UserController::class,'index']);
+
 //categories
 
 Route::get('/cat', function () {
@@ -73,8 +77,6 @@ Route::get('/abonnees','AbonneeController@listAbonnees');
 Route::get('abonnée/créer','AbonneeController@create');
 Route::get('abonnée/{id}/profile', 'AbonneeController@profile');
 Route::post('abonnée/ajouterAbonnée','AbonneeController@store');
-Route::put('modifier/{id}','AbonneeController@update');    
-Route::get('mod/{id}/edit','AbonneeController@edit');
 
 //Emprunts
 Route::get('emprunts','EmpruntController@index');

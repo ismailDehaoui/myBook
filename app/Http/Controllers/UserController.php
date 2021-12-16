@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Abonnee;
+use App\Models\Abonne;
+use App\Models\Livre;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -13,14 +14,57 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+
+     function index(){
+    $today = Carbon::now()->todatestring();
+
+      //abonnés
+    $data = Abonne::select('id','created_at')->get()->groupBy(function($data)
+      {return Carbon::parse($data->created_at)->format('M');});
+   //line chart
+    $months = [];
+    $monthC = [];
+    foreach($data as $month => $values){
+      $months[] = $month;
+      $monthC[]= count($values);
+    }//nombre total
+   $nombreabonne = Abonne::select('id')->get();
+   $nombreabonne = count($nombreabonne);
+
+    $ab = Abonne::select('id','created_at')->where('created_at','=',$today)->get();
+    $ab = count($ab);
+  
+       //Livres linechart
+    $livre = Livre::select('id','created_at')->get()->groupBy(function($data)
+      {return Carbon::parse($data->created_at)->format('Y');});
+    $livreAjoute = Livre::select('id','created_at')->where('created_at','=',$today)->get();
+    $livreAjoute = count($livreAjoute);
+
+    
+    $y = [];
+    $yC = [];
+    foreach($livre as $year => $values){
+      $y[] = $year;
+      $yC[]= count($values);
+    }//nombre total
+   $nombrelivre = Livre::select('id')->get();
+   $nombrelivre = count($nombrelivre);
+
+
+    return view('dashboard.dashboard',['data'=>$data,'months'=>$months,'monthC'=>$monthC,'na'=>$nombreabonne,'ab'=>$ab],['livre'=>$livre,'year'=>$y,'yearC'=>$yC,'nl'=>$nombrelivre,'nla'=>$livreAjoute]);
+  }
+
+
+
+
+
      public function listGest(){
     	$gest = User::paginate(5);
     	return view('authentification.affichergest',['gestionnaire'=>$gest]);
     }
     public function store(Request $request){
-      $request->validate(['password'=>'min:8']);
+      $request->validate(['password'=>'min:8|required_with:passorwd_confirmation|same:password_confirmation']);
     	$password = $request->input('password');
-    	$pass2 = $request->input('pass2');
         if (User::where('email', $request->input('email'))->exists() ) {
             Alert::error('Email déja existe!');
             return redirect('/ajoutergestionnaire');
@@ -30,14 +74,10 @@ class UserController extends Controller
             Alert::error('Ce gestionnaire a été supprimé,vous pouvez le restaurer');
             return redirect('/ajoutergestionnaire');
         }
-        else 
-        	    if(strcmp($password,$pass2)){
-                   Alert::error('Mots de passe non egaux!');
-        	    }
 		        else
 		        {
 		    	$a = new User();
-		    	$a->name= $request->input('nom');
+		    	$a->name= $request->input('nom')." ".$request->input('prenom');
 		    	$a->email = $request->input('email');
 		    	$a->password = Hash::make($password);
           $c = $request->input('flexRadioDefault');
