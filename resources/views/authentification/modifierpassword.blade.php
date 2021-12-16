@@ -27,7 +27,7 @@
                     </p>
                      <p class=" input-group-outline mb-3">
                       <label class="form-label">
-                       mot de passe actuel</label>
+                       Mot de passe actuel</label>
                       <input type="password" class="px-2 form-control border border-primary" name="ancien_password">
                     </p>
                       <p class=" input-group-outline mb-3">
