@@ -94,7 +94,11 @@ Route::get('/ajoutergestionnaire',function(){
 Route::post('/ajoutgest',[UserController::class,'store']);
 Route::get('/editgest{id}',[UserController::class,'editgest']);
 Route::put('modifiergest/{id}',[UserController::class,'update']);
+Route::put('modifierpass/{id}',[UserController::class,'postProfilePassword']);
 
+Route::get('user/{id}/profile',[UserController::class,'profile']);
+Route::get('/modifierprofile{id}',[UserController::class,'editprofile']);
+Route::get('/modifierpassword{id}',[UserController::class,'editpassword']);
 Route::get('/suppressiongest{id}',[UserController::class,'suppgest']);
 Route::get('/confirmersuppgest{id}',[UserController::class,'confirmgest']);
 

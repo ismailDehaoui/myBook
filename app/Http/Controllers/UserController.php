@@ -1,7 +1,6 @@
 <?php
-
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Abonne;
@@ -14,7 +13,6 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-
      function index(){
     $today = Carbon::now()->todatestring();
 
@@ -53,11 +51,25 @@ class UserController extends Controller
 
     return view('dashboard.dashboard',['data'=>$data,'months'=>$months,'monthC'=>$monthC,'na'=>$nombreabonne,'ab'=>$ab],['livre'=>$livre,'year'=>$y,'yearC'=>$yC,'nl'=>$nombrelivre,'nla'=>$livreAjoute]);
   }
+   public function profile($id){
+   $users = User::find($id);
+   return view('authentification.profile',['users'=>$users]);
 
 
 
+ }
 
 
+public function editprofile($id){
+        $a = User::find($id);
+      return view('authentification.modifierprofile', ['gest'=>$a]);
+    }
+  
+public function editpassword($id){
+    $a = User::find($id);
+    return view('authentification.modifierpassword',['pass'=>$a]);
+
+}
      public function listGest(){
     	$gest = User::paginate(5);
     	return view('authentification.affichergest',['gestionnaire'=>$gest]);
@@ -113,6 +125,7 @@ class UserController extends Controller
       $a = User::find($id);
       $a->name= $request->input('nom');
       $a->email = $request->input('email');
+
       if(!empty($request->file('image'))){ 
              $filenameWithExt = $request->file('image')->getClientOriginalName();
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
@@ -127,6 +140,46 @@ class UserController extends Controller
        Alert::success('Les informations d\'utilisateur sont bien modifiées');
       return redirect('/affgest');
       }}
+
+
+
+
+      public function getProfilePassword(Request $request) {
+
+    return view('authentification.modifierpassword', ['pass' => Auth::user()]);
+}
+
+public function postProfilePassword(Request $request) {
+    $user = Auth::user();
+        $user->name= $request->input('name');
+        $user->email = $request->input('email');
+        if(!empty($request->file('image'))){
+$filenameWithExt = $request->file('image')->getClientOriginalName();
+$filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+// Get just ext
+$extension = $request->file('image')->getClientOriginalExtension();
+// Filename to store
+$fileNameToStore= $filename.'_'.time().'.'.$extension;
+// Upload Image
+$path = $request->file('image')->storeAs('public/Admin', $fileNameToStore);
+$user->photo = $fileNameToStore;}
+   if(!empty($request->input('ancien_password')))
+   {
+    $request->validate([
+        'ancien_password' => 'required',
+        'password' => 'min:8|required_with:password_confirmation|same:password_confirmation',
+        'password_confirmation' => 'required'
+    ]);
+        
+    $user->password = Hash::make($request->input('password'));
+    }
+    $user->save();
+     Alert::success('Vos informations sont bien modifiées');
+      return redirect('user/'.$user->id.'/profile');
+}
+
+
+
   function suppgest($id){
   alert()->error('Etes vous sure?','L\' utilisateur sera supprimé!')->showConfirmButton('<a class=""  href="/confirmersuppgest'.$id.'" >
                             <input type="hidden" name="afficher">Supprimer
