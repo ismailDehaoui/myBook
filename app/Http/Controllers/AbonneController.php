@@ -21,12 +21,21 @@ class AbonneController extends Controller
         if (Abonne::where('email', $request->input('email'))->exists()) {
                echo "Error";
           }else{
+<<<<<<< HEAD
           $abonne                          = new Abonne();
           $abonne->nom                     = $request->input('nom');
           $abonne->prenom                  = $request->input('prenom');
           $abonne->email                   = $request->input('email');
           $abonne->adresse                 = $request->input('adresse');
           $abonne->date_naissance          = $request->input('date_naissance');       
+=======
+          $abonne                         = new Abonne();
+          $abonne->nom            = $request->input('nom');
+            $abonne->prenom         = $request->input('prenom');
+          $abonne->email          = $request->input('email');
+          $abonne->adresse        = $request->input('adresse');
+          $abonne->date_naissance = $request->input('date_de_naissance');       
+>>>>>>> 8e80a422cf336dbc5705d2c63612d3eee5b7fd2d
           $filenameWithExt                 = $request->file('image')->getClientOriginalName();
           // Get just filename
           $filename                        = pathinfo($filenameWithExt, PATHINFO_FILENAME);

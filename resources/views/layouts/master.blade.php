@@ -13,6 +13,11 @@
 
   <link href="{{asset('../assets/css/mon-css.css')}}" rel="stylesheet" />
   <link href="{{asset('../assets/css/sweetalert2.min.css')}}" rel="stylesheet" />
+  
+ 
+
+
+  
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
   <!-- Nucleo Icons -->
   <link href="{{asset('../assets/css/nucleo-icons.css')}}" rel="stylesheet" />
@@ -24,6 +29,7 @@
   <!-- CSS Files -->
   <link id="pagestyle" href="{{asset('../assets/css/material-dashboard.css?v=3.0.0')}}" rel="stylesheet" />
   <link href="{{asset('../assets/css/toastr.min.css')}}" rel="stylesheet" /> 
+  <link href="{{asset('../assets/css/toastr.min.css')}}" rel="stylesheet" />
 
 </head>
 
@@ -47,10 +53,12 @@
             <span class="nav-link-text ms-1">Tableau de bord</span>
           </a>
         </li>
+        <ul class="navbar-nav">
+         @yield('admin')
         <li class="nav-item">
-          <a class="nav-link text-white " href="{{URL('/catégories')}}">
+          <a class="nav-link text-white" href="{{url('/categories')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">table_view</i>
+              <i class="material-icons opacity-10">category</i>
             </div>
             <span class="nav-link-text ms-1">Mes livres</span>
           </a>
@@ -63,23 +71,32 @@
             </div>
             <span class="nav-link-text ms-1">Les abonnés</span>
             <span class="nav-link-text ms-1">Catégories</span>
+            <span class="nav-link-text ms-1">Mes catégories</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="{{URL('/livres')}}">
+          <a class="nav-link text-white " href="{{url('livres')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">receipt_long</i>
+              <i class="material-icons opacity-10">menu_book</i>
             </div>
-            <span class="nav-link-text ms-1">Livres</span>
+            <span class="nav-link-text ms-1">Mes livres</span>
+          </a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link text-white " href="{{url('/abonnees')}}">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">groups</i>
+            </div>
+            <span class="nav-link-text ms-1">Les abonnés</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="{{URL('/abonnés')}}">
-            
+          <a class="nav-link text-white " href="{{asset('../pages/billing.html')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">view_in_ar</i>
+              <i class="material-icons opacity-10">how_to_vote</i>
             </div>
-            <span class="nav-link-text ms-1">Abonnés</span>
+            <span class="nav-link-text ms-1">Les emprunts</span>
           </a>
         </li>
         <li class="nav-item">
@@ -90,6 +107,17 @@
             <span class="nav-link-text ms-1">RTL</span>
           </a>
         </li>
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="{{asset('../pages/profile.html')}}">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">account_circle</i>
+            </div>
+            <span class="nav-link-text ms-1">Profile</span>
+          </a>
+        </li>
         <li class="nav-item">
           <a class="nav-link text-white " href="{{asset('../pages/notifications.html')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -98,38 +126,19 @@
             <span class="nav-link-text ms-1">Notifications</span>
           </a>
         </li>
-        <li class="nav-item mt-3">
-          <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
-        </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="{{asset('../pages/profile.html')}}">
+          <a class="nav-link text-white " href="{{url('/histo')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">person</i>
+              <i class="material-icons opacity-10">history_toggle_off</i>
             </div>
-            <span class="nav-link-text ms-1">Profile</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="{{asset('../pages/sign-in.html')}}">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">login</i>
-            </div>
-            <span class="nav-link-text ms-1">Sign In</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="{{asset('../pages/sign-up.html')}}">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">assignment</i>
-            </div>
-            <span class="nav-link-text ms-1">Sign Up</span>
+            <span class="nav-link-text ms-1">Historique</span>
           </a>
         </li>
       </ul>
     </div>
     <div class="sidenav-footer position-absolute w-100 bottom-0 ">
       <div class="mx-3">
-        <a class="btn bg-gradient-primary mt-4 w-100" href="https://www.creative-tim.com/product/material-dashboard-pro?ref=sidebarfree" type="button">Aller au site</a>
+        <a class="btn bg-gradient-primary mt-4 w-100" href="" type="button">Mon livre</a>
       </div>
     </div>
   </aside>
@@ -411,7 +420,11 @@
   <script src="{{asset('../assets/js/plugins/chartjs.min.js')}}"></script>
   <script src="{{asset('../assets/js/my-js.js')}}"></script>
   <script src="{{asset('../assets/js/sweetalert2.min.js')}}"></script>
+<<<<<<< HEAD
 <script src="{{asset('../assets/js/toastr.min.js')}}"></script>-->
+=======
+  <script src="{{asset('../assets/js/toastr.min.js')}}"></script>
+>>>>>>> 8e80a422cf336dbc5705d2c63612d3eee5b7fd2d
 
  
 

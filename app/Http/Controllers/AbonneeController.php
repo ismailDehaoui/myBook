@@ -14,10 +14,9 @@ class AbonneeController extends Controller{
     
     public function profile($id){
         $abonnee  = Abonnee::find($id);
-       // $emprunts = Emprunt::where('abonnees_id',$id)->paginate(5);
-        //return view('abonnees.profile',['abonnee'=>$abonnee,'emprunts'=>$emprunts]); 
-        return view('abonnees.profile',['abonnee'=>$abonnee]);
-      }
+        $emprunts = Emprunt::where('id',$id)->paginate(5);
+        return view('abonnees.profile',['abonnee'=>$abonnee,'emprunts'=>$emprunts]); 
+    }
 
     public function listAbonnees(){
     	$abonnee = Abonnee::paginate(3);
@@ -43,8 +42,9 @@ class AbonneeController extends Controller{
         $fileNameToStore                 = $filename.'_'.time().'.'.$extension;
         // Upload Image
         $path                            = $request->file('image')->storeAs('public/Admin', $fileNameToStore);
-        $abonnee->photo                  = $fileNameToStore;
-        
+
+        $abonnee->photo                 = $fileNameToStore;
+       // $abonnee->date_expiration        = date(NOW());
         $abonnee->created_at             = date(NOW());
         $abonnee->save();
         Alert::success('Abonnée est bien ajoutée');

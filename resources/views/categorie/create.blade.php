@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 @extends('layouts.master')
 
 @Section('content')
@@ -40,7 +39,6 @@
 
 
 @endsection('content')
-=======
 
 @extends('layouts.master')
 @Section('content')
