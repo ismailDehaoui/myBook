@@ -42,17 +42,12 @@ class LivreController extends Controller
     public function store(Request $request){
 
         if (Livre::where('ISBN', $request->input('ISBN'))->exists()) {
-
             echo "err";
-
        }
        else{
-
         $motsClesLivreController = new MotscleslivreController();
         $auteursLivreController = new AuteurslivreController();
-
         $livre = new Livre();
-        
         $livre->titre = $request->input('titre');
         $livre->isbn = $request->input('isbn');
         $livre->editeur = $request->input('éditeur');
@@ -60,35 +55,16 @@ class LivreController extends Controller
         $livre->categories_id = $request->input('catégorie');
         $livre->nombre_exemplaires_disponibles = $request->input('nombre-exemplaires-disponibles');
         $livre->annee = $request->input('année');
-
-        
-
-
         $filenameWithExt = $request->file('image')->getClientOriginalName();
-
           // Get just filename
-
         $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-
         // Get just ext
-
         $extension = $request->file('image')->getClientOriginalExtension();
-
         // Filename to store
-
         $fileNameToStore= $filename.'_'.time().'.'.$extension;
-
         // Upload Image
-
         $path = $request->file('image')->storeAs('public/images/livres', $fileNameToStore);
-
         $livre->photo = $fileNameToStore;
-
-         
-    
-
-        
-
         //$livre->photo = $request->input('image');
         $livre->resume = $request->input('résumé');
         $livre->save();
@@ -163,6 +139,8 @@ class LivreController extends Controller
 
         return redirect('/livres');
     }
+
+    
     //Ne les supprimez pas
      function afficherLivres($id){
         $l = Livre::where('categories_id',$id)->paginate(5);

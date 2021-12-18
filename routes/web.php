@@ -24,6 +24,7 @@ use App\Http\Controllers\AuteurController;
 Route::get('/cat', function () {
     return view('categorie.categories');
 });
+
 Route::get('/ajoutercat', function () {
     return view('categorie.ajoutercat');
 });
@@ -31,9 +32,11 @@ Route::get('/ajoutercat', function () {
 Route::get('/acceuil', function () {
     return view('layouts.master');
 });
+
 Route::get('/dashboard', function () {
     return view('layouts.dashboard');
 });
+
 Route::get('/afficherLivres/{id}',[LivreController::class,'afficherLivres']);
 
 Route::get('/categories',[CategorieController::class,'listCategories']);
@@ -54,6 +57,7 @@ Route::post('livres', 'LivreController@store');
 Route::get('livres/{id}/modifier', 'LivreController@edit');
 Route::put('livres/{id}', 'LivreController@update');
 Route::delete('livres/{id}', 'LivreController@destroy');
+Route::get('livres/{id}/qrcode', 'QrCodeController@qrCodeLivre');
 
 
 
@@ -66,15 +70,17 @@ Route::post('auteurs','AuteurController@store')->name('auteurs.ajouter');
 //MotCle
 
 Route::post('motscles', 'MotscleController@store')->name('motscles.ajouter');
+Route::post('motscles/{id}/supprimer', 'MotscleController@destroy')->name('motscles.supprimer');
 
 
 //Abonnées
-Route::get('/abonnees','AbonneeController@listAbonnees');
-Route::get('abonnée/créer','AbonneeController@create');
-Route::get('abonnée/{id}/profile', 'AbonneeController@profile');
-Route::post('abonnée/ajouterAbonnée','AbonneeController@store');
-Route::put('modifier/{id}','AbonneeController@update');    
-Route::get('mod/{id}/edit','AbonneeController@edit');
+
+//Route::get('/abonnees','AbonneeController@listAbonnees');
+//Route::get('abonnée/créer','AbonneeController@create');
+//Route::get('abonnée/{id}/profile', 'AbonneeController@profile');
+//Route::post('abonnée/ajouterAbonnée','AbonneeController@store');
+//Route::put('modifier/{id}','AbonneeController@update');    
+//Route::get('mod/{id}/edit','AbonneeController@edit');
 
 //Emprunts
 Route::get('emprunts','EmpruntController@index');
@@ -99,6 +105,7 @@ Route::get('/confirmersuppgest{id}',[UserController::class,'confirmgest']);
 //Auteur
 
 Route::post('auteurs', 'AuteurController@store')->name('auteurs.ajouter');
+Route::delete('auteurs/{id}', 'AuteurController@destroy')->name('auteurs.supprimer');
 
 //Abonnées
 
@@ -110,11 +117,11 @@ Route::get('abonnée/{id}/profile', 'AbonneController@profile');
 
 Route::post('abonnés','AbonneController@store');
 
-Route::put('modifier/{id}','AbonneController@update');    
+Route::put('abonnés/{id}/update','AbonneController@update');    
 
-Route::get('mod/{id}/edit','AbonneController@edit');
+Route::get('abonnés/{id}/edit','AbonneController@edit');
 
-//Route::get('abonnés/{id}/qrcode', 'QrCodeController@index');
+Route::get('abonnés/{id}/qrcode', 'QrCodeController@qrCodeAbonne');
 
 //QrCode
 
@@ -122,7 +129,7 @@ Route::get('/generate-qrcode', 'QrCodeController@index');
 
 
 //auth
-Route::get('/', function () {
+Route::get('/login', function () {
     return view('auth.login');
 });
 

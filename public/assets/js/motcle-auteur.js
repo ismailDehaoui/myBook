@@ -48,6 +48,39 @@ $(document).ready(function() {
 
 
 
+    //supprimer mot clé
+    
+    $("#minus-motcle").click(function(e){
+      e.preventDefault();
+      var motsclesSelectionne = $("#mot-cle").find(":selected").val();
+      $.ajax({
+        url: "http://mybook.test/motscles/"+motsclesSelectionne+"/supprimer",
+        dataType : 'json',
+        type: 'POST',
+        data: {},
+        contentType: false,
+        processData: false,
+        success: function(data){
+          if(data.code == 0){
+            toastr.warning(data.msg);
+          }
+          else{
+            $("#mot-cle option[value="+motsclesSelectionne+"]").remove();
+            toastr.success(data.msg);
+          }
+        },
+        error: function(){
+          toastr.error("Quelque chose ne va pas!");
+        }
+
+
+    });
+  });
+
+
+
+
+
     //ajouter auteur
 
 
@@ -91,11 +124,10 @@ $(document).ready(function() {
 
 
 
+
+
+
 });
-
-
-
-
 
 
 
