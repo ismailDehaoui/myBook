@@ -176,8 +176,13 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+        
 
+<<<<<<< HEAD
         //Yajra\DataTables\DataTablesServiceProvider::class,
+=======
+       // Yajra\DataTables\DataTablesServiceProvider::class,
+>>>>>>> 583c23ea7eaa59431b13bf6761a1665121feb0ae
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
 
     ],
@@ -238,7 +243,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
-        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
+        //'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
 
     ],

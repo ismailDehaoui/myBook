@@ -1,3 +1,4 @@
+<?php $user = auth()->user();?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +15,10 @@
   <link href="{{asset('../assets/css/mon-css.css')}}" rel="stylesheet" />
   <link href="{{asset('../assets/css/sweetalert2.min.css')}}" rel="stylesheet" />
   
+<<<<<<< HEAD
   
+=======
+>>>>>>> 583c23ea7eaa59431b13bf6761a1665121feb0ae
  
 
 
@@ -46,7 +50,7 @@
     <div class="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="{{asset('../pages/dashboard.html')}}">
+          <a class="nav-link text-white active bg-gradient-primary" href="{{url('/dash')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">dashboard</i>
             </div>
@@ -54,7 +58,21 @@
           </a>
         </li>
         <ul class="navbar-nav">
+<<<<<<< HEAD
          @yield('admin')
+=======
+         <?php $user = auth()->user();?>
+            @if($user->est_super_admin)
+            <li class="nav-item">
+                      <a class="nav-link text-white " href="{{url('/affgest')}}">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                          <i class="material-icons opacity-10">engineering</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Les utilisateurs</span>
+                      </a>
+                    </li>
+            @endif
+>>>>>>> 583c23ea7eaa59431b13bf6761a1665121feb0ae
         <li class="nav-item">
           <a class="nav-link text-white" href="{{url('/categories')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -73,7 +91,11 @@
         </li>
         
         <li class="nav-item">
+<<<<<<< HEAD
           <a class="nav-link text-white " href="{{url('/abonnés')}}">
+=======
+          <a class="nav-link text-white " href="{{url('/abonnees')}}">
+>>>>>>> 583c23ea7eaa59431b13bf6761a1665121feb0ae
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">groups</i>
             </div>
@@ -100,7 +122,11 @@
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
         </li>
         <li class="nav-item">
+<<<<<<< HEAD
           <a class="nav-link text-white " href="{{asset('../pages/profile.html')}}">
+=======
+          <a class="nav-link text-white " href="{{url('user/'.$user->id.'/profile')}}">
+>>>>>>> 583c23ea7eaa59431b13bf6761a1665121feb0ae
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">account_circle</i>
             </div>
@@ -150,6 +176,39 @@
             </div>
           </div>
           <ul class="navbar-nav  justify-content-end">
+ 
+           <li class="nav-item dropdown pe-2 d-flex align-items-center">
+
+ <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+<i class="fa fa-user me-sm-1"></i>
+<?php $user = auth()->user();?>
+<span class="d-sm-inline d-none">{{ $user->name; }}</span>
+</a>
+<ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+<li class="mb-0">
+<a class="dropdown-item border-radius-md" href="{{url('user/'.$user->id.'/profile')}}">
+<i class="fa fa-user me-sm-1"></i>
+<span class="d-sm-inline d-none">Profile</span>
+</a>
+</li>
+<li class="mb-0">
+<form method="POST" action="{{ route('logout') }}">
+@csrf
+<x-dropdown-link :href="route('logout')"
+onclick="event.preventDefault();
+this.closest('form').submit();">
+<span class="dropdown-item border-radius-md">
+<i class="fas fa-sign-out-alt me-sm-1"></i>
+<span class="d-sm-inline d-none">
+{{ __('Se déconnecter') }}
+</span>
+</span>
+</x-dropdown-link>
+</form>
+</li>
+</ul>
+</li>
+
             <!--<li class="nav-item d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
@@ -157,44 +216,6 @@
               </a>
 
             </li>-->
-
-
-
-
-
-            <li class="nav-item dropdown pe-2 d-flex align-items-center">
-
-              <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa fa-user me-sm-1"></i>
-                <?php $user = auth()->user();?>
-                <span class="d-sm-inline d-none">{{ $user->name; }}</span>
-              </a>
-              <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
-                <li class="mb-0">
-                  <a class="dropdown-item border-radius-md" href="javascript:;">
-                    <i class="fa fa-user me-sm-1"></i>
-                    <span class="d-sm-inline d-none">Profile</span>
-                  </a>
-                </li>
-                <li class="mb-0">
-                  <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <x-dropdown-link :href="route('logout')"
-                            onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                                        <span class="dropdown-item border-radius-md">
-                                          <i class="fas fa-sign-out-alt me-sm-1"></i>
-                                          <span class="d-sm-inline d-none">
-                        {{ __('Se déconnecter') }}
-                      </span>
-                                        </span>
-                    </x-dropdown-link>
-                </form>
-                </li>
-              </ul>
-            </li>
-
-
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
                 <div class="sidenav-toggler-inner">
@@ -289,7 +310,16 @@
     <!-- End Navbar -->
 
     <div class="container-fluid py-4">
-
+         <div class="container mt-2">
+                       @if($errors->any())
+                           @foreach($errors->all() as $error)
+                              <div class="alert alert-danger" role="alert">
+                                  {{$error}}
+                              </div>
+                           @endforeach
+                       @endif
+                    </div>
+                    <br/><br/>
     @yield('content')
 
       <footer class="footer py-4  ">
@@ -411,6 +441,12 @@
   <script src="{{asset('../assets/js/emprunt.js')}}"></script>
   <script src="{{asset('../assets/js/sweetalert2.min.js')}}"></script>
   <script src="{{asset('../assets/js/toastr.min.js')}}"></script>
+<<<<<<< HEAD
+=======
+
+ 
+
+>>>>>>> 583c23ea7eaa59431b13bf6761a1665121feb0ae
   <script>
     var ctx = document.getElementById("chart-bars").getContext("2d");
 

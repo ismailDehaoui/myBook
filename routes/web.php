@@ -19,6 +19,10 @@ use App\Http\Controllers\AuteurController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// Dashboard
+Route::get('/dash',[UserController::class,'index']);
+
 //categories
 
 Route::get('/cat', function () {
@@ -74,6 +78,7 @@ Route::post('motscles/{id}/supprimer', 'MotscleController@destroy')->name('motsc
 
 
 //Abonnées
+<<<<<<< HEAD
 
 //Route::get('/abonnees','AbonneeController@listAbonnees');
 //Route::get('abonnée/créer','AbonneeController@create');
@@ -81,6 +86,12 @@ Route::post('motscles/{id}/supprimer', 'MotscleController@destroy')->name('motsc
 //Route::post('abonnée/ajouterAbonnée','AbonneeController@store');
 //Route::put('modifier/{id}','AbonneeController@update');    
 //Route::get('mod/{id}/edit','AbonneeController@edit');
+=======
+Route::get('/abonnees','AbonneeController@listAbonnees');
+Route::get('abonnée/créer','AbonneeController@create');
+Route::get('abonnée/{id}/profile', 'AbonneeController@profile');
+Route::post('abonnée/ajouterAbonnée','AbonneeController@store');
+>>>>>>> 583c23ea7eaa59431b13bf6761a1665121feb0ae
 
 //Emprunts
 Route::get('emprunts','EmpruntController@index');
@@ -98,7 +109,11 @@ Route::get('/ajoutergestionnaire',function(){
 Route::post('/ajoutgest',[UserController::class,'store']);
 Route::get('/editgest{id}',[UserController::class,'editgest']);
 Route::put('modifiergest/{id}',[UserController::class,'update']);
+Route::put('modifierpass/{id}',[UserController::class,'postProfilePassword']);
 
+Route::get('user/{id}/profile',[UserController::class,'profile']);
+Route::get('/modifierprofile{id}',[UserController::class,'editprofile']);
+Route::get('/modifierpassword{id}',[UserController::class,'editpassword']);
 Route::get('/suppressiongest{id}',[UserController::class,'suppgest']);
 Route::get('/confirmersuppgest{id}',[UserController::class,'confirmgest']);
 
@@ -107,6 +122,7 @@ Route::get('/confirmersuppgest{id}',[UserController::class,'confirmgest']);
 Route::post('auteurs', 'AuteurController@store')->name('auteurs.ajouter');
 Route::delete('auteurs/{id}', 'AuteurController@destroy')->name('auteurs.supprimer');
 
+<<<<<<< HEAD
 //Abonnées
 
 Route::get('/abonnés','AbonneController@index');
@@ -120,12 +136,28 @@ Route::post('abonnés','AbonneController@store');
 Route::put('abonnés/{id}/update','AbonneController@update');    
 
 Route::get('abonnés/{id}/edit','AbonneController@edit');
+=======
+>>>>>>> 583c23ea7eaa59431b13bf6761a1665121feb0ae
 
 Route::get('abonnés/{id}/qrcode', 'QrCodeController@qrCodeAbonne');
 
 //QrCode
 
 Route::get('/generate-qrcode', 'QrCodeController@index');
+
+//Histo
+Route::put('/res{id}',[CategorieController::class,'restore']);
+Route::get('/histo',function(){
+	return view('Historique.histo');
+});
+Route::get('/catsupp',[CategorieController::class,'listCategoriesupp']);
+Route::get('/gestsupp',[UserController::class,'listGestsupp']);
+Route::put('/gestres{id}',[UserController::class,'restoregest']);
+
+Route::get('/abonsupp',[AbonneeController::class,'listAbonsupp']);
+Route::put('/abonres{id}',[AbonneeController::class,'restoreabon']);
+Route::get('/lsupp',[LivreController::class,'listLivressupp']);
+
 
 
 //auth

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Categorie;
 use App\Models\Livre;
+use App\Models\Emprunt;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 class CategorieController extends Controller
@@ -75,8 +76,15 @@ class CategorieController extends Controller
        $l->save();
        $livres = Livre::where('categories_id',$id)->get();
        foreach ($livres as $li) {
-         $li->delete();
+         $emp = Emprunt::where('livres_id',$li->id)->get();
+           if($emp->count() != 0){
+            Alert::error('Categorie a déja des livres  empruntés');
+           return redirect('/categories');}   
        }
+        foreach ($livres as $li) {
+         $li->delete();    
+       }
+      
        $l->delete();
        return redirect('/categories');
   }
