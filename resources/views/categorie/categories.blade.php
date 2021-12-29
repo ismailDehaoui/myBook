@@ -56,15 +56,15 @@
                       </td-->
                  
                       <td class="align-middle">
-                         <a class="btn bg-gradient-warning mb-0"  href="{{url('mod/'.$c->id.'/edit')}}" >
+                         <a   href="{{url('mod/'.$c->id.'/edit')}}" >
                             <input type="hidden" name="afficher">
-                          <i class="material-icons text-sm" >update</i>&nbsp;&nbsp;modifier
+                          <i class="material-icons text-xlg" >update</i>&nbsp;&nbsp;
                         </a>
                       </td>
                       <td class="align-middle">
-                         <a class="btn bg-gradient-danger mb-0"  href="{{url('/supprimer'.$c->id)}}" >
+                         <a  href="{{url('/supprimer'.$c->id)}}" >
                             <input type="hidden" name="afficher">
-                          <i class="material-icons text-sm" >delete</i>&nbsp;&nbsp;Supprimer
+                          <i class="material-icons text-xlg" >delete</i>&nbsp;&nbsp;
                         </a>
                       </td>
                     </tr>
@@ -80,6 +80,7 @@
         </div>
       </div>
 @endsection('content')
+<<<<<<< HEAD
 <?php 
   $user = auth()->user();?>
   @if($user->est_super_admin)
@@ -95,3 +96,5 @@
     @endsection('admin')
   @endif
 
+=======
+>>>>>>> 583c23ea7eaa59431b13bf6761a1665121feb0ae

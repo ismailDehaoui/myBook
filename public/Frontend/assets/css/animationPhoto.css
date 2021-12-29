@@ -1,0 +1,211 @@
+@import "https://fonts.googleapis.com/css?family=Open+Sans";
+
+a {
+	text-decoration: none;
+}
+.container {
+	height: 100%;
+}
+.container2 {
+	width: 200px;
+	height: 300px;
+}
+.gallery {
+	list-style-type: none;
+	height: 100%;
+	overflow: hidden;
+}
+.gallery li {
+	float: left;
+	height: 300px;
+	width: 200px;
+	background: #2e4053;
+}
+.gallery .flip {
+	height: 300px;
+	width: 200px;
+	position: relative;
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+
+	-webkit-perspective: 2000px;
+	-moz-perspective: 2000px;
+	perspective: 2000px;
+}
+.gallery li:hover .front-side {
+	opacity: 0;
+	-webkit-transform: rotateY(180deg);
+	-moz-transform: rotateY(180deg);
+	transform: rotateY(180deg);
+}
+.gallery li:hover .back-side {
+	background: #466699;
+	opacity: 1;
+	transform: rotateY(0deg);
+}
+.gallery .front-side,
+.gallery .back-side {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 200px;
+	height: 300px;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	backface-visibility: hidden;
+
+	-webkit-transition: transform 0.4s ease-out, opacity 0.3s ease-out;
+	-moz-transition: transform 0.4s ease-out, opacity 0.3s ease-out;
+	transition: transform 0.4s ease-out, opacity 0.3s ease-out;
+}
+.gallery .front-side {
+	opacity: 1;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+
+	-webkit-transform: rotateY(0deg);
+	-moz-transform: rotateY(0deg);
+	transform: rotateY(0deg);
+}
+.gallery .back-side {
+	opacity: 0;
+	-webkit-transform: rotateY(-180deg);
+	-moz-transform: rotateY(-180deg);
+	transform: rotateY(-180deg);
+}
+.gallery .back-side > a {
+	display: block;
+	width: 200px;
+	height: 300px;
+}
+.gallery li:nth-child(1) .front-side {
+	background: #fff;
+}
+
+.container .gallery .flip .front-side img {
+	width: 100%;
+	height: 100%;
+}
+.gallery .content {
+	text-align: center;
+	position: relative;
+	top: -50%;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	transform: translateY(-50%);
+	padding: 25px 20px;
+}
+.gallery .content2 {
+	text-align: center;
+	position: relative;
+	top: 50%; 
+  right: 10%;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	transform: translateY(-50%);
+	padding: 25px 20px;
+  color: #fff;
+}
+.gallery .content2 .text2 h3:hover {
+	background: #fff;
+  color: #3498db;
+}
+.gallery li:hover .text {
+	opacity: 1;
+	visibility: visible;
+	max-height: 500px;
+}
+.gallery li:hover .text2 {
+	opacity: 1;
+	visibility: visible;
+	max-height: 500px;
+}
+.gallery li:hover .loader {
+	opacity: 1;
+	visibility: visible;
+	-webkit-animation: hide .1s ease-in-out 1.4s forwards, load .75s infinite;
+	-moz-animation: hide .1s ease-in-out 1.4s forwards, load .75s infinite;
+	animation: hide .1s ease-in-out 1.4s forwards, load .75s infinite;
+}
+.gallery .text {
+	opacity: 0;
+	visibility: hidden;
+	max-height: 0;
+}
+.gallery .text2 {
+	opacity: 0;
+	visibility: hidden;
+	max-height: 0;
+}
+.gallery .content h3 {
+	position: relative;
+	color: #fff;
+	font: normal 30px/1.25 'Open Sans';
+	margin-bottom: 25px;
+}
+.gallery .content h3:after {
+	content: '';
+	position: absolute;
+	width: 50px;
+	height: 3px;
+	bottom: -10px;
+	left: 50%;
+	margin-left: -25px;
+	background: #85c1e9;
+}
+
+.gallery .loader {
+	opacity: 0;
+	visibility: hidden;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	margin: auto;
+	border: 4px solid transparent;
+	border-top-color: #3498db;
+	border-left-color: #3498db;
+}
+@-webkit-keyframes load {
+	0% {
+		-webkit-transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+	}
+}
+@-moz-keyframes load {
+	0% {
+		-moz-transform: rotate(0deg);
+	}
+	100% {
+		-moz-transform: rotate(360deg);
+	}
+}
+@keyframes load {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+@-webkit-keyframes hide {
+	100% {
+		visibility: hidden;
+		opacity: 0;
+	}
+}
+@-moz-keyframes hide {
+	100% {
+		visibility: hidden;
+		opacity: 0;
+	}
+}
+@keyframes hide {
+	100% {
+		visibility: hidden;
+		opacity: 0;
+	}
+}

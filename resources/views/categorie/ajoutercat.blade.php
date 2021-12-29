@@ -2,14 +2,14 @@
 @extends('layouts.master')
 @Section('content')
   <div class="row">
-        <div class="col-6">
-            <div class="card card-plain">
+        <div class="col-md-12">
+          <div class="row">
+           <div class="col-md-6">
+            <div class="card  my-4">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                  <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
                   <h6 class="text-white text-capitalize ps-3">Ajouter Catégorie</h6>
-              </div>
-              <p>Ajouter une catégorie qui n'existe pas déja!</p>
-              </div>
+              </div>      
                 <p class="card-body">
                   <form action="{{url('ajouter')}}" method="POST" >
                   	{{ csrf_field()}}
@@ -29,11 +29,12 @@
                   </p>
                 </div>
               </div>
-            </div>
+            </div></div></div></div>
     </div>
   </div>
 
 @endsection('content')
+<<<<<<< HEAD
 <?php 
   $user = auth()->user();?>
   @if($user->est_super_admin)
@@ -48,3 +49,5 @@
       </li>
     @endsection('admin')
   @endif
+=======
+>>>>>>> 583c23ea7eaa59431b13bf6761a1665121feb0ae

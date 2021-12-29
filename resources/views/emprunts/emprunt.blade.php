@@ -120,6 +120,7 @@
     {{$emprunts->links()}}
   </div>
 </div>
+<<<<<<< HEAD
 @endsection('content')
 <?php 
   $user = auth()->user();?>
@@ -135,3 +136,6 @@
       </li>
     @endsection('admin')
   @endif
+=======
+@endsection('content')
+>>>>>>> 583c23ea7eaa59431b13bf6761a1665121feb0ae

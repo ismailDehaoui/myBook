@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Abonnee;
+use App\Models\Abonne;
 use Illuminate\Http\Request;
 use  App\Models\Emprunt;
 use App\Models\Livre;
@@ -10,9 +10,9 @@ use App\Models\Livre;
 class EmpruntController extends Controller{
 
     public function create(){
-        $abonnees  = Abonnee::orderBy('nom')->get();
+        $Abonnes = Abonne::orderBy('nom')->get();
         $Livres    = Livre::orderBy('titre')->get();
-        return view('emprunts.create',['abonnees'=> $abonnees, 'livres'=>$Livres]);
+        return view('emprunts.create',['Abonnes'=> $Abonnes, 'livres'=>$Livres]);
     }
 
     public function index(){
@@ -32,6 +32,16 @@ class EmpruntController extends Controller{
             $nb[$i] = $book->nombre_exemplaires_disponibles;
             $i++;
             dd($nb);       
+        $Abonne  = $request->input('Abonne');   
+        foreach($livres as $livre){
+            $emprunt              = new Emprunt();
+            $emprunt->date_debut  =  date(now());
+            $emprunt->date_fin    =  date(now());
+            $emprunt->abonnes_id = $Abonne;
+            $emprunt->livres_id   = $livre;
+            $emprunt->save();
+        }
+        return redirect('emprunts.emprunt');
     }      
         $i = 0;   
         foreach($livres as $livre){

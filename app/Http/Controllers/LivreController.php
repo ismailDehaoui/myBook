@@ -22,7 +22,7 @@ use function PHPUnit\Framework\isEmpty;
 
 class LivreController extends Controller
 {
-    //
+        //
     //Lister les livres
     public function index(){
         $livres = Livre::paginate(10);

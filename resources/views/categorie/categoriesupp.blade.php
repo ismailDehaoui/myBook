@@ -78,6 +78,7 @@
       </div>
     
 @endsection('content')
+<<<<<<< HEAD
 <?php 
   $user = auth()->user();?>
   @if($user->est_super_admin)
@@ -93,3 +94,5 @@
     @endsection('admin')
   @endif
 
+=======
+>>>>>>> 583c23ea7eaa59431b13bf6761a1665121feb0ae

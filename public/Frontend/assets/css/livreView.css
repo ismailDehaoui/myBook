@@ -1,0 +1,103 @@
+.bd{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+ }
+ .dehaoui{
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    min-height: 100px;
+    /*background: #234f23;*/
+    margin: 50px;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    box-shadow: 0 35px 55px rgba(0, 0, 0, 0.1)
+ }
+ .dehaoui .left_Side{
+    position: relative;
+    padding: 40px;
+ }
+ .dehaoui .center_Side{
+    position: relative;
+    padding: 40px;
+ }
+ .dehaoui .right_Side{
+    position: relative;
+    padding: 40px;
+ }
+ .profileText{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+ }
+ .profileText .imgBx{
+    position: relative;
+    width: 200px;
+    height: 300px;  
+    /*overflow: hidden; */
+ }
+ .profileText .imgBx img{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+ }
+ .profileText h2 {
+    color: #000;
+    font-size: 1.5em;
+    margin-top: 20px;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 600;
+    line-height: 1.4em;
+ }
+ .profileText h2 small {
+    font-size: 0.8em;
+    font-weight: 300;
+ } 
+ .about{
+    margin-bottom: 50px;
+    
+ }
+ .about:last-child{
+    margin-bottom: 0;
+ }
+ 
+ .title{
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+ }
+ p {
+    color: #333;
+ }
+ table{
+    width: 100%;
+    
+    border-spacing: 0px; 
+ }
+ table td{
+     padding: 15px;
+     background: #eee;   
+     border: 1px solid #e2e2e2;
+ }
+.main{
+    background: #f44336;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    border-color: #f35246;
+
+ }
+ a{
+    color: #000;
+ }

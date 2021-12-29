@@ -7,7 +7,8 @@ use App\Http\Controllers\LivreController;
 use App\Http\Controllers\AbonneeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuteurController;
-
+use App\Http\Controllers\Frontend\AvisController;
+use App\Http\Controllers\Frontend\frontendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,10 @@ use App\Http\Controllers\AuteurController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// Dashboard
+Route::get('/dash',[UserController::class,'index']);
+
 //categories
 
 Route::get('/cat', function () {
@@ -73,8 +78,6 @@ Route::get('/abonnees','AbonneeController@listAbonnees');
 Route::get('abonnée/créer','AbonneeController@create');
 Route::get('abonnée/{id}/profile', 'AbonneeController@profile');
 Route::post('abonnée/ajouterAbonnée','AbonneeController@store');
-Route::put('modifier/{id}','AbonneeController@update');    
-Route::get('mod/{id}/edit','AbonneeController@edit');
 
 //Emprunts
 Route::get('emprunts','EmpruntController@index');
@@ -92,7 +95,11 @@ Route::get('/ajoutergestionnaire',function(){
 Route::post('/ajoutgest',[UserController::class,'store']);
 Route::get('/editgest{id}',[UserController::class,'editgest']);
 Route::put('modifiergest/{id}',[UserController::class,'update']);
+Route::put('modifierpass/{id}',[UserController::class,'postProfilePassword']);
 
+Route::get('user/{id}/profile',[UserController::class,'profile']);
+Route::get('/modifierprofile{id}',[UserController::class,'editprofile']);
+Route::get('/modifierpassword{id}',[UserController::class,'editpassword']);
 Route::get('/suppressiongest{id}',[UserController::class,'suppgest']);
 Route::get('/confirmersuppgest{id}',[UserController::class,'confirmgest']);
 
@@ -132,17 +139,30 @@ Route::put('/gestres{id}',[UserController::class,'restoregest']);
 Route::get('/abonsupp',[AbonneeController::class,'listAbonsupp']);
 Route::put('/abonres{id}',[AbonneeController::class,'restoreabon']);
 Route::get('/lsupp',[LivreController::class,'listLivressupp']);
-
-
-
+/*
+    Route::get('/home','LivreController@indexHome');
+    Route::get('/books', 'LivreController@categories');
+    Route::get('/books/categories/{nom}','LivreController@viewCategories');
+*/
 //auth
-Route::get('/', function () {
+Route::get('/login', function () {
     return view('auth.login');
 });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+// Frontend
+Route::get('/',[frontendController::class,'index']);
+Route::get('/books',[frontendController::class,'livres'] );
+Route::get('/livre/categories',[frontendController::class,'categories']);
+Route::get('/livre/categorie/{nom}', [frontendController::class,'livreCate']);
+Route::get('/livre/categorie/{nom}/{titre}', [frontendController::class,'livreView']);
+
+// Avis 
+Route::get('/search',[frontendController::class,'search']);
+
 
 require __DIR__.'/auth.php';
  

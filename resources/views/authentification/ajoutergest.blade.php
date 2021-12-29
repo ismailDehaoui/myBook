@@ -38,7 +38,7 @@
                     </p>
                       <p class="input-group input-group-outline mb-3">
                       <label class="form-label">Confirmer le mot de passe</label>
-                      <input type="password" class="form-control" name="pass2" required="true">
+                      <input type="password" class="form-control" name="password_confirmation" required="true">
                     </p>
                       <label class="form-label">Rôle</label>
                     <p class="form-check">

@@ -82,13 +82,13 @@
                       <td>
                          <a class="btn bg-gradient-warning mb-0"  href="{{url('/editgest'.$c->id)}}" >
                             <input type="hidden" name="afficher">
-                          <i class="material-icons text-sm" >update</i>&nbsp;&nbsp;modifier
+                          <i class="material-icons text-xlg" >update</i>&nbsp;&nbsp;
                         </a>
                       </td>
                       <td class="align-middle">
                          <a class="btn bg-gradient-danger mb-0"  href="{{url('/suppressiongest'.$c->id)}}" >
                             <input type="hidden" name="afficher">
-                          <i class="material-icons text-sm" >person_add_disabled</i>&nbsp;&nbsp;Supprimer
+                          <i class="material-icons text-xlg" >person_add_disabled</i>&nbsp;&nbsp;
                         </a>
                       </td>
                     </tr>
@@ -104,7 +104,7 @@
         </div>
       </div>
 @endsection('content')
-<<<<<<< HEAD
+
 <?php 
   $user = auth()->user();?>
   @if($user->est_super_admin)
@@ -120,7 +120,6 @@
     @endsection('admin')
   @endif
 
-=======
 <?php $user = auth()->user();?>
 @if($user->est_super_admin)
 @Section('admin')
@@ -134,5 +133,3 @@
         </li>
 @endsection('admin')
 @endif
->>>>>>> 68846299e89951f8e30eb2d1757361740881908d
-
