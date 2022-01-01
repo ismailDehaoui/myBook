@@ -7,6 +7,7 @@ use App\Http\Controllers\LivreController;
 use App\Http\Controllers\AbonneeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuteurController;
+use App\Http\Controllers\SearchController;
 
 
 /*
@@ -36,11 +37,6 @@ Route::get('/ajoutercat', function () {
 Route::get('/acceuil', function () {
     return view('layouts.master');
 });
-
-Route::get('/dashboard', function () {
-    return view('layouts.dashboard');
-});
-
 Route::get('/afficherLivres/{id}',[LivreController::class,'afficherLivres']);
 
 Route::get('/categories',[CategorieController::class,'listCategories']);
@@ -62,8 +58,13 @@ Route::get('livres/{id}/modifier', 'LivreController@edit');
 Route::put('livres/{id}', 'LivreController@update');
 Route::delete('livres/{id}', 'LivreController@destroy');
 Route::get('livres/{id}/qrcode', 'QrCodeController@qrCodeLivre');
+Route::get('/livres/{id}/supprimer',[LivreController::class,'supprimer']);
+Route::get('/livres/confirmersupp/{id}',[LivreController::class,'Confirmsupprimer']);
+Route::get('/MasterDetailsBBooks/{id}',[LivreController::class,'MasterDetailsB']);
 
+Route::get('/MasterDetailsKWBooks/{id}',[LivreController::class,'MasterDetailsKW']);
 
+Route::post('/MasterDetails/{id}',[LivreController::class,'MasterDetails']);
 
 //Auteur
 
@@ -76,31 +77,12 @@ Route::post('auteurs','AuteurController@store')->name('auteurs.ajouter');
 Route::post('motscles', 'MotscleController@store')->name('motscles.ajouter');
 Route::post('motscles/{id}/supprimer', 'MotscleController@destroy')->name('motscles.supprimer');
 
-
-//Abonnées
-<<<<<<< HEAD
-
-//Route::get('/abonnees','AbonneeController@listAbonnees');
-//Route::get('abonnée/créer','AbonneeController@create');
-//Route::get('abonnée/{id}/profile', 'AbonneeController@profile');
-//Route::post('abonnée/ajouterAbonnée','AbonneeController@store');
-//Route::put('modifier/{id}','AbonneeController@update');    
-//Route::get('mod/{id}/edit','AbonneeController@edit');
-=======
-Route::get('/abonnees','AbonneeController@listAbonnees');
-Route::get('abonnée/créer','AbonneeController@create');
-Route::get('abonnée/{id}/profile', 'AbonneeController@profile');
-Route::post('abonnée/ajouterAbonnée','AbonneeController@store');
->>>>>>> 583c23ea7eaa59431b13bf6761a1665121feb0ae
-
 //Emprunts
 Route::get('emprunts','EmpruntController@index');
 Route::get('emprunts/créer', 'EmpruntController@create');
 Route::post('emprunts/ajouter', 'EmpruntController@store');
 
 //authentification
-
-Route::get('/deconnexion','UserController@logout');
 
 Route::get('/affgest','UserController@listGest');
 Route::get('/ajoutergestionnaire',function(){
@@ -122,10 +104,9 @@ Route::get('/confirmersuppgest{id}',[UserController::class,'confirmgest']);
 Route::post('auteurs', 'AuteurController@store')->name('auteurs.ajouter');
 Route::delete('auteurs/{id}', 'AuteurController@destroy')->name('auteurs.supprimer');
 
-<<<<<<< HEAD
-//Abonnées
 
-Route::get('/abonnés','AbonneController@index');
+//Abonnées
+Route::get('abonnés','AbonneController@index');
 
 Route::get('abonnés/ajouter','AbonneController@create');
 
@@ -136,8 +117,7 @@ Route::post('abonnés','AbonneController@store');
 Route::put('abonnés/{id}/update','AbonneController@update');    
 
 Route::get('abonnés/{id}/edit','AbonneController@edit');
-=======
->>>>>>> 583c23ea7eaa59431b13bf6761a1665121feb0ae
+
 
 Route::get('abonnés/{id}/qrcode', 'QrCodeController@qrCodeAbonne');
 
@@ -160,14 +140,20 @@ Route::get('/lsupp',[LivreController::class,'listLivressupp']);
 
 
 
+
+//Barre de Recherche
+Route::post('/rechercheCat',[SearchController::class,'CatSearch']);
+Route::post('/rechercheUti',[SearchController::class,'UtiSearch']);
+
+Route::post('/rechercheLivre',[SearchController::class,'BookSearch']);
+
+
 //auth
 Route::get('/login', function () {
     return view('auth.login');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard',[UserController::class,'index'])->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
  

@@ -1,3 +1,6 @@
+@Section('form')
+ <form action="{{url('/rechercheLivre')}}" method="POST"  id="myForm">
+@endsection
 @extends('layouts.master')
 
 @section('content')
@@ -42,9 +45,10 @@
                             <img src="{{ asset('storage/images/livres/'.$livre->photo) }}" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
                           </div>
                           <div class="d-flex flex-column justify-content-center">
+                            <a class="nav-link text-blue"  href="{{url('/MasterDetailsBBooks/'.$livre->id)}}" >
                             <h6 class="mb-0 text-sm">{{ $livre->titre }}</h6>
                             <!--<p class="text-xs text-secondary mb-0">john@creative-tim.com</p>-->
-                          </div>
+                          </a></div>
                         </div>
                       </td>
                       <td>
@@ -65,20 +69,17 @@
                         <form action="{{url('/livres/'.$livre->id)}}" method="POST">
                           {{ csrf_field() }}
                           {{ method_field('DELETE') }}
-
-                          <div class="btn-group">
-                            <a href="{{url('/livres/'.$livre->id.'/qrcode')}}" title="Qr Code" class="btn btn-info">
+                            <a href="{{url('/livres/'.$livre->id.'/qrcode')}}" title="Qr Code">
                               <i class="fas fa-qrcode me-sm-1"></i>  
                             </a>
-                            <a href="{{url('/livres/'.$livre->id.'/modifier')}}" title="Modifier" class="btn btn-secondary">
+                            <a href="{{url('/livres/'.$livre->id.'/modifier')}}" title="Modifier">
                               <i class="fas fa-edit me-sm-1"></i>
                     
                             </a>
-                            <button type="submit" class="btn btn-danger" title="Supprimer">
+                            <a href="{{url('/livres/'.$livre->id.'/supprimer')}}" title="Supprimer">
+
                               <i class="fas fa-trash-alt me-sm-1"></i> 
-  
-                            </button>
-                          </div>
+                          </a>
 
                           
                             
