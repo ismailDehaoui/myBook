@@ -4,11 +4,8 @@
 @extends('layouts.master')
 @Section('content')
 
-  <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
+  <div class="main-content position-relative  max-height-vh-100 h-100">
     <div class="container-fluid px-2 px-md-4">
-      <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image:url('https://www.pinterest.fr/pin/31243791155896368/');">
-        <span class="mask  bg-gradient-primary  opacity-6"></span>
-      </div>
       <div class="card card-body mx-3 mx-md-4 mt-n6">
         <div class="row gx-4 mb-2">
           <div class="col-auto">

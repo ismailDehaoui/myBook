@@ -436,13 +436,10 @@ this.closest('form').submit();">
   <script src="{{asset('../assets/js/emprunt.js')}}"></script>
   <script src="{{asset('../assets/js/sweetalert2.min.js')}}"></script>
   <script src="{{asset('../assets/js/toastr.min.js')}}"></script>
-<<<<<<< HEAD
 
- 
 
-=======
+
   
->>>>>>> 245822e49ac170a41a7d3aae91a41d686f312c0a
   <script>
     var ctx = document.getElementById("chart-bars").getContext("2d");
 

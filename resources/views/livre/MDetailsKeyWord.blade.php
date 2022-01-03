@@ -12,7 +12,7 @@
                               <label class="form-check-label" id='r1' for="flexRadioDefault1">
                                Emprunts
                               </label>
-                               <input class="form-check-input" type="radio" name="flexRadioDefault" id='r2' value="radio2" onclick="submitform2()">
+                               <input checked class="form-check-input" type="radio" name="flexRadioDefault" id='r2' value="radio2" onclick="submitform2()">
                               <label class="form-check-label" for="flexRadioDefault1">
                                Mots clés
                               </label>
