@@ -48,10 +48,11 @@
                       <td>
                         <p class="text-xs font-weight-bold mb-0">{{$categorie->nom_categorie}}</p>
                       </td>
-                       <?php $act = \App\Models\User::where('id',$c->acteur)->get();?>
+                       <?php $act = \App\Models\User::where('id',$c->acteur)->get();
+                       ?>
                       <td>
-                        <img src="{{asset('storage/Admin/'.$act[0]->photo)}}" class="avatar avatar-lg me-3 border-radius-lg" alt="user1">
-                         <br/><p class="text-xs font-weight-bold mb-0">{{$act[0]->name}}</p>
+                        <!--img src="{{asset('storage/Admin/'.$act)}}" class="avatar avatar-lg me-3 border-radius-lg" alt="user1"-->
+                         <br/><p class="text-xs font-weight-bold mb-0">{{$act}}</p>
                       </td>
                       <td>
                         <p class="text-xs font-weight-bold mb-0">{{$c->langue}}</p>

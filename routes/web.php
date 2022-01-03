@@ -7,6 +7,7 @@ use App\Http\Controllers\LivreController;
 use App\Http\Controllers\AbonneeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuteurController;
+use App\Http\Controllers\SearchController;
 
 
 /*
@@ -36,11 +37,6 @@ Route::get('/ajoutercat', function () {
 Route::get('/acceuil', function () {
     return view('layouts.master');
 });
-
-Route::get('/dashboard', function () {
-    return view('layouts.dashboard');
-});
-
 Route::get('/afficherLivres/{id}',[LivreController::class,'afficherLivres']);
 
 Route::get('/categories',[CategorieController::class,'listCategories']);
@@ -63,8 +59,13 @@ Route::put('livres/{id}', 'LivreController@update');
 Route::delete('livres/{id}', 'LivreController@destroy');
 Route::get('livres/{id}/qrcode', 'QrCodeController@qrCodeLivre');
 Route::get('livres/getlivre/{isbn}', 'LivreController@getLivreAjax');
+Route::get('/livres/{id}/supprimer',[LivreController::class,'supprimer']);
+Route::get('/livres/confirmersupp/{id}',[LivreController::class,'Confirmsupprimer']);
+Route::get('/MasterDetailsBBooks/{id}',[LivreController::class,'MasterDetailsB']);
 
+Route::get('/MasterDetailsKWBooks/{id}',[LivreController::class,'MasterDetailsKW']);
 
+Route::post('/MasterDetails/{id}',[LivreController::class,'MasterDetails']);
 
 //Auteur
 
@@ -89,8 +90,6 @@ Route::get('emprunts/enregistrer/{id_abonne}/{isbns}', 'EmpruntController@store'
 
 //authentification
 
-Route::get('/deconnexion','UserController@logout');
-
 Route::get('/affgest','UserController@listGest');
 Route::get('/ajoutergestionnaire',function(){
 	return view('authentification.ajoutergest');
@@ -113,6 +112,8 @@ Route::delete('auteurs/{id}', 'AuteurController@destroy')->name('auteurs.supprim
 
 //Abonnés
 
+
+//Abonnées
 Route::get('abonnés','AbonneController@index');
 
 Route::get('abonnés/ajouter','AbonneController@create');
@@ -124,6 +125,7 @@ Route::post('abonnés','AbonneController@store');
 Route::put('abonnés/{id}/update','AbonneController@update');    
 
 Route::get('abonnés/{id}/edit','AbonneController@edit');
+
 
 Route::get('abonnés/{id}/qrcode', 'QrCodeController@qrCodeAbonne');
 
@@ -149,15 +151,18 @@ Route::get('/lsupp',[LivreController::class,'listLivressupp']);
 
 
 
+//Barre de Recherche
+Route::post('/rechercheCat',[SearchController::class,'CatSearch']);
+Route::post('/rechercheUti',[SearchController::class,'UtiSearch']);
+
+Route::post('/rechercheLivre',[SearchController::class,'BookSearch']);
+
 
 //auth
 Route::get('/login', function () {
     return view('auth.login');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard',[UserController::class,'index'])->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
- 

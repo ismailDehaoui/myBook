@@ -1,3 +1,6 @@
+@Section('form')
+ <form action="{{url('/rechercheLivre')}}" method="POST"  id="myForm">
+@endsection
 @extends('layouts.master')
 @Section('content')
 

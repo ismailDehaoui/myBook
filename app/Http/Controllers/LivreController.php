@@ -19,6 +19,7 @@ use App\Models\Categorie;
 use App\Models\Auteur;
 
 use App\Models\Motscle;
+use Illuminate\Support\Facades\DB;
 
 use function GuzzleHttp\Promise\each;
 use function PHPUnit\Framework\isEmpty;
@@ -227,4 +228,52 @@ class LivreController extends Controller
       $l = Livre::onlyTrashed()->paginate(6);
         return view('Historique.livresupp', ['livres'=>$l]);
     } 
+    //suppression d'un livre
+     function supprimer($id){
+   Alert::error('Etes vous sure?','Le livre sera supprimé!')->showConfirmButton('<a class=""  href="/livres/confirmersupp/'.$id.'" >
+                            <input type="hidden" name="afficher">Supprimer
+                        </a>', '#a085d6a')->toHtml()->showCancelButton('Annuler', '#aaa')->reverseButtons();
+   return redirect('livres');
+  }
+ function Confirmsupprimer($id){
+       $l = Livre::find($id);
+       $user = auth()->user();
+       $l->acteur = $user->id;
+       $l->save();
+       $emp = Emprunt::where('livres_id',$id)->get();
+           if($emp->count() != 0){
+            Alert::error('Livre est  déja emprunté');
+           return redirect('livres');  
+       }
+      
+       $l->delete();
+       return redirect('livres');
+  }
+  //Master detailles
+  function MasterDetails(Request $r,$id){
+    $req = $r->input('flexRadioDefault');
+    if($req == "radio1")
+      return redirect('/MasterDetailsBBooks/'.$id);
+    else
+    return redirect('/MasterDetailsKWBooks/'.$id);  
+  }
+  function MasterDetailsB($i){
+    $emp = Emprunt::join('abonnes', 'abonnes.id', '=', 'emprunts.abonnes_id')
+               ->where('livres_id','=',$i)->paginate(1);
+
+    $empTo = Emprunt::join('abonnes', 'abonnes.id', '=', 'emprunts.abonnes_id')
+               ->where('livres_id','=',$i)->count();
+    $l = Livre::find($i);
+   return view('livre.MDetailsEmp',['emp'=>$emp,'livre'=>$l,'empTot'=>$empTo]);
+  }
+  function MasterDetailsKW($i){
+    $mots = Motscleslivre::join('motscles', 'motscles.id', '=', 'motscleslivres.motscles_id')
+               ->where('motscleslivres.livres_id','=',$i)->paginate(1);
+
+    $motsC =  Motscleslivre::join('motscles', 'motscles.id', '=', 'motscleslivres.motscles_id')
+               ->where('motscleslivres.livres_id','=',$i)->count();
+    $l = Livre::find($i);
+   return view('livre.MDetailsKeyWord',['mots'=>$mots,'livre'=>$l,'motsC'=>$motsC]);
+  }
 }
+
