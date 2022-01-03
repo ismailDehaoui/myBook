@@ -24,6 +24,10 @@ use App\Http\Controllers\SearchController;
 // Dashboard
 Route::get('/dash',[UserController::class,'index']);
 
+Route::get('/', function(){
+    return redirect()->route('login');
+});
+
 //categories
 
 Route::get('/cat', function () {
