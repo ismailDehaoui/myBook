@@ -8,7 +8,7 @@
                     <div class="form-check">
                       <form action="{{url('/MasterDetails/'.$livre->id)}}" method="POST" id="myF">
                         {{ csrf_field()}}
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" value="radio1"  onclick="submitform2()" id='r1'>
+                            <input checked class="form-check-input" type="radio" name="flexRadioDefault" value="radio1"  onclick="submitform2()" id='r1'>
                               <label class="form-check-label" for="flexRadioDefault1">
                                Emprunts
                               </label>
