@@ -89,7 +89,9 @@ Route::post('motscles/{id}/supprimer', 'MotscleController@destroy')->name('motsc
 Route::get('emprunts/ajouter', 'EmpruntController@add');
 Route::get('emprunts/{etat}','EmpruntController@index');
 Route::get('emprunts/créer', 'EmpruntController@create');
+
 Route::get('emprunts/getabonne/{id}', 'AbonneController@getAbonneAjax');
+
 Route::get('emprunts/enregistrer/{id_abonne}/{isbns}', 'EmpruntController@store');
 
 //authentification

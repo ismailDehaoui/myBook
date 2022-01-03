@@ -57,8 +57,10 @@ class EmpruntController extends Controller{
             $emprunt->save();
             }
         }
-        Alert::success('Succeès', "Enregistré avec succès!");
-        return redirect('/emprunts/tout');
+        
+        //Alert::success('Succeès', "Enregistré avec succès!");
+        //return redirect('/emprunts/tout');
+        return redirect('/emprunts/ajouter')->with('status', 'Enregistré avec succès!');
     }      
 }
     

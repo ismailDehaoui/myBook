@@ -2,9 +2,12 @@
 
 @Section('content')
 
-
-
 <div class="container-fluid py-4">
+  @if (session('status'))
+    <div class="text-white text-center alert alert-success">
+        {{ session('status') }}
+    </div>
+  @endif
     <div class="row">
       <div class="col-12">
         <div class="card my-4">

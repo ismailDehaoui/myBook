@@ -63,14 +63,14 @@ class AbonneController extends Controller
 
       public function store(Request $request){   
         if (Abonne::where('email', $request->input('email'))->exists()) {
-               echo "Error";
+               echo "Email exist déja";
           }else{
           $abonne                         = new Abonne();
           $abonne->nom            = $request->input('nom');
           $abonne->prenom         = $request->input('prenom');
           $abonne->email          = $request->input('email');
           $abonne->adresse        = $request->input('adresse');
-          $abonne->date_naissance = $request->input('date_de_naissance');       
+          $abonne->date_de_naissance = $request->input('date_de_naissance');       
           $filenameWithExt                 = $request->file('image')->getClientOriginalName();
           // Get just filename
           $filename                        = pathinfo($filenameWithExt, PATHINFO_FILENAME);
