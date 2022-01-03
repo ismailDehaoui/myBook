@@ -8,6 +8,8 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 use App\Models\Livre; 
 
+use App\Models\Emprunt; 
+
 use App\Models\Auteurslivre;
 
 use App\Models\Motscleslivre;
@@ -18,6 +20,7 @@ use App\Models\Auteur;
 
 use App\Models\Motscle;
 
+use function GuzzleHttp\Promise\each;
 use function PHPUnit\Framework\isEmpty;
 
 class LivreController extends Controller
@@ -29,6 +32,67 @@ class LivreController extends Controller
         //$categories = Categorie::all();
         return view('livre.index', ['livres'=>$livres]);
     }
+
+
+    public function getLivreAjax(){
+        $isbn = $_GET['isbn'];
+        $id_abonne = $_GET['id_abonne'];
+        //$livre = Livre::find($id);
+        $livre = Livre::where('ISBN', $isbn)->first();
+        if($livre){
+            $emprunt = Emprunt::where('livres_id', $livre->id)->where('abonnes_id', $id_abonne)->where('est_rendu', false)->first();
+            $action = "";
+            if($emprunt){
+                $action = "
+                <div class='d-flex flex-column justify-content-center'>
+                <span class='text-center mb-0 badge badge-sm bg-gradient-success'>à rendre</span>
+                </div>";
+
+            }
+            else{
+                $action = "
+                <div class='d-flex flex-column justify-content-center'>
+                <span class='text-center mb-0 badge badge-sm bg-gradient-secondary'>à emprunter</span>
+                </div>";
+            }
+            $categorie = Categorie::find($livre->categories_id);
+        $html = "
+        <tr>
+        <td>
+        <div class='d-flex flex-column justify-content-center'>
+                <h6 class='mb-0 text-sm'>$livre->id</h6>
+              </div>
+        </td>
+        
+        <td>
+            <div class='d-flex flex-column justify-content-center'>
+                <h6 class='mb-0 text-sm text-center'>$livre->titre</h6>
+              </div>
+        </td>
+        <td>
+            <div class='text-center'>
+                <a href='http://mybook.test/storage/images/livres/$livre->photo' target='_blank'>
+                <img src='http://mybook.test/storage/images/livres/$livre->photo' class='avatar avatar-sm me-3 border-radius-lg' alt='user1'>
+                </a>
+            </div>
+        </td>
+        <td>
+      <p class='text-center text-xs text-secondary mb-0'>$livre->nombre_exemplaires_disponibles</p>
+      </td>
+        <td>
+            <div class='d-flex flex-column justify-content-center'>
+            <p class='text-center text-xs text-secondary mb-0'>$categorie->nom</p>
+              </div>
+        </td>
+        <td>
+            $action
+        </td>
+        
+        </tr>
+    ";
+        return $html;
+        }
+      }
 
     //Affiche le formulaire d'ajout de livres
     public function create(){
@@ -68,11 +132,14 @@ class LivreController extends Controller
         //$livre->photo = $request->input('image');
         $livre->resume = $request->input('résumé');
         $livre->save();
-        if(!isEmpty($request->input('motcle'))){
+        if($request->filled('motcle')){
             $motsClesLivreController->store($request->input('motcle'), $livre->id);
         }
+        if($request->filled('auteur')){
+            $auteursLivreController->store($request->input('auteur'), $livre->id);
+        }
 
-        $auteursLivreController->store($request->input('auteur'), $livre->id);
+        
 
         Alert::success('Succeès', 'Livre ajouté avec succès');
         
@@ -106,7 +173,7 @@ class LivreController extends Controller
         $livre->nombre_exemplaires_disponibles = $request->input('nombre-exemplaires-disponibles');
         $livre->annee = $request->input('année');
 
-        if($request->input('image') != $livre->photo){
+        if($request->input('image') != $livre->photo && $request->input('image')){
             $filenameWithExt = $request->file('image')->getClientOriginalName();
 
           // Get just filename
@@ -132,11 +199,14 @@ class LivreController extends Controller
         $livre->resume = $request->input('résumé');
         $livre->save();
 
-        if(!isEmpty($request->input('motcle'))){
-            $motsClesLivreController->store($request->input('motcle'), $livre->id);
+        if($request->filled('motcle')){
+            $motsClesLivreController->update($request->input('motcle'), $livre);
         }
-        $auteursLivreController->update($request->input('auteur'), $livre);
+        if($request->filled('auteur')){
+            $auteursLivreController->update($request->input('auteur'), $livre);
+        }
 
+        Alert::success('Succeès', 'Livre ajouté avec succès');
         return redirect('/livres');
     }
 

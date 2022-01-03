@@ -20,10 +20,10 @@ class AuteurslivreController extends Controller
 
     public function update($auteurs, $livre){
 
-        $auteurslivre = $livre->hasMany(Auteurslivre :: class);
+        $auteurslivre = Auteurslivre::where('livres_id', $livre->id)->get();
 
         foreach($auteurslivre as $auteurlivre){
-            Auteurslivre::where('id', $auteurlivre->id)->delete();
+            $auteurlivre->delete();
         }
 
         foreach($auteurs as $auteur){

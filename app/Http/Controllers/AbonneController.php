@@ -14,6 +14,49 @@ class AbonneController extends Controller
         return view('abonne.index', ['abonnes'=>$abonnes]);
     } 
 
+    public function getAbonneAjax(){
+      $id = $_GET['id'];
+      $abonne = Abonne::find($id);
+      if($abonne){
+      //$emprunts = $abonne->hasMany(Emprunt::class);
+      $emprunts = Emprunt::where('abonnes_id', '=', $abonne->id)->get();
+      $nombreEmprunts = $emprunts->count();
+      //$html = '<tr><td>'.$abonne->nom.'</td></tr>';
+      $html = "
+      <tr>
+      <td>
+      <div class='d-flex flex-column justify-content-center'>
+              <h6 class='mb-0 text-sm'>$abonne->id</h6>
+            </div>
+      </td>
+      <td>
+        <div class='d-flex px-2 py-1'>
+          <div>
+          <a href='http://mybook.test/storage/images/abonnés/$abonne->photo' target='_blank'>
+            <img src='http://mybook.test/storage/images/abonnés/$abonne->photo' class='avatar avatar-sm me-3 border-radius-lg' alt='user1'>
+          </a>
+            </div>
+        </div>
+      </td>
+      <td>
+          <div class='d-flex flex-column justify-content-center'>
+              <h6 class='mb-0 text-sm'>$abonne->nom</h6>
+            </div>
+      </td>
+      <td>
+      <p class='text-xs text-secondary mb-0'>$abonne->email</p>
+      </td>
+      <td>
+      <p class='text-center text-xs text-secondary mb-0'>$nombreEmprunts</p>
+      </td>
+      </tr>
+  ";
+      
+      return $html;
+      }
+      
+    }
+
     public function create(){
         return view('abonne.add');
       }    

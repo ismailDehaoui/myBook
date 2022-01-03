@@ -62,6 +62,7 @@ Route::get('livres/{id}/modifier', 'LivreController@edit');
 Route::put('livres/{id}', 'LivreController@update');
 Route::delete('livres/{id}', 'LivreController@destroy');
 Route::get('livres/{id}/qrcode', 'QrCodeController@qrCodeLivre');
+Route::get('livres/getlivre/{isbn}', 'LivreController@getLivreAjax');
 
 
 
@@ -77,26 +78,14 @@ Route::post('motscles', 'MotscleController@store')->name('motscles.ajouter');
 Route::post('motscles/{id}/supprimer', 'MotscleController@destroy')->name('motscles.supprimer');
 
 
-//Abonnées
-<<<<<<< HEAD
 
-//Route::get('/abonnees','AbonneeController@listAbonnees');
-//Route::get('abonnée/créer','AbonneeController@create');
-//Route::get('abonnée/{id}/profile', 'AbonneeController@profile');
-//Route::post('abonnée/ajouterAbonnée','AbonneeController@store');
-//Route::put('modifier/{id}','AbonneeController@update');    
-//Route::get('mod/{id}/edit','AbonneeController@edit');
-=======
-Route::get('/abonnees','AbonneeController@listAbonnees');
-Route::get('abonnée/créer','AbonneeController@create');
-Route::get('abonnée/{id}/profile', 'AbonneeController@profile');
-Route::post('abonnée/ajouterAbonnée','AbonneeController@store');
->>>>>>> 583c23ea7eaa59431b13bf6761a1665121feb0ae
 
 //Emprunts
-Route::get('emprunts','EmpruntController@index');
+Route::get('emprunts/ajouter', 'EmpruntController@add');
+Route::get('emprunts/{etat}','EmpruntController@index');
 Route::get('emprunts/créer', 'EmpruntController@create');
-Route::post('emprunts/ajouter', 'EmpruntController@store');
+Route::get('emprunts/getabonne/{id}', 'AbonneController@getAbonneAjax');
+Route::get('emprunts/enregistrer/{id_abonne}/{isbns}', 'EmpruntController@store');
 
 //authentification
 
@@ -122,10 +111,9 @@ Route::get('/confirmersuppgest{id}',[UserController::class,'confirmgest']);
 Route::post('auteurs', 'AuteurController@store')->name('auteurs.ajouter');
 Route::delete('auteurs/{id}', 'AuteurController@destroy')->name('auteurs.supprimer');
 
-<<<<<<< HEAD
-//Abonnées
+//Abonnés
 
-Route::get('/abonnés','AbonneController@index');
+Route::get('abonnés','AbonneController@index');
 
 Route::get('abonnés/ajouter','AbonneController@create');
 
@@ -136,8 +124,6 @@ Route::post('abonnés','AbonneController@store');
 Route::put('abonnés/{id}/update','AbonneController@update');    
 
 Route::get('abonnés/{id}/edit','AbonneController@edit');
-=======
->>>>>>> 583c23ea7eaa59431b13bf6761a1665121feb0ae
 
 Route::get('abonnés/{id}/qrcode', 'QrCodeController@qrCodeAbonne');
 
@@ -157,6 +143,10 @@ Route::put('/gestres{id}',[UserController::class,'restoregest']);
 Route::get('/abonsupp',[AbonneeController::class,'listAbonsupp']);
 Route::put('/abonres{id}',[AbonneeController::class,'restoreabon']);
 Route::get('/lsupp',[LivreController::class,'listLivressupp']);
+
+
+
+
 
 
 

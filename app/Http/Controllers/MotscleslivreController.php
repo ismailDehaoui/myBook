@@ -7,6 +7,17 @@ use App\Models\Motscleslivre;
 
 class MotscleslivreController extends Controller
 {
+
+    public static function checkMotCle($id){
+        if(Motscleslivre::where('motscles_id', '=' ,$id)->exists()) {
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+
     public function store($motscles, $id_livre){
         foreach($motscles as $motcle){
             $motscleslivre = new Motscleslivre();
@@ -18,10 +29,10 @@ class MotscleslivreController extends Controller
 
     public function update($motscles, $livre){
 
-        $motscleslivre = $livre->hasMany(Motscleslivre :: class);
+        $motscleslivre = Motscleslivre::where('livres_id', $livre->id)->get();
 
         foreach($motscleslivre as $motclelivre){
-            Motscleslivre::where('id', $motclelivre->id)->delete();
+            $motclelivre->delete();
         }
 
         foreach($motscles as $motcle){

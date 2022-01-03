@@ -15,12 +15,8 @@
   <link href="{{asset('../assets/css/mon-css.css')}}" rel="stylesheet" />
   <link href="{{asset('../assets/css/sweetalert2.min.css')}}" rel="stylesheet" />
   
-<<<<<<< HEAD
   
-=======
->>>>>>> 583c23ea7eaa59431b13bf6761a1665121feb0ae
  
-
 
   
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -58,9 +54,6 @@
           </a>
         </li>
         <ul class="navbar-nav">
-<<<<<<< HEAD
-         @yield('admin')
-=======
          <?php $user = auth()->user();?>
             @if($user->est_super_admin)
             <li class="nav-item">
@@ -72,7 +65,6 @@
                       </a>
                     </li>
             @endif
->>>>>>> 583c23ea7eaa59431b13bf6761a1665121feb0ae
         <li class="nav-item">
           <a class="nav-link text-white" href="{{url('/categories')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -91,11 +83,7 @@
         </li>
         
         <li class="nav-item">
-<<<<<<< HEAD
           <a class="nav-link text-white " href="{{url('/abonnés')}}">
-=======
-          <a class="nav-link text-white " href="{{url('/abonnees')}}">
->>>>>>> 583c23ea7eaa59431b13bf6761a1665121feb0ae
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">groups</i>
             </div>
@@ -103,7 +91,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="{{asset('../pages/billing.html')}}">
+          <a class="nav-link text-white " href="{{url('/emprunts/tout')}}"">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">how_to_vote</i>
             </div>
@@ -122,11 +110,7 @@
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
         </li>
         <li class="nav-item">
-<<<<<<< HEAD
-          <a class="nav-link text-white " href="{{asset('../pages/profile.html')}}">
-=======
           <a class="nav-link text-white " href="{{url('user/'.$user->id.'/profile')}}">
->>>>>>> 583c23ea7eaa59431b13bf6761a1665121feb0ae
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">account_circle</i>
             </div>
@@ -441,12 +425,9 @@ this.closest('form').submit();">
   <script src="{{asset('../assets/js/emprunt.js')}}"></script>
   <script src="{{asset('../assets/js/sweetalert2.min.js')}}"></script>
   <script src="{{asset('../assets/js/toastr.min.js')}}"></script>
-<<<<<<< HEAD
-=======
 
  
 
->>>>>>> 583c23ea7eaa59431b13bf6761a1665121feb0ae
   <script>
     var ctx = document.getElementById("chart-bars").getContext("2d");
 

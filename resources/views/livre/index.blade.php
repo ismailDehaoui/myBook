@@ -58,10 +58,8 @@
                           <span class="badge badge-sm bg-gradient-success">Disponible</span>
                         @else
                           <span class="badge badge-sm bg-gradient-secondary">Emprunté</span>
-                        @endif
-                        
+                        @endif  
                       <td class="align-middle">
-                       
                         <form action="{{url('/livres/'.$livre->id)}}" method="POST">
                           {{ csrf_field() }}
                           {{ method_field('DELETE') }}
