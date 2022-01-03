@@ -2,6 +2,8 @@
 @Section('content')
  <!--div id="chart" style="height: 300px;"></div-->
     <!--Charting library -->
+     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://unpkg.com/echarts/dist/echarts.min.js"></script>
     <!-- Chartisan -->
@@ -100,11 +102,11 @@
           <div class="card z-index-2 ">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
               <div class="bg-gradient-dark shadow-primary border-radius-lg py-3 pe-1">
-             <div class="card-body"><canvas id="" width="100%" height="60"></canvas></div>
+             <div class="card-body"><canvas id="emprunt" width="100%" height="60"></canvas></div>
               </div>
             </div>
             <div class="card-body"> 
-                <h6 class="mb-0 ">Livres par catégorie</h6>
+                <h6 class="mb-0 ">Emprunts</h6>
               <hr class="dark horizontal">
               <div class="d-flex ">
                 <i class="material-icons text-sm my-auto me-1">schedule</i>
@@ -136,6 +138,7 @@
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+
 <script type="text/javascript">
   var _ydata=JSON.parse('{!! json_encode($months) !!}');
   var _xdata=JSON.parse('{!! json_encode($monthC) !!}');
@@ -269,6 +272,59 @@ var myPieChart = new Chart(ctx, {
       backgroundColor: ['rgb(0, 168, 0)',  'rgb(237, 28, 131)','rgb(0, 51, 90)', '#28a745','rgb(172, 211, 230)','rgb(149, 101, 111)','rgb(224, 101, 111)','rgb(172, 211, 190)',''],
     }],
   },
+});
+</script>
+
+
+<script>
+Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+Chart.defaults.global.defaultFontColor = 'white';
+    var mois = JSON.parse('{!! json_encode($monthsem) !!}');
+    var moisc = JSON.parse('{!! json_encode($monthCem) !!}');
+    var moisr = JSON.parse('{!! json_encode($monthsr) !!}');
+    var moiscr = JSON.parse('{!! json_encode($monthCr) !!}');
+   var ctx = document.getElementById("emprunt");
+// Bar Chart Example
+var myLineChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: mois,
+    datasets: [{
+      data: [moisc,moiscr],
+      label: "Emprunt",
+      backgroundColor: "rgba(2,117,216,1)",
+      borderColor: "rgb(255,255,255)",
+      fill : true
+    }],
+  },
+  options: {
+    scales: {
+      xAxes: [{
+        time: {
+          unit: 'month'
+        },
+        gridLines: {
+          display: false
+        },
+        ticks: {
+          maxTicksLimit: 2
+        }
+      }],
+      yAxes: [{
+        ticks: {
+          min: 0,
+          max: 10,
+          maxTicksLimit: 5
+        },
+        gridLines: {
+          display: true
+        }
+      }],
+    },
+    legend: {
+      display: false
+    }
+  }
 });
 </script>
                                     

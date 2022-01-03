@@ -15,7 +15,9 @@
 
   <link href="{{asset('../assets/css/mon-css.css')}}" rel="stylesheet" />
   <link href="{{asset('../assets/css/sweetalert2.min.css')}}" rel="stylesheet" />
-
+  
+  
+ 
 
 
 
@@ -95,7 +97,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="{{asset('../pages/billing.html')}}">
+          <a class="nav-link text-white " href="{{url('/emprunts/tout')}}"">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">how_to_vote</i>
             </div>
@@ -434,6 +436,9 @@ this.closest('form').submit();">
   <script src="{{asset('../assets/js/emprunt.js')}}"></script>
   <script src="{{asset('../assets/js/sweetalert2.min.js')}}"></script>
   <script src="{{asset('../assets/js/toastr.min.js')}}"></script>
+
+
+
   
   <script>
     var ctx = document.getElementById("chart-bars").getContext("2d");

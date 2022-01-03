@@ -9,7 +9,6 @@ $(document).ready(function() {
   //ajouter Mot cle
   $("#addKeyword").submit(function(e){
     e.preventDefault();
-    //alert("hello form")
     var form = this;
     $.ajax({
       url: $(form).attr('action'),

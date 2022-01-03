@@ -17,6 +17,7 @@ class CreateMotscleslivresTable extends Migration
             $table->id();
             $table->foreignId('livres_id')->constrained('livres')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('motscles_id')->constrained('motscles')->onDelete('cascade')->onUpdate('cascade');
+            $table->dateTime('deleted_at')->nullable();
             $table->timestamps();
             
             $table->dateTime('deleted_at')->nullable();

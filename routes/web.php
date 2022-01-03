@@ -24,6 +24,10 @@ use App\Http\Controllers\SearchController;
 // Dashboard
 Route::get('/dash',[UserController::class,'index']);
 
+Route::get('/', function(){
+    return redirect()->route('login');
+});
+
 //categories
 
 Route::get('/cat', function () {
@@ -58,6 +62,7 @@ Route::get('livres/{id}/modifier', 'LivreController@edit');
 Route::put('livres/{id}', 'LivreController@update');
 Route::delete('livres/{id}', 'LivreController@destroy');
 Route::get('livres/{id}/qrcode', 'QrCodeController@qrCodeLivre');
+Route::get('livres/getlivre/{isbn}', 'LivreController@getLivreAjax');
 Route::get('/livres/{id}/supprimer',[LivreController::class,'supprimer']);
 Route::get('/livres/confirmersupp/{id}',[LivreController::class,'Confirmsupprimer']);
 Route::get('/MasterDetailsBBooks/{id}',[LivreController::class,'MasterDetailsB']);
@@ -77,10 +82,17 @@ Route::post('auteurs','AuteurController@store')->name('auteurs.ajouter');
 Route::post('motscles', 'MotscleController@store')->name('motscles.ajouter');
 Route::post('motscles/{id}/supprimer', 'MotscleController@destroy')->name('motscles.supprimer');
 
+
+
+
 //Emprunts
-Route::get('emprunts','EmpruntController@index');
+Route::get('emprunts/ajouter', 'EmpruntController@add');
+Route::get('emprunts/{etat}','EmpruntController@index');
 Route::get('emprunts/créer', 'EmpruntController@create');
-Route::post('emprunts/ajouter', 'EmpruntController@store');
+
+Route::get('emprunts/getabonne/{id}', 'AbonneController@getAbonneAjax');
+
+Route::get('emprunts/enregistrer/{id_abonne}/{isbns}', 'EmpruntController@store');
 
 //authentification
 
@@ -103,6 +115,8 @@ Route::get('/confirmersuppgest{id}',[UserController::class,'confirmgest']);
 
 Route::post('auteurs', 'AuteurController@store')->name('auteurs.ajouter');
 Route::delete('auteurs/{id}', 'AuteurController@destroy')->name('auteurs.supprimer');
+
+//Abonnés
 
 
 //Abonnées
@@ -141,6 +155,8 @@ Route::get('/lsupp',[LivreController::class,'listLivressupp']);
 
 
 
+
+
 //Barre de Recherche
 Route::post('/rechercheCat',[SearchController::class,'CatSearch']);
 Route::post('/rechercheUti',[SearchController::class,'UtiSearch']);
@@ -156,4 +172,3 @@ Route::get('/login', function () {
 Route::get('/dashboard',[UserController::class,'index'])->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
- 
