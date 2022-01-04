@@ -51,9 +51,9 @@ $(document).ready(function() {
     
     $("#minus-motcle").click(function(e){
       e.preventDefault();
-      var motsclesSelectionne = $("#mot-cle").find(":selected").val();
+      var motcleSelectionne = $("#mot-cle").find(":selected").val();
       $.ajax({
-        url: "http://mybook.test/motscles/"+motsclesSelectionne+"/supprimer",
+        url: "http://mybook.test/motscles/"+motcleSelectionne+"/supprimer",
         dataType : 'json',
         type: 'POST',
         data: {},
@@ -64,7 +64,7 @@ $(document).ready(function() {
             toastr.warning(data.msg);
           }
           else{
-            $("#mot-cle option[value="+motsclesSelectionne+"]").remove();
+            $("#mot-cle option[value="+motcleSelectionne+"]").remove();
             toastr.success(data.msg);
           }
         },
@@ -138,7 +138,7 @@ $(document).ready(function() {
               toastr.warning(data.msg);
             }
             else{
-              $("#auteur option[value="+motsclesSelectionne+"]").remove();
+              $("#auteur option[value="+auteurSelectionne+"]").remove();
               toastr.success(data.msg);
             }
           },

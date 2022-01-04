@@ -116,7 +116,7 @@ Route::get('/confirmersuppgest{id}',[UserController::class,'confirmgest']);
 //Auteur
 
 Route::post('auteurs', 'AuteurController@store')->name('auteurs.ajouter');
-Route::delete('auteurs/{id}', 'AuteurController@destroy')->name('auteurs.supprimer');
+Route::post('auteurs/{id}/supprimer', 'AuteurController@destroy')->name('auteurs.supprimer');
 
 //Abonnés
 
