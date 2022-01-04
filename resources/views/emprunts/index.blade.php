@@ -67,11 +67,13 @@
 
                     <tr>
                       <td>
+                        <a href="{{url('abonnée/'.$abonne->id.'/profile')}}">
                             <p class="text-xs text-secondary mb-0 ps-2"><b>{{ $abonne->nom.' '.$abonne->prenom }}<b></p>
-                          </div>
+                        </a>
                       </td>
                       <td>
-                        <p class="text-xs font-weight-bold mb-0">{{ $livre->titre }}</p>
+                        <a href="{{url('/livre/profile/'.$livre->id)}}">
+                        <p class="text-xs text-secondary mb-0"><b>{{ $livre->titre }}</b></p></a>
                       </td>
                       <td class="align-middle text-center text-sm">
                         <p class="text-xs font-weight-bold mb-0"> {{ $emprunt->date_debut }} </p>

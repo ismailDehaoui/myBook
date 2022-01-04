@@ -123,6 +123,37 @@ $(document).ready(function() {
 
 
 
+      $("#minus-auteur").click(function(e){
+        e.preventDefault();
+        var auteurSelectionne = $("#auteur").find(":selected").val();
+        $.ajax({
+          url: "http://mybook.test/auteurs/"+auteurSelectionne+"/supprimer",
+          dataType : 'json',
+          type: 'POST',
+          data: {},
+          contentType: false,
+          processData: false,
+          success: function(data){
+            if(data.code == 0){
+              toastr.warning(data.msg);
+            }
+            else{
+              $("#auteur option[value="+motsclesSelectionne+"]").remove();
+              toastr.success(data.msg);
+            }
+          },
+          error: function(){
+            toastr.error("Quelque chose ne va pas!");
+          }
+  
+  
+      });
+    });
+
+
+
+
+
 
 
 

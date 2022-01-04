@@ -67,6 +67,8 @@ Route::get('/livres/{id}/supprimer',[LivreController::class,'supprimer']);
 Route::get('/livres/confirmersupp/{id}',[LivreController::class,'Confirmsupprimer']);
 Route::get('/MasterDetailsBBooks/{id}',[LivreController::class,'MasterDetailsB']);
 
+Route::get('/livre/profile/{id}','LivreController@profile');
+
 Route::get('/MasterDetailsKWBooks/{id}',[LivreController::class,'MasterDetailsKW']);
 
 Route::post('/MasterDetails/{id}',[LivreController::class,'MasterDetails']);
