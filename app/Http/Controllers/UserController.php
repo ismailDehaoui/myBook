@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Abonne;
 use App\Models\Categorie;
 use App\Models\Livre;
+use App\Models\Emprunt;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -73,7 +74,44 @@ class UserController extends Controller
     $ct = count($ct);
 
 
-    return view('dashboard.dashboard',['data'=>$data,'months'=>$months,'monthC'=>$monthC,'na'=>$nombreabonne,'ab'=>$ab,'plabels'=>$plabels,'pdata'=>$pdata,'ctj'=>$ct,'nbrCat'=>$nombrecategories],['livre'=>$livre,'year'=>$y,'yearC'=>$yC,'nl'=>$nombrelivre,'nla'=>$livreAjoute]);
+     //barchart
+
+    //emprunts
+    $em = Emprunt::select('id','created_at')->where('est_rendu','=',0)->get()->groupBy(function($data)
+      {return Carbon::parse($data->created_at)->format('M');});
+    $monthsem = [];
+    $monthCem = [];
+    foreach($em as $month => $values){
+      $monthsem[] = $month;
+      $monthCem[]= count($values);
+    }//nombre total
+   $nombreemp = Emprunt::select('id')->where('est_rendu','=',0)->get();
+   $nombreemp = count($nombreemp);
+
+   //retours
+    $ret = Emprunt::select('id','created_at')->where('est_rendu','=',1)->get()->groupBy(function($data)
+      {return Carbon::parse($data->created_at)->format('M');});
+    $monthsret = [];
+    $monthCret = [];
+    foreach($ret as $month => $values){
+      $monthsret[] = $month;
+      $monthCret[]= count($values);
+    }//nombre total
+   $nombreret = Emprunt::select('id')->where('est_rendu','=',1)->get();
+   $nombreret = count($nombreret);
+
+    return view('dashboard.dashboard',
+      ['data'=>$data,'months'=>$months,
+      'monthC'=>$monthC,'na'=>$nombreabonne,
+      'ab'=>$ab,'plabels'=>$plabels,
+      'pdata'=>$pdata,'ctj'=>$ct,
+      'nbrCat'=>$nombrecategories],
+      ['livre'=>$livre,'year'=>$y,'yearC'=>$yC,
+       'nl'=>$nombrelivre,'nla'=>$livreAjoute,
+       'emp'=>$em,'ret'=>$ret,
+       'monthsem'=>$monthsem,
+       'monthCem'=>$monthCem,'monthsr'=>$monthsret,
+       'monthCr'=>$monthCret]);
 
 
   }
