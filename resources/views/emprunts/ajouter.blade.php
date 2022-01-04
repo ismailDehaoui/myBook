@@ -4,7 +4,7 @@
 
 <div class="container-fluid py-4">
   @if (session('status'))
-    <div class="text-white text-center alert alert-success">
+    <div class="text-white alert alert-success">
         {{ session('status') }}
     </div>
   @endif

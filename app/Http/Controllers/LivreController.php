@@ -241,12 +241,13 @@ class LivreController extends Controller
        $l->acteur = $user->id;
        $l->save();
        $emp = Emprunt::where('livres_id',$id)->get();
-           if($emp->count() != 0){
+        if($emp->count() != 0){
             Alert::error('Livre est  déja emprunté');
-           return redirect('livres');  
+            return redirect('livres');  
        }
       
        $l->delete();
+       Alert::success('Succeès', 'Livre supprimé avec succès');
        return redirect('livres');
   }
   //Master detailles

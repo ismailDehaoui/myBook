@@ -40,7 +40,7 @@ class AbonneController extends Controller
       </td>
       <td>
           <div class='d-flex flex-column justify-content-center'>
-              <h6 class='mb-0 text-sm'>$abonne->nom</h6>
+              <h6 class='mb-0 text-sm'>$abonne->nom $abonne->prenom</h6>
             </div>
       </td>
       <td>
@@ -116,6 +116,18 @@ class AbonneController extends Controller
       $abonne->save();
       return redirect('/');
     }
+  }
+
+  public function destroy($id){
+    $emprunt = Emprunt::where('abonnes_id', $id)->where('est_rendu', false);
+    if($emprunt->count() != 0){
+      Alert::error('Supression impossible! Cet abonné possède déja un ou plusieurs livres!');
+      return redirect('/abonnés');  
+    }
+    $abonne = Abonne::find($id);
+    $abonne->delete();
+    Alert::success('Succeès', 'Abonné supprimé avec succès!');
+    return redirect('/abonnés');
   }
 
 

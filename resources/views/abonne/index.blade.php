@@ -21,6 +21,7 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Photo</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nom</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Prénom</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
@@ -37,21 +38,29 @@
 
                     <tr>
                       <td>
-                        <div class="d-flex px-2 py-1">
+                        
                           <div>
                             <img src="{{ asset('storage/images/abonnés/'.$abonne->photo) }}" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
                           </div>
+                        </td>
+                        <td>
                           <div class="d-flex flex-column justify-content-center">
                             <a href="{{url('abonnée/'.$abonne->id.'/profile')}}">
                               <h6 class="mb-0 text-sm">{{$abonne->nom}}</h6>
                             </a>
                             <!--<p class="text-xs text-secondary mb-0">john@creative-tim.com</p>-->
                           </div>
-                        </div>
+                        
                       </td>
                       <td>
-                        <p class="text-xs font-weight-bold mb-0">{{ $abonne->prenom }}</p>
-                      </td>
+                        <div class="d-flex flex-column justify-content-center">
+                          <a href="{{url('abonnée/'.$abonne->id.'/profile')}}">
+                            <h6 class="mb-0 text-sm">{{$abonne->prenom}}</h6>
+                          </a>
+                          <!--<p class="text-xs text-secondary mb-0">john@creative-tim.com</p>-->
+                        </div>
+                      
+                    </td>
                       <td class="align-middle text-center text-sm">
                         <p class="text-xs font-weight-bold mb-0"> {{ $abonne->email }} </p>
                       </td>

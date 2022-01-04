@@ -134,6 +134,8 @@ Route::put('abonnés/{id}/update','AbonneController@update');
 
 Route::get('abonnés/{id}/edit','AbonneController@edit');
 
+Route::delete('abonnés/{id}', 'AbonneController@destroy');
+
 
 Route::get('abonnés/{id}/qrcode', 'QrCodeController@qrCodeAbonne');
 
