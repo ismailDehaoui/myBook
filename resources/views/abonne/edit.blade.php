@@ -18,29 +18,29 @@
                 <div class="row">
                    
                     <div class="col-md-12">
-                      <form action="{{url('modifier/'.$abonne->id)}}" method="POST"  enctype="multipart/form-data">
+                      <form action="{{url('abonnés/'.$abonne->id.'/update')}}" method="POST"  enctype="multipart/form-data">
                             <input type="hidden" name="_method" value="PUT">
                             {{ csrf_field() }}
                             <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group my-3">
                                     
-                                        <label for="titre" class="form-label">Nom</label>
-                                        <input type="text" class="form-control border border-primary" name="titre" value="{{ $abonne->nom }}" required>
+                                        <label for="nom" class="form-label">Nom</label>
+                                        <input type="text" class="px-2 form-control border border-primary" name="nom" value="{{ $abonne->nom }}" required>
                                     
                                 </div>
 
                             <div class="form-group my-3">
                                
-                                    <label for="isbn" class="form-label">Prénom</label>
-                                    <input type="text" class="form-control border border-primary" name="isbn" value="{{ $abonne->prenom }}" required>
+                                    <label for="prenom" class="form-label">Prénom</label>
+                                    <input type="text" class="px-2 form-control border border-primary" name="prenom" value="{{ $abonne->prenom }}" required>
                                
                             </div>
 
                             <div class="form-group my-3">
                                 
-                                    <label for="éditeur" class="form-label">Email</label>
-                                    <input type="text" class="form-control border border-primary" name="éditeur" value="{{ $abonne->email }}" required>
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="text" class="px-2 form-control border border-primary" name="email" value="{{ $abonne->email }}" required>
                                 
                             </div>
 
@@ -90,16 +90,18 @@
                      
                   </div>
                   <div class="form-group my-3">
-           
-                    <label class="form-label">Photo</label>
-                      <img 
-                          src="{{asset('storage/Admin/'.$abonne->photo)}}" 
-                          class="avatar avatar-lg px-2 me-3 border-radius-lg" 
-                          required>
-                      <br/><br/>
-                      <input type="file" class="form-control border border-primary" name="image"  accept="image/jpg,image/jpeg,image/png">
-               
-            </div>
+                    <div class="col-md-12">
+                      <div class="row">
+                        <div class="col-md-10">
+                      <label for="image">image</label>
+                      <input type="file" name="image" class="form-control border border-primary" value="{{ asset("public/storage/images/abonnés".$abonne->photo) }}" >
+                        </div>
+                      <div class="d-flex col-md-2">
+                        <img src="{{ asset('storage/images/abonnés/'.$abonne->photo) }}" class="img-fluid">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                                             
                                 </div>
 

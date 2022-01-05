@@ -72,7 +72,6 @@
                         <form action="{{url('/abonnés/'.$abonne->id)}}" method="POST">
                           {{ csrf_field() }}
                           {{ method_field('DELETE') }}
-
                           <div class="btn-group">
                             <a href="{{url('/abonnés/'.$abonne->id.'/qrcode')}}" title="Qr Code" class="btn btn-info">
                               <i class="fas fa-qrcode me-sm-1"></i>  
