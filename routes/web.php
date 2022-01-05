@@ -67,6 +67,8 @@ Route::get('/livres/{id}/supprimer',[LivreController::class,'supprimer']);
 Route::get('/livres/confirmersupp/{id}',[LivreController::class,'Confirmsupprimer']);
 Route::get('/MasterDetailsBBooks/{id}',[LivreController::class,'MasterDetailsB']);
 
+Route::get('/livre/profile/{id}','LivreController@profile');
+
 Route::get('/MasterDetailsKWBooks/{id}',[LivreController::class,'MasterDetailsKW']);
 
 Route::post('/MasterDetails/{id}',[LivreController::class,'MasterDetails']);
@@ -114,7 +116,7 @@ Route::get('/confirmersuppgest{id}',[UserController::class,'confirmgest']);
 //Auteur
 
 Route::post('auteurs', 'AuteurController@store')->name('auteurs.ajouter');
-Route::delete('auteurs/{id}', 'AuteurController@destroy')->name('auteurs.supprimer');
+Route::post('auteurs/{id}/supprimer', 'AuteurController@destroy')->name('auteurs.supprimer');
 
 //Abonnés
 
@@ -131,6 +133,8 @@ Route::post('abonnés','AbonneController@store');
 Route::put('abonnés/{id}/update','AbonneController@update');    
 
 Route::get('abonnés/{id}/edit','AbonneController@edit');
+
+Route::delete('abonnés/{id}', 'AbonneController@destroy');
 
 
 Route::get('abonnés/{id}/qrcode', 'QrCodeController@qrCodeAbonne');

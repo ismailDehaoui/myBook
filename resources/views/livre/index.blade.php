@@ -45,7 +45,7 @@
                             <img src="{{ asset('storage/images/livres/'.$livre->photo) }}" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
                           </div>
                           <div class="d-flex flex-column justify-content-center">
-                            <a class="nav-link text-blue"  href="{{url('/MasterDetailsBBooks/'.$livre->id)}}" >
+                            <a class="nav-link text-blue"  href="{{url('/livre/profile/'.$livre->id)}}" >
                             <h6 class="mb-0 text-sm">{{ $livre->titre }}</h6>
                             <!--<p class="text-xs text-secondary mb-0">john@creative-tim.com</p>-->
                           </a></div>

@@ -241,12 +241,13 @@ class LivreController extends Controller
        $l->acteur = $user->id;
        $l->save();
        $emp = Emprunt::where('livres_id',$id)->get();
-           if($emp->count() != 0){
+        if($emp->count() != 0){
             Alert::error('Livre est  déja emprunté');
-           return redirect('livres');  
+            return redirect('livres');  
        }
       
        $l->delete();
+       Alert::success('Succeès', 'Livre supprimé avec succès');
        return redirect('livres');
   }
   //Master detailles
@@ -275,5 +276,15 @@ class LivreController extends Controller
     $l = Livre::find($i);
    return view('livre.MDetailsKeyWord',['mots'=>$mots,'livre'=>$l,'motsC'=>$motsC]);
   }
+
+  function profile($id){
+      $livre = Livre::find($id);
+      $nombreLivresEmpruntes = Emprunt::where('livres_id','=',$id)->count();
+      $nombreTotalLivre = $nombreLivresEmpruntes + $livre->nombre_exemplaires_disponibles;
+      $motscles = Motscleslivre::join('motscles', 'motscles.id', '=', 'motscleslivres.motscles_id')->where('motscleslivres.livres_id','=',$id)->where('motscles.deleted_at', null)->get();
+      $empruntsNonRendus = Emprunt::join('abonnes', 'abonnes.id', '=', 'emprunts.abonnes_id')->where('livres_id', $id)->where('est_rendu', false)->paginate(10);      
+      $categorie = Categorie::find($livre->categories_id);
+      return view('livre.profile',['livre'=>$livre, 'nbTotal'=>$nombreTotalLivre, 'nbEmprunt'=>$nombreLivresEmpruntes, 'motscles'=>$motscles, 'empruntsNonRendus'=>$empruntsNonRendus, "nomCategorie"=>$categorie->nom]);
+    }
 }
 
