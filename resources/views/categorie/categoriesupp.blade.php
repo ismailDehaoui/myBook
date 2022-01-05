@@ -18,6 +18,7 @@
                   <thead>
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Catégorie</th>
+                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Acteur</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Date d'ajout</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Date de suppression</th>
                     </tr>
@@ -34,6 +35,10 @@
                             <h6 class="mb-0 text-sm">{{$c->nom}}</h6>
                           </div>
                         </div>
+                      </td>
+                      <?php $act = \App\Models\User::where('id',$c->acteur)->get();?>
+                      <td>
+                        <p class="text-xs font-weight-bold mb-0">{{$act[0]->name}}</p>
                       </td>
                       <td>
                         <p class="text-xs font-weight-bold mb-0">{{$c->created_at}}</p>

@@ -259,7 +259,7 @@ class LivreController extends Controller
   }
   function MasterDetailsB($i){
     $emp = Emprunt::join('abonnes', 'abonnes.id', '=', 'emprunts.abonnes_id')
-               ->where('livres_id','=',$i)->paginate(1);
+               ->where('livres_id','=',$i)->paginate(5);
 
     $empTo = Emprunt::join('abonnes', 'abonnes.id', '=', 'emprunts.abonnes_id')
                ->where('livres_id','=',$i)->count();
@@ -268,7 +268,7 @@ class LivreController extends Controller
   }
   function MasterDetailsKW($i){
     $mots = Motscleslivre::join('motscles', 'motscles.id', '=', 'motscleslivres.motscles_id')
-               ->where('motscleslivres.livres_id','=',$i)->paginate(1);
+               ->where('motscleslivres.livres_id','=',$i)->paginate(5);
 
     $motsC =  Motscleslivre::join('motscles', 'motscles.id', '=', 'motscleslivres.motscles_id')
                ->where('motscleslivres.livres_id','=',$i)->count();

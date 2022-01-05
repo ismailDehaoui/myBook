@@ -118,5 +118,11 @@ class AbonneController extends Controller
     }
   }
 
+  public function listAbonsupp(){
+      
+      $l = Abonne::onlyTrashed()->paginate(5);
+        return view('Historique.abonsupp', ['abon'=>$l]);
+    } 
+
 
 }

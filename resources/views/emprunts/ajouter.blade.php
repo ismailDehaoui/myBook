@@ -84,7 +84,7 @@
                 <div class="row">
                 <div class="card-footer text-center pt-0 px-lg-2 px-1">
                     <p class="mb-2 text-sm mx-auto">
-                      <a href="{{url('/emprunts')}}" class="text-primary text-gradient font-weight-bold">Retourner vers la liste des emprunts</a>
+                      <a href="{{url('/emprunts/tout')}}" class="text-primary text-gradient font-weight-bold">Retourner vers la liste des emprunts</a>
                     </p>
                   </div>
                 </div>
