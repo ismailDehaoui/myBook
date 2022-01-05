@@ -82,37 +82,6 @@
                         </div>
                     @endforeach         
                 </div>
-                <div class="row ">
-                    @foreach ($categories as $categorie)          
-                        <div class="col-md-3 mb-3">
-                            <div class="portfolio">       
-                                <div class="container2">
-                                    <ul class="gallery">
-                                        <li>
-                                            <div class="flip">
-                                                <!--<div class="front-side">
-                                                    <img src="">
-                                                </div>-->
-                                                <div class="">
-                                                    <a href="{{url('/livre/categorie/'.$categorei->nom)}}">
-                                                         <div class="">
-                                                            <div class=""></div>
-                                                            <div class="">
-                                                                <h3>{{$categorie->nom}}</h3>                                        
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </li>  
-                                    </ul>
-                                </div> 
-                            </div>         
-                            
-                        </div>
-                    @endforeach         
-                </div>
-            </div>
         </div>
     </div>
 </div>

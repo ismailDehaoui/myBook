@@ -34,12 +34,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oooh+Baby&display=swap" rel="stylesheet">
-
+  <link rel="apple-touch-icon" sizes="76x76" href="{{asset('../assets/img/apple-icon.png')}}">
+  <link rel="icon" type="image/png" href="{{asset('../assets/img/favicon.png')}}">
+  
 </head>
 <body>
   @include('Frontend.include.navBar')
   
-  <div class="content">
+  <div class="content container">
       @yield('content')
   </div>
 

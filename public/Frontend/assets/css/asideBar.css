@@ -3,6 +3,7 @@
 	padding: 0;
 	box-sizing: border-box;
 }
+
 .ismail {
 	position: relative;
 	width: 100%;
@@ -15,11 +16,11 @@
 	box-shadow: 0 35px 55px rgba(0, 0, 0, 0.1);
 }
 .ismail .sidebar {
-	top: 340px;
+	bottom: 150px;
 	left: 10;
-	height: 1000px;
+	height: 100%;
 	width: 220px;
-	background: #3498db;
+	background: rgb(50, 55, 75);
 /* font-family: 'Oooh Baby', cursive; */
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 25px;

@@ -5,7 +5,10 @@
 @endsection
 @section('content')
 <style>
-   
+ .container{
+    
+    width: 400%;
+ }  
  /* Par défaut, une étoile est en gris,
    avec un padding et un curseur en forme de main. */
    .bxs-star {
@@ -46,13 +49,15 @@
 	.stars .bxs-star:hover ~ .bxs-star {
 		color: gray;
 	}
-
+   .kheir{
+      background:  #f7e7d9;
+    }
 /******************************************************************/
 /* style pour la démo */
 
 /******************************************************************/
 </style>
-<div class="py-3 mb-4 shadow-sm  border-top">
+<div class="py-3 kheir mb-4 shadow-sm  border-top">
    <div class="container">
       <h6 class="mb-0">
          <a href="{{url('/')}}">accueil</a>/
@@ -60,9 +65,9 @@
          <a href="{{url('/livre/categorie/'.$caregorie->nom)}}">{{$caregorie->nom}}</a>
       </h6>
    </div>
-</div>
-<div class="container">          
-   <div class="bd">
+</div> 
+<div class="container">
+     <div class="bd">
       <div class="dehaoui">
          <div class="left_Side"> 
             <div class="profileText">
@@ -74,7 +79,8 @@
                   <br>
                   @foreach ($auteurs as $auteur)
                      <small>
-                       {{$auteur->nom}} 
+                       {{$auteur->nom}}
+                       <br> 
                      </small>
                   @endforeach   
                </h2>
@@ -82,20 +88,7 @@
          </div>
          <div class="center_Side">
             <div class="about">
-               <h2 class="title">Resume</h2>
-               
-               <div class="rating">
-                  <span class="pl-1 ratings-rate font-hairline text-blueGray-700">
-                     <span class="text-3xl text-gray-700">3.5</span>/<span class="text-gray-700 base-rating" itemprop="bestRating">5</span>
-                  </span>
-                  <div class="stars">
-                     <i class='bx bxs-star gold'></i>
-                     <i class='bx bxs-star gold'></i>
-                     <i class='bx bxs-star gold'></i>
-                     <i class='bx bxs-star'></i>
-                     <i class='bx bxs-star'></i>
-                  </div> 
-               </div>                                       
+               <h2 class="title">Resume</h2>                           
                <hr>
                <p>
                   {{$livre->resume}}
@@ -107,7 +100,14 @@
                <thead>
                   <tr>
                      <td class="main">Auteur</td>
-                     <td>{{$livre->titre}}</td>
+                     <td>
+                        @foreach ($auteurs as $auteur)
+                     <small>
+                       {{$auteur->nom}}
+                       <br> 
+                     </small>
+                  @endforeach
+                     </td>
                   </tr>
                   <tr>
                      <td class="main">Editeur</td>
@@ -122,6 +122,10 @@
                      <td>{{$caregorie->nom}}</td>
                   </tr>
                   <tr>
+                     <td class="main">Nombre des exemplaires</td>
+                     <td>{{$livre->nombre_exemplaires_disponibles}}</td>
+                  </tr>
+                  <tr>
                      <td class="main">Année</td>
                      <td>{{$livre->annee}}</td>
                   </tr>
@@ -129,15 +133,22 @@
                      <td class="main">La langue</td>
                      <td>{{$livre->langue}}</td>
                   </tr>
+                  <tr>
+                     <td class="main">Mot-clé</td>
+                     <td>
+                        @foreach ($motsCles as $motcle)
+                            {{$motcle->motcle}}/ 
+                        @endforeach
+                     </td>
+                  </tr>
                </thead>
             </table> 
          </div>   
       </div>
    </div>  
    <hr>
-   <!--<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-     L'avis de ce produit
-    </button>-->
+   
+   
     <hr>
 </div>
 <hr>
@@ -170,7 +181,6 @@
      </div>
    </div>
 </div>
-
 @endsection('content')
 @section('scripts')
 <script>

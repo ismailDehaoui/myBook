@@ -225,7 +225,12 @@
                                 
                               
                             <div class="form-group my-3">
-                              <label for="mot-cle">Mot(s)-clé(s)</label> &nbsp;&nbsp;&nbsp; <a href="#" class="btn p-0 m-0" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fas fa-plus"></i></a>
+                              <label for="mot-cle">Mot(s)-clé(s)</label> 
+                              &nbsp;&nbsp;&nbsp;  
+                              <a href="{{url('/motscles/supprimer')}}" id="minus-motcle" title="Supprimer les mots-clés selectionnés" class="mr-0"><i class="fas fa-minus"></i></a> 
+                              &nbsp;&nbsp;&nbsp;
+                              <a href="#" title="Ajouter un nouveau mot-clé" class="" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fas fa-plus"></i></a>
+                             
                               <select id="mot-cle" name="motcle[]" class="form-control border border-primary px-2" multiple>
                                   @foreach ($motscles as $motcle)
                                   <option value="{{ $motcle->id }}"> {{ $motcle->motcle }} </option>

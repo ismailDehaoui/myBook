@@ -67,13 +67,16 @@
                           {{ method_field('DELETE') }}
 
                           <div class="btn-group">
-                            <a href="{{url('/livres/'.$livre->id.'/modifier')}}" class="btn btn-secondary">
-                              <i class="fas fa-edit me-sm-1"></i>
-                              modifier
+                            <a href="{{url('/livres/'.$livre->id.'/qrcode')}}" title="Qr Code" class="btn btn-info">
+                              <i class="fas fa-qrcode me-sm-1"></i>  
                             </a>
-                            <button type="submit" class="btn btn-danger">
-                              <i class="material-icons text-sm me-sm-1">delete</i>  
-                              supprimer
+                            <a href="{{url('/livres/'.$livre->id.'/modifier')}}" title="Modifier" class="btn btn-secondary">
+                              <i class="fas fa-edit me-sm-1"></i>
+                    
+                            </a>
+                            <button type="submit" class="btn btn-danger" title="Supprimer">
+                              <i class="fas fa-trash-alt me-sm-1"></i> 
+  
                             </button>
                           </div>
 

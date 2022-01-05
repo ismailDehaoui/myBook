@@ -17,6 +17,13 @@ class AbonneeController extends Controller{
         $emprunts = Emprunt::where('id',$id)->paginate(5);
         return view('abonnees.profile',['abonnee'=>$abonnee,'emprunts'=>$emprunts]); 
     }
+<<<<<<< HEAD
+       // $emprunts = Emprunt::where('abonnees_id',$id)->paginate(5);
+        //return view('abonnees.profile',['abonnee'=>$abonnee,'emprunts'=>$emprunts]); 
+        //return view('abonnees.profile',['abonnee'=>$abonnee]);
+      //}
+=======
+>>>>>>> 583c23ea7eaa59431b13bf6761a1665121feb0ae
 
     public function listAbonnees(){
     	$abonnee = Abonnee::paginate(3);
@@ -25,13 +32,30 @@ class AbonneeController extends Controller{
     
     public function store(Request $request){   
       if (Abonnee::where('email', $request->input('email'))->exists()) {
+<<<<<<< HEAD
+             echo "Error";
         Alert::error('Email déja existe!');
+=======
+        Alert::error('Email déja existe!');
+<<<<<<< HEAD
+=======
+
+>>>>>>> 583c23ea7eaa59431b13bf6761a1665121feb0ae
+>>>>>>> 8a733361cc395c4e9eb08eef41553742baf93434
         }else{
         $abonnee                         = new Abonnee();
         $abonnee->nom           = $request->input('nom');
     	  $abonnee->prenom         = $request->input('prenom');
         $abonnee->email          = $request->input('email');
         $abonnee->adresse        = $request->input('adresse');
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+        $abonnee->date = $request->input('date_naissance');       
+=======
+
+>>>>>>> 583c23ea7eaa59431b13bf6761a1665121feb0ae
+>>>>>>> 8a733361cc395c4e9eb08eef41553742baf93434
         $abonnee->date_naissance = $request->input('date_naissance');       
         $filenameWithExt                 = $request->file('image')->getClientOriginalName();
         // Get just filename
@@ -42,9 +66,16 @@ class AbonneeController extends Controller{
         $fileNameToStore                 = $filename.'_'.time().'.'.$extension;
         // Upload Image
         $path                            = $request->file('image')->storeAs('public/Admin', $fileNameToStore);
+<<<<<<< HEAD
+        $abonnee->photo                 = $fileNameToStore;
+       // $abonnee->date_expiration        = date(NOW());
+        $abonnee->photo                  = $fileNameToStore;
+        
+=======
 
         $abonnee->photo                 = $fileNameToStore;
        // $abonnee->date_expiration        = date(NOW());
+>>>>>>> 583c23ea7eaa59431b13bf6761a1665121feb0ae
         $abonnee->created_at             = date(NOW());
         $abonnee->save();
         Alert::success('Abonnée est bien ajoutée');
@@ -54,7 +85,7 @@ class AbonneeController extends Controller{
 
       public function edit($id){
     	$abonnee = Abonnee::find($id);
-    	return view('abonnees.modifier', ['abonnee'=>$abonnee]);
+    	return view('abonnes.modifier', ['abonnee'=>$abonnee]);
     }
 
       public function update(Request $request,$id){

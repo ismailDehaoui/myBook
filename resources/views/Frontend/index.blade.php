@@ -18,19 +18,21 @@
           <a href="portfolio.html" class="btn btn-outline-primary">Afficher tous <span class="mai-arrow-forward ml-2"></span></a>
         </div>
       </div>
-      <div class="row mt-3">
-        <div class="owl-carousel featured-carousel owl-theme">
-            @foreach ($livres as $livre)          
-                <div class="item">
-                    <div class="portfolio">
-                        <a href="{{asset('storage/images/livres/'.$livre->photo)}}" data-fancybox="portfolio">
-                            <img src="{{asset('storage/images/livres/'.$livre->photo)}}" alt="">
-                        </a>
-                    </div>
-                    <h5>{{$livre->titre}}</h5>
+      <div class="row md-3">
+        @foreach ($livres as $livre)
+              <div class="col-md-4">  
+                <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src="{{asset('storage/images/livres/'.$livre->photo)}}" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">{{$livre->titre}}</h5>
+                      <p class="card-text text-truncate">
+                        {{$livre->resume}}
+                      </p>
+                      <a href="" class="btn btn-primary">Détails</a>
+                  </div>
                 </div>
-            @endforeach
-        </div>          
+              </div>
+              @endforeach                
       </div>
     </div>
 </div>

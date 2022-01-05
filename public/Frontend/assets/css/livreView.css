@@ -7,25 +7,18 @@
  .dehaoui{
     position: relative;
     width: 100%;
-    max-width: 1000px;
-    min-height: 100px;
-    /*background: #234f23;*/
-    margin: 50px;
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     box-shadow: 0 35px 55px rgba(0, 0, 0, 0.1)
  }
  .dehaoui .left_Side{
-    position: relative;
-    padding: 40px;
+    
  }
  .dehaoui .center_Side{
-    position: relative;
-    padding: 40px;
+    
  }
  .dehaoui .right_Side{
-    position: relative;
-    padding: 40px;
+    
  }
  .profileText{
     position: relative;
@@ -91,11 +84,11 @@
      border: 1px solid #e2e2e2;
  }
 .main{
-    background: #f44336;
+    background:#cc9966;
     color: white;
     font-weight: bold;
     text-align: center;
-    border-color: #f35246;
+    border-color: #cc9966;
 
  }
  a{

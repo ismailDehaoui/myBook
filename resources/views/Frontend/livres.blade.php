@@ -6,6 +6,9 @@
 @endsection
 @section('content')
 
+<style>
+    
+</style>
 
 <div class="ismail">      
     <div class="row">
@@ -38,14 +41,52 @@
         <div class="page-section">
             <div class="container">
                 <div>
-                    <form action="/search">
+                    <form action="/search" method="GET">
                         {{csrf_field()}}
-                        <input type="text" name="search">
-                        <input type="submit" value="Search">
+                        <div class="container di">
+                            <ul class="list-unstyled row    ">
+                                <li class="col-md ">        
+                                    <label for="">Auteur</label>
+                                    <select name="auteur" id="">
+                                        <option value=""></option>
+                                        @foreach ($auteurs as $auteur)
+                                            <option value="{{$auteur->nom}}">{{$auteur->nom}}</option>
+                                        @endforeach
+                                    </select>
+                                </li>
+                                <li class="col-md ">    
+                                    <label for="">Titre</label>
+                                    <select name="titre" id="">
+                                        <option value=""></option>
+                                        @foreach ($livres as $livre)
+                                            <option value="{{$livre->titre}}">{{$livre->titre}}</option>
+                                        @endforeach
+                                    </select>
+                                </li>
+                                <li class="col-md ">
+                                    <label for="">La langue</label>
+                                    <select name="langue" id="">
+                                        <option value=""></option>
+                                        <option value="arabe">Arabe</option>
+                                        <option value="francais">Francais</option>
+                                        <option value="anglais">Anglais</option>
+                                    </select>
+                                </li>
+                                
+                                <li class="col-md ">    
+                                    <label for="">Mot Clé</label>
+                                    <input type="text" name="mot-clé"> 
+                                </li>
+                                <li class="col-md ">
+                                    <input type="submit" value="Search">
+
+                                </li>        
+                            </ul>
+                        </div>    
                     </form>
                 </div>
-                <div class="row align-items-center">
-                   
+                
+                <div class="row align-items-center">   
                     <div class="col-md-6 py-3">
                         <div class="subhead"></div>
                             <h2 class="title-section">Tous les livres </h2>

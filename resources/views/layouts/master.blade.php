@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="{{asset('../assets/img/apple-icon.png')}}">
   <link rel="icon" type="image/png" href="{{asset('../assets/img/favicon.png')}}">
@@ -12,6 +13,7 @@
 
   <link href="{{asset('../assets/css/mon-css.css')}}" rel="stylesheet" />
   <link href="{{asset('../assets/css/sweetalert2.min.css')}}" rel="stylesheet" />
+  
   
  
 
@@ -53,6 +55,9 @@
           </a>
         </li>
         <ul class="navbar-nav">
+
+         @yield('admin')
+
          <?php $user = auth()->user();?>
             @if($user->est_super_admin)
             <li class="nav-item">
@@ -64,14 +69,7 @@
                       </a>
                     </li>
             @endif
-          <li class="nav-item">
-            <a class="nav-link text-white" href="{{url('/categories')}}">
-              <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="material-icons opacity-10">category</i>
-              </div>
-              <span class="nav-link-text ms-1">Mes catégories</span>
-            </a>
-        </li>    
+
         <li class="nav-item">
           <a class="nav-link text-white" href="{{url('/categories')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -429,13 +427,12 @@ this.closest('form').submit();">
   <script src="{{asset('../assets/js/plugins/perfect-scrollbar.min.js')}}"></script>
   <script src="{{asset('../assets/js/plugins/smooth-scrollbar.min.js')}}"></script>
   <script src="{{asset('../assets/js/plugins/chartjs.min.js')}}"></script>
-  <script src="{{asset('../assets/js/my-js.js')}}"></script>
+  <script src="{{asset('../assets/js/motcle-auteur.js')}}"></script>
+  <script src="{{asset('../assets/js/emprunt.js')}}"></script>
   <script src="{{asset('../assets/js/sweetalert2.min.js')}}"></script>
-<<<<<<< HEAD
 <script src="{{asset('../assets/js/toastr.min.js')}}"></script>-->
-=======
   <script src="{{asset('../assets/js/toastr.min.js')}}"></script>
->>>>>>> 8e80a422cf336dbc5705d2c63612d3eee5b7fd2d
+
 
  
 

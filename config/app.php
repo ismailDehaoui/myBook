@@ -178,7 +178,7 @@ return [
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         
 
-       // Yajra\DataTables\DataTablesServiceProvider::class,
+        //Yajra\DataTables\DataTablesServiceProvider::class,
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
 
     ],

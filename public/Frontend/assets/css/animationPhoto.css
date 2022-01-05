@@ -40,7 +40,7 @@ a {
 	transform: rotateY(180deg);
 }
 .gallery li:hover .back-side {
-	background: #466699;
+	background: rgb(50, 55, 75);;
 	opacity: 1;
 	transform: rotateY(0deg);
 }
@@ -75,6 +75,9 @@ a {
 	-moz-transform: rotateY(-180deg);
 	transform: rotateY(-180deg);
 }
+.gallery .back-side a{
+	text-decoration: none;
+}
 .gallery .back-side > a {
 	display: block;
 	width: 200px;
@@ -107,11 +110,11 @@ a {
 	transform: translateY(-50%);
 	padding: 25px 20px;
   color: #fff;
-}
+}/*
 .gallery .content2 .text2 h3:hover {
 	background: #fff;
   color: #3498db;
-}
+}*/
 .gallery li:hover .text {
 	opacity: 1;
 	visibility: visible;
@@ -164,8 +167,6 @@ a {
 	border-radius: 50%;
 	margin: auto;
 	border: 4px solid transparent;
-	border-top-color: #3498db;
-	border-left-color: #3498db;
 }
 @-webkit-keyframes load {
 	0% {

@@ -163,6 +163,9 @@ Route::get('/livre/categorie/{nom}/{titre}', [frontendController::class,'livreVi
 // Avis 
 Route::get('/search',[frontendController::class,'search']);
 
+Route::get('/t',function(){
+    return view('Frontend.t');
+});
 
 require __DIR__.'/auth.php';
  

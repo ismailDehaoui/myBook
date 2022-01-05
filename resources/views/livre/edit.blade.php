@@ -111,8 +111,17 @@
                             
 
                             <div class="form-group my-3">
+                              <div class="col-md-12">
+                                <div class="row">
+                                  <div class="col-md-10">
                                 <label for="image">image</label>
                                 <input type="file" name="image" class="form-control border border-primary" value="{{ asset("public/storage/images/livres".$livre->photo) }}" >
+                                  </div>
+                                <div class="col-md-2">
+                                  <img src="{{ asset('storage/images/livres/'.$livre->photo) }}" class="avatar lg-5">
+                                  </div>
+                                </div>
+                              </div>
                             </div>
                                 
                                 
