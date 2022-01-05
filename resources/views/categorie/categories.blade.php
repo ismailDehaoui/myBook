@@ -1,4 +1,6 @@
-
+@Section('form')
+ <form action="{{url('/rechercheCat')}}" method="POST" id="myForm">
+@endsection
 @extends('layouts.master')
 @Section('content')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.8/sweetalert2.min.js" integrity="sha512-ySDkgzoUz5V9hQAlAg0uMRJXZPfZjE8QiW0fFMW7Jm15pBfNn3kbGsOis5lPxswtpxyY3wF5hFKHi+R/XitalA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -74,6 +76,12 @@
               </div>
             </div>
           </div>
+          <div class="card-footer text-center pt-0 px-lg-2 px-1">
+                  <p class="mb-2 text-sm mx-auto">
+                    <a href="{{url('/categories')}}" class="text-primary text-gradient font-weight-bold">Retournez aux catégories</a>
+                  </p>
+                </div>
+             <br/>
         </div>
         <div class="pagination">
           {{$categories->links()}}

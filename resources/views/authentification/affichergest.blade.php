@@ -1,4 +1,6 @@
-
+@Section('form')
+ <form action="{{url('/rechercheUti')}}" method="POST" >
+@endsection
 @extends('layouts.master')
 @Section('content')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.8/sweetalert2.min.js" integrity="sha512-ySDkgzoUz5V9hQAlAg0uMRJXZPfZjE8QiW0fFMW7Jm15pBfNn3kbGsOis5lPxswtpxyY3wF5hFKHi+R/XitalA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -47,7 +49,7 @@
                           <div>
                             
                             <!--img src="{{asset('photolink/'.$c->photo)}}" class="avatar avatar-sm me-3 border-radius-lg" alt="user1"-->
-                             <img src="{{asset('storage/Admin/'.$c->photo)}}" class="avatar avatar-lg me-3 border-radius-lg" alt="user1">
+                             <img src="{{asset('storage/Admin/'.$c->photo)}}" class="avatar avatar-lg me-3 " alt="user1">
                           </div>
                           <div class="d-flex flex-column justify-content-center">
                             <input type="hidden" name="afficher">
@@ -80,13 +82,13 @@
                         <p class="text-xs font-weight-bold mb-0">{{$c->updated_at}}</p>
                       </td>
                       <td>
-                         <a class="btn bg-gradient-warning mb-0"  href="{{url('/editgest'.$c->id)}}" >
+                         <a   href="{{url('/editgest'.$c->id)}}" >
                             <input type="hidden" name="afficher">
                           <i class="material-icons text-xlg" >update</i>&nbsp;&nbsp;
                         </a>
                       </td>
                       <td class="align-middle">
-                         <a class="btn bg-gradient-danger mb-0"  href="{{url('/suppressiongest'.$c->id)}}" >
+                         <a href="{{url('/suppressiongest'.$c->id)}}" >
                             <input type="hidden" name="afficher">
                           <i class="material-icons text-xlg" >person_add_disabled</i>&nbsp;&nbsp;
                         </a>

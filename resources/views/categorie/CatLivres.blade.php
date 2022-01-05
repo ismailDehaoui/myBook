@@ -1,4 +1,6 @@
-
+@Section('form')
+ <form action="{{url('/rechercheCat')}}" method="POST"  id="myForm">
+@endsection
 @extends('layouts.master')
 @Section('content')
 <div class="row">

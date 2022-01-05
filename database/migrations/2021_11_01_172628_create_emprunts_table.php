@@ -22,10 +22,7 @@ class CreateEmpruntsTable extends Migration
             $table->timestamps();
             $table->foreignId('abonnes_id')->constrained('abonnes') ->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('livres_id')->constrained('livres')->onDelete('cascade')->onUpdate('cascade');
-
-
             
-
         });
     }
 

@@ -30,7 +30,7 @@
                              <img src="{{asset('storage/Admin/'.$c->photo)}}" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
                           </div>
                           <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">{{$c->nom_admin}} {{$c->prenom_admin}}</h6>
+                            <h6 class="mb-0 text-sm">{{$c->name}}</h6>
                           </div>
                         </div>
                       </td>
@@ -39,8 +39,7 @@
                       </td>
                        <?php $act = \App\Models\User::where('id',$c->acteur)->get();?>
                       <td>
-                        <img src="{{asset('storage/Admin/'.$act[0]->photo)}}" class="avatar avatar-lg me-3 border-radius-lg" alt="user1">
-                         <br/><p class="text-xs font-weight-bold mb-0">{{$act[0]->name}}</p>
+                      <p class="text-xs font-weight-bold mb-0">{{$act[0]->name}}</p>
                       </td>
                       <td>
                         <p class="text-xs font-weight-bold mb-0">{{$c->created_at}}</p>

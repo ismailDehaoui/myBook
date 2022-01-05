@@ -1,4 +1,6 @@
-
+@Section('form')
+ <form action="{{url('/rechercheUti')}}" method="POST" >
+@endsection
 @extends('layouts.master')
 @Section('content')
   
@@ -27,6 +29,30 @@
                       <input type="text" class="px-2 form-control border border-primary" name="email" value="{{$gest->email}}" required="true">
                     </p>
 
+                        <label class="form-label">Rôle</label>
+                    <p class="form-check">
+                       @if($gest->est_super_admin)
+                      <input class="form-check-input" type="radio" name="flexRadioDefault" value="radio1" checked="true">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                         Administrateur
+                        </label>
+                         <input class="form-check-input" type="radio" name="flexRadioDefault" value="radio2" >
+                        <label class="form-check-label" for="flexRadioDefault1">
+                         Gestionnaire
+                        </label>
+                    </p>  
+                    @else
+                     <input class="form-check-input" type="radio" name="flexRadioDefault" value="radio1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                         Administrateur
+                        </label>
+                         <input class="form-check-input" type="radio" name="flexRadioDefault" value="radio2"  checked="true">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                         Gestionnaire
+                        </label>
+                    </p> 
+                    @endif
+                       <br/>  
                     <p class="input-group-outline mb-5">
                       <label class="form-label">
                       Photo</label>

@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+<?php $user = auth()->user();?>
+ @if(!empty($user))
+>>>>>>> 6ac69aa38df830991024926c88bdd82788dff358
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +13,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="{{asset('../assets/img/apple-icon.png')}}">
   <link rel="icon" type="image/png" href="{{asset('../assets/img/favicon.png')}}">
   <title>
-    Material Dashboard 2 by Creative Tim
+    Material Dashboard 2 by Creative 
   </title>
 
   <link href="{{asset('../assets/css/mon-css.css')}}" rel="stylesheet" />
@@ -16,6 +21,7 @@
   
   
  
+
 
 
   
@@ -55,11 +61,15 @@
           </a>
         </li>
         <ul class="navbar-nav">
+<<<<<<< HEAD
 
          @yield('admin')
 
+=======
+>>>>>>> 6ac69aa38df830991024926c88bdd82788dff358
          <?php $user = auth()->user();?>
-            @if($user->est_super_admin)
+            @if(!empty($user))
+             @if($user->est_super_admin)
             <li class="nav-item">
                       <a class="nav-link text-white " href="{{url('/affgest')}}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -68,8 +78,12 @@
                         <span class="nav-link-text ms-1">Les utilisateurs</span>
                       </a>
                     </li>
+             @endif
             @endif
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6ac69aa38df830991024926c88bdd82788dff358
         <li class="nav-item">
           <a class="nav-link text-white" href="{{url('/categories')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -89,7 +103,12 @@
         
         
         <li class="nav-item">
+<<<<<<< HEAD
           <a class="nav-link text-white " href="{{url('/abonnees')}}">
+=======
+          <a class="nav-link text-white " href="{{url('/abonnés')}}">
+
+>>>>>>> 6ac69aa38df830991024926c88bdd82788dff358
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">groups</i>
             </div>
@@ -97,7 +116,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="{{asset('../pages/billing.html')}}">
+          <a class="nav-link text-white " href="{{url('/emprunts/tout')}}"">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">how_to_vote</i>
             </div>
@@ -115,6 +134,7 @@
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
         </li>
+         @if(!empty($user))
         <li class="nav-item">
           <a class="nav-link text-white " href="{{url('user/'.$user->id.'/profile')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -123,6 +143,7 @@
             <span class="nav-link-text ms-1">Profile</span>
           </a>
         </li>
+        @endif
         <li class="nav-item">
           <a class="nav-link text-white " href="{{asset('../pages/notifications.html')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -160,15 +181,17 @@
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+                   @yield('form')
+                               {{ csrf_field()}}
             <div class="input-group input-group-outline">
               <label class="form-label">Type here...</label>
-              <input type="text" class="form-control">
-            </div>
+              <input type="search" class="form-control" name="Search"/>
+            </div></form>
           </div>
           <ul class="navbar-nav  justify-content-end">
  
            <li class="nav-item dropdown pe-2 d-flex align-items-center">
-
+ @if(!empty($user))
  <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
 <i class="fa fa-user me-sm-1"></i>
 <?php $user = auth()->user();?>
@@ -198,6 +221,7 @@ this.closest('form').submit();">
 </li>
 </ul>
 </li>
+@endif
 
             <!--<li class="nav-item d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
@@ -432,10 +456,17 @@ this.closest('form').submit();">
   <script src="{{asset('../assets/js/sweetalert2.min.js')}}"></script>
 <script src="{{asset('../assets/js/toastr.min.js')}}"></script>-->
   <script src="{{asset('../assets/js/toastr.min.js')}}"></script>
+<<<<<<< HEAD
+
+=======
+>>>>>>> 6ac69aa38df830991024926c88bdd82788dff358
 
 
- 
+<<<<<<< HEAD
+=======
 
+  
+>>>>>>> 6ac69aa38df830991024926c88bdd82788dff358
   <script>
     var ctx = document.getElementById("chart-bars").getContext("2d");
 
@@ -692,7 +723,13 @@ this.closest('form').submit();">
       Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
   </script>
-  <!-- Github buttons -->
+   <script>
+    function submitform()
+{
+document.getElementById("myForm").submit();
+}
+    </script>
+       <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="{{asset('../assets/js/material-dashboard.min.js?v=3.0.0')}}"></script>
@@ -700,4 +737,5 @@ this.closest('form').submit();">
 </body>
 
 </html>
+@endif
 
