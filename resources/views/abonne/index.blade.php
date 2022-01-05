@@ -73,13 +73,13 @@
                           {{ csrf_field() }}
                           {{ method_field('DELETE') }}
                           <div class="btn-group">
-                            <a href="{{url('/abonnés/'.$abonne->id.'/qrcode')}}" title="Qr Code" class="btn btn-info">
+                            <a href="{{url('/abonnés/'.$abonne->id.'/qrcode')}}" title="Qr Code">
                               <i class="fas fa-qrcode me-sm-1"></i>  
                             </a>
-                            <a href="{{url('/abonnés/'.$abonne->id.'/edit')}}" title="Modifier" class="btn btn-secondary">
+                            <a href="{{url('/abonnés/'.$abonne->id.'/edit')}}" title="Modifier" >
                               <i class="fas fa-edit me-sm-1"></i>
                             </a>
-                            <button type="submit" class="btn btn-danger">
+                            <button type="submit">
                               <i class="fas fa-trash-alt me-sm-1"></i> 
                             </button>
                           </div>

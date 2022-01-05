@@ -127,6 +127,13 @@ class AbonneController extends Controller
           return redirect('/abonnés');  
   }
 
+
+  public function listAbonsupp(){
+      
+      $l = Abonne::onlyTrashed()->paginate(5);
+        return view('Historique.abonsupp', ['abon'=>$l]);
+    } 
+
   public function destroy($id){
     $emprunt = Emprunt::where('abonnes_id', $id)->where('est_rendu', false);
     if($emprunt->count() != 0){
@@ -138,6 +145,4 @@ class AbonneController extends Controller
     Alert::success('Succeès', 'Abonné supprimé avec succès!');
     return redirect('/abonnés');
   }
-
-
 }

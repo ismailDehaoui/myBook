@@ -98,7 +98,10 @@ class UserController extends Controller
       $monthCret[]= count($values);
     }//nombre total
    $nombreret = Emprunt::select('id')->where('est_rendu','=',1)->get();
-   $nombreret = count($nombreret);
+   $nombreret = count($nombreret)+$nombreemp;
+   //nouv emp
+   $nouvEmp = Emprunt::select('id','created_at')->where('created_at','=',$today)->get();
+    $nouvEmp = count($nouvEmp);
 
     return view('dashboard.dashboard',
       ['data'=>$data,'months'=>$months,
@@ -111,7 +114,9 @@ class UserController extends Controller
        'emp'=>$em,'ret'=>$ret,
        'monthsem'=>$monthsem,
        'monthCem'=>$monthCem,'monthsr'=>$monthsret,
-       'monthCr'=>$monthCret]);
+       'monthCr'=>$monthCret,
+       'nombreEmp'=>$nombreret,
+       'mm'=>$nouvEmp]);
 
 
   }

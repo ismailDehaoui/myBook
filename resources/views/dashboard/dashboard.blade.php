@@ -61,6 +61,23 @@
             </div>
           </div>
         </div>
+         <div class="col-xl-3 col-sm-10 mb-xl-5 mb-6">
+      <div class="card">
+            <div class="card-header p-3 pt-2">
+              <div class="icon icon-lg icon-shape bg-gradient-dark shadow-primary text-center border-radius-xl mt-n4 position-absolute">
+                <i class="material-icons opacity-10">how_to_vote</i>
+              </div>
+            </div>
+             <br/> <br/>
+              <div class="text-center pt-1">
+                <h5 class=" mb-0  text-capitalize">Nouveaux emprunts</h5>
+              </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+              <p class="mb-0"><span class="text-success text-sm font-weight-bolder">{{$mm}} emprunts </span>depuis hièr</p>
+            </div>
+          </div>
+        </div>
   </div>
  </div>
 <div class="row mt-4">
@@ -110,7 +127,7 @@
               <hr class="dark horizontal">
               <div class="d-flex ">
                 <i class="material-icons text-sm my-auto me-1">schedule</i>
-                <p class="mb-0 text-sm">Nombre total:<span class="text-success text-sm font-weight-bolder">{{$nbrCat}} catégories</span></p>
+                <p class="mb-0 text-sm">Nombre total:<span class="text-success text-sm font-weight-bolder">{{$nombreEmp}} Emprunts et retours</span></p>
               </div>
             </div>
           </div>
@@ -257,10 +274,6 @@ var myLineChart = new Chart(ctx, {
 </script>
 
 <script >
-  // Set new default font family and font color to mimic Bootstrap's default styling
-Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
-Chart.defaults.global.defaultFontColor = '#292b2c';
-
 // Pie Chart Example
 var ctx = document.getElementById("CategorieLivresPieChart");
 var myPieChart = new Chart(ctx, {
@@ -269,7 +282,8 @@ var myPieChart = new Chart(ctx, {
     labels: _ycatlivres,
     datasets: [{
       data: _xcatlivres,
-      backgroundColor: ['rgb(0, 168, 0)',  'rgb(237, 28, 131)','rgb(0, 51, 90)', '#28a745','rgb(172, 211, 230)','rgb(149, 101, 111)','rgb(224, 101, 111)','rgb(172, 211, 190)',''],
+      backgroundColor: ['#F2789F',  '#E2C2B9','#E9A6A6', '#C8E3D4','#D3E4CD','#C89595','#DEBA9D','#D79771','#ED8E7C'],
+
     }],
   },
 });
@@ -290,9 +304,16 @@ var myLineChart = new Chart(ctx, {
   data: {
     labels: mois,
     datasets: [{
-      data: [moisc,moiscr],
-      label: "Emprunt",
+      data: moisc,
+      label: "Emprunts",
       backgroundColor: "rgba(2,117,216,1)",
+      borderColor: "rgb(255,255,255)",
+      fill : true
+    },
+    {
+      data: moiscr,
+      label: "Retours",
+      backgroundColor: "rgba(252,117,216,1)",
       borderColor: "rgb(255,255,255)",
       fill : true
     }],
@@ -321,9 +342,28 @@ var myLineChart = new Chart(ctx, {
         }
       }],
     },
-    legend: {
+        legend: {
+
+                        labels: {
+
+                            // This more specific font property overrides the global property
+
+                            fontColor: '#fff',
+
+                            fontFamily: "'Muli', sans-serif",
+
+                            //padding: 25,
+
+                            boxWidth: 20,
+
+                            fontSize: 14,
+
+                        }
+
+                    },
+   /* legend: {
       display: false
-    }
+    }*/
   }
 });
 </script>

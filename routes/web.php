@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\LivreController;
-use App\Http\Controllers\AbonneeController;
+use App\Http\Controllers\AbonneController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuteurController;
 use App\Http\Controllers\SearchController;
@@ -152,8 +152,8 @@ Route::get('/catsupp',[CategorieController::class,'listCategoriesupp']);
 Route::get('/gestsupp',[UserController::class,'listGestsupp']);
 Route::put('/gestres{id}',[UserController::class,'restoregest']);
 
-Route::get('/abonsupp',[AbonneeController::class,'listAbonsupp']);
-Route::put('/abonres{id}',[AbonneeController::class,'restoreabon']);
+Route::get('/abonsupp',[AbonneController::class,'listAbonsupp']);
+Route::put('/abonres{id}',[AbonneController::class,'restoreabon']);
 Route::get('/lsupp',[LivreController::class,'listLivressupp']);
 
 

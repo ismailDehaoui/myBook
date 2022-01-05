@@ -40,22 +40,21 @@
                         </div>
                       </td>
                         <td>
-                        <p class="text-xs font-weight-bold mb-0">{{$c->isbn}}</p>
+                        <p class="text-xs font-weight-bold mb-0 px-3">{{$c->ISBN}}</p>
                       </td>
                       <td>
-                        <p class="text-xs font-weight-bold mb-0">{{$c->editeur}}</p>
+                        <p class="text-xs font-weight-bold mb-0 px-3">{{$c->editeur}}</p>
                       </td>
                       <td>
-                        <p class="text-xs font-weight-bold mb-0">{{$categorie->nom_categorie}}</p>
+                        <p class="text-xs font-weight-bold mb-0 px-3">{{$categorie->nom}}</p>
                       </td>
                        <?php $act = \App\Models\User::where('id',$c->acteur)->get();
                        ?>
                       <td>
-                        <!--img src="{{asset('storage/Admin/'.$act)}}" class="avatar avatar-lg me-3 border-radius-lg" alt="user1"-->
-                         <br/><p class="text-xs font-weight-bold mb-0">{{$act}}</p>
+                      <p class="text-xs font-weight-bold mb-0">{{$act[0]->name}}</p>
                       </td>
                       <td>
-                        <p class="text-xs font-weight-bold mb-0">{{$c->langue}}</p>
+                        <p class="text-xs font-weight-bold mb-0 px-3">{{$c->langue}}</p>
                       </td>
                       <td>
                         <p class="text-xs font-weight-bold mb-0">{{$c->created_at}}</p>
