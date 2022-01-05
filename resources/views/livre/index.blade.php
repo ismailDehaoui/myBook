@@ -36,7 +36,7 @@
 
                       @foreach ($livres as $livre)
                       
-                      <?php $categorie = \App\Models\Categorie::find($livre->categories_id); ?>
+                      <?php $categorie = \App\Models\Categorie::find($livre->categories_id)->where('deleted_at', null)->orWhere('deleted_at', '!=', null); ?>
 
                     <tr>
                       <td>

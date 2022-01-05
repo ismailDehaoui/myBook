@@ -9,6 +9,7 @@ use App\Models\Livre;
 use PhpParser\Node\Stmt\TryCatch;
 use RealRashid\SweetAlert\Facades\Alert;
 
+
 class EmpruntController extends Controller{
 
     /*public function create(){
@@ -22,9 +23,10 @@ class EmpruntController extends Controller{
     }
 
     public function index($etat){
+      
         if($etat == "tout"){
     	$emprunts = Emprunt::paginate(10);    
-        return view('emprunts.index', ['emprunts'=>$emprunts]);
+            return view('emprunts.index', ['emprunts'=>$emprunts]);
         }
         else if($etat == "rendu"){
             $emprunts = Emprunt::where('est_rendu',true)->paginate(10);
