@@ -84,7 +84,6 @@ class AbonneController extends Controller
           /*
             
           */
-          $abonne->created_at             = date(NOW());
           $abonne->save();
           Alert::success('Abonne est bien ajouté'); 
           return redirect('/abonnés');
@@ -103,19 +102,29 @@ class AbonneController extends Controller
     }
 
     public function update(Request $request,$id){
-      if (Abonne::where('email', $request->input('email'))->exists()) {
-           echo "Error";
-      }else{
+      
+      
       $abonne                 = Abonne::find($id);
       $abonne->nom            = $request->input('nom');
       $abonne->prenom         = $request->input('prenom');
       $abonne->email          = $request->input('email');
       $abonne->adresse        = $request->input('adresse');
-      $abonne->date_naissance = $request->input('date_de_naissance');
-      $abonne->updated_at     = date(NOW());
-      $abonne->save();
-      return redirect('/');
-    }
+      $abonne->date_de_naissance = $request->input('date_de_naissance');
+      $filenameWithExt                 = $request->file('image')->getClientOriginalName();
+          // Get just filename
+          $filename                        = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+          // Get just ext
+          $extension                       = $request->file('image')->getClientOriginalExtension();
+          // Filename to store
+          $fileNameToStore                 = $filename.'_'.time().'.'.$extension;
+          // Upload Image
+          $path                            = $request->file('image')->storeAs('public/images/abonnés', $fileNameToStore);
+          $abonne->photo                  = $fileNameToStore;
+          
+          
+          $abonne->save();
+          Alert::success('Modifié avec succès!'); 
+          return redirect('/abonnés');  
   }
 
 
