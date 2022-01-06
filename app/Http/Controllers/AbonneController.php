@@ -125,6 +125,13 @@ class AbonneController extends Controller
         return view('Historique.abonsupp', ['abon'=>$l]);
     } 
 
+        function deleteAbonne($id){
+   Alert::error('Etes vous sure?','L\'abonné sera supprimé!')->showConfirmButton('<a class=""  href="/abonne/confirmersupp/'.$id.'" >
+                            <input type="hidden" name="afficher">Supprimer
+                        </a>', '#a085d6a')->toHtml()->showCancelButton('Annuler', '#aaa')->reverseButtons();
+   return redirect('abonnés');
+  }
+
   public function destroy($id){
     $emprunt = Emprunt::where('abonnes_id', $id)->where('est_rendu', false);
     if($emprunt->count() != 0){
@@ -132,8 +139,18 @@ class AbonneController extends Controller
       return redirect('/abonnés');  
     }
     $abonne = Abonne::find($id);
+       $user = auth()->user();
+       $abonne->acteur = $user->id;
+       $abonne->save();
     $abonne->delete();
     Alert::success('Succeès', 'Abonné supprimé avec succès!');
     return redirect('/abonnés');
   }
+   function restoreabon($id){
+    $r = Abonne::withTrashed()->where('id',$id);
+    $r->restore();
+     Alert::success('Abonné est bien restauré');
+    return redirect('/abonsupp');
+  }
+
 }

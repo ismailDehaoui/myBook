@@ -8,6 +8,7 @@ use  App\Models\Emprunt;
 use App\Models\Livre;
 use PhpParser\Node\Stmt\TryCatch;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Http\Requests\LivreRequest;
 
 class EmpruntController extends Controller{
 

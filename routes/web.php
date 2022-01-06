@@ -134,13 +134,14 @@ Route::put('abonnés/{id}/update','AbonneController@update');
 
 Route::get('abonnés/{id}/edit','AbonneController@edit');
 
-Route::delete('abonnés/{id}', 'AbonneController@destroy');
+Route::get('/suppabon/{id}', 'AbonneController@deleteAbonne');
+Route::get('/abonne/confirmersupp/{id}', 'AbonneController@destroy');
 
 
-Route::get('abonnés/{id}/qrcode', 'QrCodeController@qrCodeAbonne');
 
 //QrCode
 
+Route::get('abonnés/{id}/qrcode', 'QrCodeController@qrCodeAbonne');
 Route::get('/generate-qrcode', 'QrCodeController@index');
 
 //Histo

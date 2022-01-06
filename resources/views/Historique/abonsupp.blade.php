@@ -27,7 +27,7 @@
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div>
-                             <img src="{{asset('storage/Admin/'.$c->photo)}}" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
+                             <img src="{{asset('storage/images/abonnés/'.$c->photo)}}" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
                           </div>
                           <div class="d-flex flex-column justify-content-center">
                             <h6 class="mb-0 text-sm">{{$c->nom}} {{$c->prenom}}</h6>

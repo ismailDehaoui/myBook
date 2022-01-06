@@ -62,8 +62,8 @@
 
                       @foreach ($emprunts as $emprunt)
                       
-                      <?php $abonne = \App\Models\Abonne::find($emprunt->abonnes_id); ?>
-                      <?php $livre = \App\Models\Livre::find($emprunt->livres_id); ?>
+                      <?php $abonne = \App\Models\Abonne::withTrashed()->find($emprunt->abonnes_id); ?>
+                      <?php $livre = \App\Models\Livre::withTrashed()->find($emprunt->livres_id); ?>
 
                     <tr>
                       <td>
