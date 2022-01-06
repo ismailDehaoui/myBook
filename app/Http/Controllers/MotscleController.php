@@ -3,6 +3,7 @@ namespace  App\Http\Controllers;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use App\Models\Motscle;
+use App\Models\Motscleslivre;
 
 
 class MotscleController extends Controller
@@ -59,5 +60,28 @@ class MotscleController extends Controller
 
     }
 
+    //supprimer un mot cle
+
+
+
+
+
+    public function destroy($id){
+           
+
+       /* if(Motscleslivre::where('motscles_id' ,$id)->exists()) {
+            return response()->json(['code'=>0, 'msg'=>'Le mot clé est déja relié à 1 ou plusieurs livres, impossible de le supprimer!.']);
+        }
+        else{*/
+            $motcle = Motscle::find($id);
+            $motcle->delete();
+            return response()->json(['code'=>1, 'msg'=>'Mot cle supprimé avec succès.']);   
+       // }             
+
+    }
+
 }
+
+
+
 

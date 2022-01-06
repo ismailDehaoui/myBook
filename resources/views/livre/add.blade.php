@@ -1,3 +1,6 @@
+@Section('form')
+ <form action="{{url('/rechercheLivre')}}" method="POST"  id="myForm" >
+@endsection
 @extends('layouts.master')
 
 @Section('content')
@@ -144,7 +147,12 @@
 
                       <div class="form-group my-3">
                                
-                        <label for="auteur">Auteur(s)</label> &nbsp;&nbsp;&nbsp; <a href="#" class="btn p-0 m-0" data-bs-toggle="modal" data-bs-target="#myModal2"><i class="fas fa-plus"></i></a>
+                        <label for="auteur">Auteur(s)</label> &nbsp;&nbsp;&nbsp; 
+
+
+                        <a href="{{url('/auteurs/supprimer')}}" id="minus-auteur" title="Supprimer l'auteur selectionné" class="mr-0"><i class="fas fa-minus"></i></a> 
+                              &nbsp;&nbsp;&nbsp;
+                              <a href="#" class="" title="Ajouter un nouveau auteur" data-bs-toggle="modal" data-bs-target="#myModal2"><i class="fas fa-plus"></i></a>
                         <select id="auteur" name="auteur[]" class="form-control border border-primary px-2" multiple required >
                             @foreach ($auteurs as $auteur)
                             <option value="{{ $auteur->id }}"> {{ $auteur->nom }} </option>
@@ -225,7 +233,12 @@
                                 
                               
                             <div class="form-group my-3">
-                              <label for="mot-cle">Mot(s)-clé(s)</label> &nbsp;&nbsp;&nbsp; <a href="#" class="btn p-0 m-0" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fas fa-plus"></i></a>
+                              <label for="mot-cle">Mot(s)-clé(s)</label> 
+                              &nbsp;&nbsp;&nbsp;  
+                              <a href="{{url('/motscles/supprimer')}}" id="minus-motcle" title="Supprimer le mot-clé selectionnés" class="mr-0"><i class="fas fa-minus"></i></a> 
+                              &nbsp;&nbsp;&nbsp;
+                              <a href="#" title="Ajouter un nouveau mot-clé" class="" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fas fa-plus"></i></a>
+                             
                               <select id="mot-cle" name="motcle[]" class="form-control border border-primary px-2" multiple>
                                   @foreach ($motscles as $motcle)
                                   <option value="{{ $motcle->id }}"> {{ $motcle->motcle }} </option>

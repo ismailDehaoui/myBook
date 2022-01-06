@@ -17,7 +17,10 @@ class CreateAuteurslivresTable extends Migration
             $table->id();
             $table->foreignId('livres_id')->constrained('livres')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('auteurs_id')->constrained('auteurs')->onDelete('cascade')->onUpdate('cascade');
+            $table->dateTime('deleted_at')->nullable();
             $table->timestamps();
+            
+            $table->dateTime('deleted_at')->nullable();
         });
     }
 

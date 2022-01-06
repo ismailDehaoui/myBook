@@ -24,5 +24,20 @@ class AuteurController extends Controller
             }
         }    
     }
-    //
+
+
+
+    public function destroy($id){
+           
+
+        /* if(Motscleslivre::where('motscles_id' ,$id)->exists()) {
+             return response()->json(['code'=>0, 'msg'=>'Le mot clé est déja relié à 1 ou plusieurs livres, impossible de le supprimer!.']);
+         }
+         else{*/
+             $auteur = Auteur::find($id);
+             $auteur->delete();
+             return response()->json(['code'=>1, 'msg'=>'Auteur supprimé avec succès.']);   
+        // }             
+ 
+     }
 }

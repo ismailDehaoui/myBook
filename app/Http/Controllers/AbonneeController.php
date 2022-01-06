@@ -17,6 +17,10 @@ class AbonneeController extends Controller{
         $emprunts = Emprunt::where('id',$id)->paginate(5);
         return view('abonnees.profile',['abonnee'=>$abonnee,'emprunts'=>$emprunts]); 
     }
+       // $emprunts = Emprunt::where('abonnees_id',$id)->paginate(5);
+        //return view('abonnees.profile',['abonnee'=>$abonnee,'emprunts'=>$emprunts]); 
+        //return view('abonnees.profile',['abonnee'=>$abonnee]);
+      //}
 
     public function listAbonnees(){
     	$abonnee = Abonnee::paginate(3);
@@ -25,6 +29,8 @@ class AbonneeController extends Controller{
     
     public function store(Request $request){   
       if (Abonnee::where('email', $request->input('email'))->exists()) {
+             echo "Error";
+        Alert::error('Email déja existe!');
         Alert::error('Email déja existe!');
 
         }else{
@@ -33,6 +39,7 @@ class AbonneeController extends Controller{
     	  $abonnee->prenom         = $request->input('prenom');
         $abonnee->email          = $request->input('email');
         $abonnee->adresse        = $request->input('adresse');
+        $abonnee->date = $request->input('date_naissance');       
 
         $abonnee->date_naissance = $request->input('date_naissance');       
         $filenameWithExt                 = $request->file('image')->getClientOriginalName();
@@ -44,6 +51,10 @@ class AbonneeController extends Controller{
         $fileNameToStore                 = $filename.'_'.time().'.'.$extension;
         // Upload Image
         $path                            = $request->file('image')->storeAs('public/Admin', $fileNameToStore);
+        $abonnee->photo                 = $fileNameToStore;
+       // $abonnee->date_expiration        = date(NOW());
+        $abonnee->photo                  = $fileNameToStore;
+        
 
         $abonnee->photo                 = $fileNameToStore;
        // $abonnee->date_expiration        = date(NOW());
@@ -56,7 +67,7 @@ class AbonneeController extends Controller{
 
       public function edit($id){
     	$abonnee = Abonnee::find($id);
-    	return view('abonnees.modifier', ['abonnee'=>$abonnee]);
+    	return view('abonnes.modifier', ['abonnee'=>$abonnee]);
     }
 
       public function update(Request $request,$id){

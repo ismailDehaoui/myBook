@@ -9,7 +9,6 @@ $(document).ready(function() {
   //ajouter Mot cle
   $("#addKeyword").submit(function(e){
     e.preventDefault();
-    //alert("hello form")
     var form = this;
     $.ajax({
       url: $(form).attr('action'),
@@ -45,6 +44,39 @@ $(document).ready(function() {
     })
 
     })
+
+
+
+    //supprimer mot clé
+    
+    $("#minus-motcle").click(function(e){
+      e.preventDefault();
+      var motcleSelectionne = $("#mot-cle").find(":selected").val();
+      $.ajax({
+        url: "http://mybook.test/motscles/"+motcleSelectionne+"/supprimer",
+        dataType : 'json',
+        type: 'POST',
+        data: {},
+        contentType: false,
+        processData: false,
+        success: function(data){
+          if(data.code == 0){
+            toastr.warning(data.msg);
+          }
+          else{
+            $("#mot-cle option[value="+motcleSelectionne+"]").remove();
+            toastr.success(data.msg);
+          }
+        },
+        error: function(){
+          toastr.error("Quelque chose ne va pas!");
+        }
+
+
+    });
+  });
+
+
 
 
 
@@ -91,11 +123,41 @@ $(document).ready(function() {
 
 
 
+      $("#minus-auteur").click(function(e){
+        e.preventDefault();
+        var auteurSelectionne = $("#auteur").find(":selected").val();
+        $.ajax({
+          url: "http://mybook.test/auteurs/"+auteurSelectionne+"/supprimer",
+          dataType : 'json',
+          type: 'POST',
+          data: {},
+          contentType: false,
+          processData: false,
+          success: function(data){
+            if(data.code == 0){
+              toastr.warning(data.msg);
+            }
+            else{
+              $("#auteur option[value="+auteurSelectionne+"]").remove();
+              toastr.success(data.msg);
+            }
+          },
+          error: function(){
+            toastr.error("Quelque chose ne va pas!");
+          }
+  
+  
+      });
+    });
+
+
+
+
+
+
+
+
 });
-
-
-
-
 
 
 

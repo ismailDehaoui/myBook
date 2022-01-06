@@ -1,13 +1,17 @@
-
+@Section('form')
+ <form action="{{url('/rechercheUti')}}" method="POST" >
+@endsection
 @extends('layouts.master')
 @Section('content')
   
     <div class="row">
-        <div class="col-6">
-                <div class="card card-plain">
+      <div class="col-md-12">
+          <div class="row">
+           <div class="col-md-6">
+            <div class="card  my-4">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                  <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                  <h6 class="text-white text-capitalize ps-3">Modifier utilisateur</h6> 
+                  <h6 class="text-white text-capitalize ps-3">Modifier Profile</h6> 
               </div>
                <p> <br/>   </p>   
             </div>
@@ -43,17 +47,7 @@
                     <a href="{{url('/affgest')}}" class="text-primary text-gradient font-weight-bold">Retournez aux utilisateurs</a>
                   </p>
                 </div>
-              </div>
+              </div></div></div>
             </div>
     </div></div>
 @endsection('content')
-@Section('admin')
-<li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="{{url('/affgest')}}">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">engineering</i>
-            </div>
-            <span class="nav-link-text ms-1">Les utilisateurs</span>
-          </a>
-        </li>
-@endsection('admin')

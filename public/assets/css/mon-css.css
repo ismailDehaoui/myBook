@@ -127,5 +127,29 @@
     pointer-events: auto;
   }
 
+  .clignote {
+    color:green;
+    animation: clignote 3s linear infinite;
+  }
+  @keyframes clignote {  
+    50% { opacity: 0; }
+  }
+
+  #douchette-livre{
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    top: 1px;
+    right: 20px;
+  }
+
+  #douchette-abonne{
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    top: 1px;
+    right: 20px;
+  }
+
 
 

@@ -57,7 +57,7 @@
                       <div class="form-group my-3">
                                
                         <label for="auteur">Auteur(s)</label>
-                        <select id="auteur" name="auteur[]" class="form-control border border-primary" multiple required >
+                        <select id="auteur" name="auteur[]" class="form-control border border-primary" multiple >
                             @foreach ($auteurs as $auteur)
                             <option value="{{ $auteur->id }}"> {{ $auteur->nom }} </option>
                             @endforeach
@@ -91,7 +91,12 @@
                                     <label for="categorie">Catégorie</label>
                                     <select id="categorie" name="catégorie" class="form-control border border-primary" required >
                                         @foreach ($categories as $categorie)
+                                        @if ($livre->categories_id == $categorie->id)
+                                        <option selected value="{{ $categorie->id }}"> {{ $categorie->nom }} </option>
+                                        @else
                                         <option value="{{ $categorie->id }}"> {{ $categorie->nom }} </option>
+                                        @endif
+                                        
                                         @endforeach
                                     </select>
                                 
@@ -111,8 +116,17 @@
                             
 
                             <div class="form-group my-3">
+                              <div class="col-md-12">
+                                <div class="row">
+                                  <div class="col-md-10">
                                 <label for="image">image</label>
                                 <input type="file" name="image" class="form-control border border-primary" value="{{ asset("public/storage/images/livres".$livre->photo) }}" >
+                                  </div>
+                                <div class="d-flex col-md-2">
+                                  <img src="{{ asset('storage/images/livres/'.$livre->photo) }}" class="img-fluid">
+                                  </div>
+                                </div>
+                              </div>
                             </div>
                                 
                                 
@@ -120,7 +134,7 @@
                             <div class="form-group my-3">
                                
                               <label for="mot-cle">Mot(s)-clé(s)</label>
-                              <select id="mot-cle" name="motcle[]" class="form-control border border-primary" multiple required >
+                              <select id="mot-cle" name="motcle[]" class="form-control border border-primary" multiple>
                                   @foreach ($motscles as $motcle)
                                   <option value="{{ $motcle->id }}"> {{ $motcle->motcle }} </option>
                                   @endforeach
