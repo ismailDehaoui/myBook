@@ -7,6 +7,9 @@ use App\Http\Controllers\LivreController;
 use App\Http\Controllers\AbonneeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuteurController;
+use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\ContactController;
+
 
 
 /*
@@ -138,4 +141,41 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
- 
+     
+
+
+
+//front office
+Route::get('/home',function(){
+return view('Frontend.layouts.masterF');
+});
+
+//about
+Route::get('/about', function () {
+    return view('Frontend.about');
+});
+
+
+
+//Newsletter
+
+
+
+//Route::get('/Newsletter',[NewsletterController::class, 'create']);
+Route::post('/newsletter', 'NewsletterController@store');
+
+
+
+
+//contact
+Route::get('/contact', [ContactController::class, 'create']);
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
+
+//covid
+Route::get('/covid', function () {
+    return view('Frontend.covid');
+});
+
+
+
+?>
