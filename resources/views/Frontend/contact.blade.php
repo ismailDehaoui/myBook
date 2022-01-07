@@ -1,3 +1,11 @@
+@extends('Frontend.layouts.footer')
+@extends('Frontend.layouts.masterF')
+
+@section('title')
+   contact
+@endsection
+@section('content')
+
 <main>
     <div class="page-section">
       <div class="container">
@@ -59,3 +67,4 @@
     </div> <!-- .page-section -->
 
   </main>  
+  @endsection('content')

@@ -1,3 +1,8 @@
+<style>
+  h1{
+    color: #fff;
+  }
+</style>
 <div class="page-banner home-banner mb-5">
     <div class="slider-wrapper">
       <div class="owl-carousel hero-carousel">
@@ -29,3 +34,4 @@
       </div>
     </div> <!-- .slider-wrapper -->
   </div> <!-- .page-banner -->
+  <script src="{{asset('../Frontend/assets/js/jquery-3.6.0.min.js')}}"></script>

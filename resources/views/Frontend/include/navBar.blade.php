@@ -40,7 +40,9 @@
 
     <nav class="navbar  navbar-expand-lg navbar-light">
       <div class="container kheiro">
-        <a href="index.html" class="navbar-brand">Reve<span class="text-primary">Tive.</span></a>
+        <a href="{{url('/')}}" class="navbar-brand">
+          <img src="{{asset('../Frontend/assets/img/logo.png')}}" alt="" width="150px">  
+        </a>
 
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -49,7 +51,7 @@
         <div class="navbar-collapse collapse" id="navbarContent">
           <ul class="navbar-nav ml-auto pt-3 pt-lg-0">
             <li class="nav-item active">
-              <a href="index.html" class="nav-link">Accueil</a>
+              <a href="{{url('/')}}" class="nav-link">Accueil</a>
             </li>
             <li class="nav-item">
               <a href="about.html" class="nav-link">A propos</a>
@@ -57,9 +59,9 @@
             <li class="nav-item">
               <a href="{{url('/books')}}" class="nav-link">Les livres</a>
             </li>
-            <li class="nav-item">
+            <!--<li class="nav-item">
               <a href="{{url('/livre/categories')}}" class="nav-link">Categoreis</a>
-            </li>
+            </li>-->
             <li class="nav-item">
               <a href="blog.html" class="nav-link">News</a>
             </li>

@@ -12,13 +12,16 @@
     box-shadow: 0 35px 55px rgba(0, 0, 0, 0.1)
  }
  .dehaoui .left_Side{
-    
+   position: relative;
+   padding: 50px;
  }
  .dehaoui .center_Side{
-    
+   position: relative;
+   padding: 50px;
  }
  .dehaoui .right_Side{
-    
+   position: relative;
+    padding: 50px;
  }
  .profileText{
     position: relative;

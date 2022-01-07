@@ -43,6 +43,9 @@
 ::-webkit-scrollbar-thumb:hover {
 	background: #555;
 }
+.cc{
+	padding:  100px;
+}    
 .ismail .sidebar .logo_content {
 	align-items: center;
 	text-align: center;

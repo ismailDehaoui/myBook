@@ -60,9 +60,7 @@
 <div class="py-3 kheir mb-4 shadow-sm  border-top">
    <div class="container">
       <h6 class="mb-0">
-         <a href="{{url('/')}}">accueil</a>/
-         <a href="{{url('/books')}}">Categoreis</a>/
-         <a href="{{url('/livre/categorie/'.$caregorie->nom)}}">{{$caregorie->nom}}</a>
+         <a  href="{{url('/')}}">Accueil</a>/<a class="" href="{{url('/books')}}">Categories</a>/  <a href="{{url('/livre/categorie/'.$caregorie->nom)}}">{{$caregorie->nom}}</a>
       </h6>
    </div>
 </div> 
@@ -161,24 +159,36 @@
          <hr>
        </div>
      </div>
-     <div class="row mt-3">
-       <div class="owl-carousel featured-carousel owl-theme">
-           @foreach ($livres as $livre)          
-               <div class="item">
-                  <div class="left_Side"> 
-                     <div class="profileText">
-                        <div class="imgBx">
-                           <img src="{{asset('storage/images/livres/'.$livre->photo)}}" alt="">
-                        </div>  
-                        <h4>
-                           {{$livre->titre}}
-                        </h4>
-                     </div>
-                  </div>
-               </div>
-           @endforeach
-       </div>          
-     </div>
+     <div class="row md-3">
+      @foreach ($livres as $livre)          
+          <div class="col-md-4">
+              <div  style="width: 18rem;"">       
+                  <div class="container2">
+                      <ul class="gallery">
+                          <li>
+                              <div class="flip">
+                                  <div class="front-side">
+                                      <img src="{{asset('storage/images/livres/'.$livre->photo)}}">
+                                  </div>
+                                  <div class="back-side">
+                                      <a href="{{url('/livre/'.$livre->titre)}}">
+                                           <div class="content2 cc">
+                                              <div class="loader"></div>
+                                              <div class="text2 card-body">
+                                                  <h3 class="card-title">{{$livre->titre}}</h3>                                        
+                                              </div>
+                                          </div>
+                                      </a>
+                                  </div>
+                              </div>
+                          </li>  
+                      </ul>
+                  </div> 
+              </div>         
+              
+          </div>
+      @endforeach         
+  </div>
    </div>
 </div>
 @endsection('content')

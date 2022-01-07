@@ -130,7 +130,7 @@ class AbonneController extends Controller
         $emprunts = Emprunt::where('id',$id)->paginate(5);
         return view('abonne.profile',['abonne'=>$abonne,'emprunts'=>$emprunts]); 
     }
-
+    /*
     public function edit($id){
     	$abonne = Abonne::find($id);
     	return view('abonne.edit', ['abonne'=>$abonne]);
@@ -150,7 +150,7 @@ class AbonneController extends Controller
       $abonne->save();
       return redirect('/');
     }
-  }
+  }*/
 
 
   public function listAbonsupp(){

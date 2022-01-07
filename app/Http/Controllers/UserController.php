@@ -248,15 +248,13 @@ public function postProfilePassword(Request $request) {
                 $user->password = Hash::make($request->input('password'));
               }
               else{
-              Alert::error('Mot de passe actuel est incorrcet');
-              return view('authentification.modifierpassword',['pass'=>$user]);}
+                Alert::error('Mot de passe actuel est incorrcet');
+                return view('authentification.modifierpassword',['pass'=>$user]);}
               }
               $user->save();
               Alert::success('Vos informations sont bien modifiées');
                 return redirect('user/'.$user->id.'/profile');
 }
-
-
 
   function suppgest($id){
   alert()->error('Etes vous sure?','L\' utilisateur sera supprimé!')->showConfirmButton('<a class=""  href="/confirmersuppgest'.$id.'" >

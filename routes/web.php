@@ -176,16 +176,13 @@ Route::get('/dashboard',[UserController::class,'index'])->middleware(['auth'])->
 // Frontend
 Route::get('/',[frontendController::class,'index']);
 Route::get('/books',[frontendController::class,'livres'] );
-Route::get('/livre/categories',[frontendController::class,'categories']);
 Route::get('/livre/categorie/{nom}', [frontendController::class,'livreCate']);
-Route::get('/livre/categorie/{nom}/{titre}', [frontendController::class,'livreView']);
-
-// Avis 
+Route::get('/livre/{titre}', [frontendController::class,'livreView']); 
 Route::get('/search',[frontendController::class,'search']);
-
-Route::get('/t',function(){
-    return view('Frontend.t');
+Route::get('/contact',function(){
+    return view('Frontend.contact');
 });
+
 
 require __DIR__.'/auth.php';
  

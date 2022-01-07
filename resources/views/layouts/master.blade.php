@@ -1,8 +1,7 @@
-<<<<<<< HEAD
-=======
+
 <?php $user = auth()->user();?>
  @if(!empty($user))
->>>>>>> 6ac69aa38df830991024926c88bdd82788dff358
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -61,12 +60,6 @@
           </a>
         </li>
         <ul class="navbar-nav">
-<<<<<<< HEAD
-
-         @yield('admin')
-
-=======
->>>>>>> 6ac69aa38df830991024926c88bdd82788dff358
          <?php $user = auth()->user();?>
             @if(!empty($user))
              @if($user->est_super_admin)
@@ -80,35 +73,18 @@
                     </li>
              @endif
             @endif
-<<<<<<< HEAD
-
-=======
->>>>>>> 6ac69aa38df830991024926c88bdd82788dff358
         <li class="nav-item">
           <a class="nav-link text-white" href="{{url('/categories')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">category</i>
             </div>
-            <span class="nav-link-text ms-1">Mes livres</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="{{url('/abonnees')}}">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">groups</i>
-            </div>
-            <span class="nav-link-text ms-1">Les abonnés</span>
+            <span class="nav-link-text ms-1">Category</span>
           </a>
         </li>
         
-        
         <li class="nav-item">
-<<<<<<< HEAD
-          <a class="nav-link text-white " href="{{url('/abonnees')}}">
-=======
           <a class="nav-link text-white " href="{{url('/abonnés')}}">
 
->>>>>>> 6ac69aa38df830991024926c88bdd82788dff358
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">groups</i>
             </div>
@@ -456,17 +432,10 @@ this.closest('form').submit();">
   <script src="{{asset('../assets/js/sweetalert2.min.js')}}"></script>
 <script src="{{asset('../assets/js/toastr.min.js')}}"></script>-->
   <script src="{{asset('../assets/js/toastr.min.js')}}"></script>
-<<<<<<< HEAD
-
-=======
->>>>>>> 6ac69aa38df830991024926c88bdd82788dff358
 
 
-<<<<<<< HEAD
-=======
 
   
->>>>>>> 6ac69aa38df830991024926c88bdd82788dff358
   <script>
     var ctx = document.getElementById("chart-bars").getContext("2d");
 
