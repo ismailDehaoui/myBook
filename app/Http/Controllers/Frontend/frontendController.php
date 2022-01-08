@@ -14,8 +14,10 @@ class frontendController extends Controller
 {
     public function index(){
         
-        $livres = Livre::orderBy('created_at','desc')->take(6)->get();
-        return view('Frontend.index',['livres'=>$livres]);
+        $livresN = Livre::orderBy('created_at','desc')->take(6)->get();
+        $livresV = Livre::orderBy('titre')->take(6)->get();
+        $categories = Categorie::orderBy('created_at','desc')->take(3)->get();
+        return view('Frontend.index',['livresN'=>$livresN,'livresV'=>$livresV,'categories'=>$categories]);
     }
     
     public function search(Request $request){
@@ -28,7 +30,7 @@ class frontendController extends Controller
         $motCles = array();
         $motCles = explode(',',$motCle,PHP_INT_MAX);
 
-        $a= 0;$b= 0;$c=0;$d=0;$e=0;$f=0;$g=0;$h=0;
+        
         if(empty($titre)       && empty($langue)  && empty($auteur)  && empty($motCle)){
             return redirect('/books');
         }elseif(!empty($titre) && empty($langue)  && empty($auteur)  && empty($motCle)){
@@ -71,7 +73,6 @@ class frontendController extends Controller
                             ->where('nom','like','%'.$auteur.'%')
                             ->distinct()
                             ->paginate(10);
-                            $c++;
         }elseif(empty($titre)  && !empty($langue) && empty($auteur)  && !empty($motCle)){
             foreach($motCles as $mot){
               $livres = Livre::where('langue','like','%'.$langue.'%')
@@ -95,7 +96,7 @@ class frontendController extends Controller
                             ->distinct()
                             ->paginate(10);
             }    
-            $d++;
+            
         }elseif(!empty($titre) && empty($langue)  && empty($auteur)  && !empty($motCle)){
             foreach($motCles as $mot){
                     $livres = Livre::where('titre','like','%'.$titre.'%')
@@ -113,7 +114,6 @@ class frontendController extends Controller
                             ->where('nom','like','%'.$auteur.'%')
                             ->distinct()
                             ->paginate(10);
-                            $e++;
         }elseif(!empty($titre) && !empty($langue) && !empty($auteur) && empty($motCle)){
             $livres = Livre::where('titre','like','%'.$titre.'%')
                             ->where('langue','like','%'.$langue.'%')
@@ -122,7 +122,7 @@ class frontendController extends Controller
                             ->where('nom','like','%'.$auteur.'%')
                             ->distinct()
                             ->paginate(10);
-                            $f++;
+                            
         }elseif(!empty($titre) && empty($langue)  && !empty($auteur) && !empty($motCle)){
            
             foreach($motCles as $mot){
@@ -136,7 +136,7 @@ class frontendController extends Controller
                             ->distinct()
                             ->paginate(10);
             }  
-            $g++;   
+               
         }elseif(!empty($titre) && !empty($langue) && empty($auteur)  && !empty($motCle)){
             
             foreach($motCles as $mot){
@@ -160,7 +160,7 @@ class frontendController extends Controller
                             ->distinct()
                             ->paginate(10);
                         }
-                        $h++;        
+                                
         }else{
             
             foreach($motCles as $mot){
@@ -175,10 +175,8 @@ class frontendController extends Controller
                             ->distinct()
                             ->paginate(10);
                     }
-                    $b++;
                            
         }
-        // dd($a,$b,$c,$d,$e,$f,$g,$h);
         $categoreis = Categorie::orderBy('nom')->get();
         return view ('Frontend.search',['categoreis'=>$categoreis,'livres'=>$livres,'auteurs'=> $auteurs]);
     }   
