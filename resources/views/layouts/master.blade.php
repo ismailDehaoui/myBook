@@ -133,6 +133,9 @@
             <span class="nav-link-text ms-1">Notifications</span>
           </a>
         </li>
+         <?php $user = auth()->user();?>
+            @if(!empty($user))
+             @if($user->est_super_admin)
         <li class="nav-item">
           <a class="nav-link text-white " href="{{url('/histo')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -141,6 +144,8 @@
             <span class="nav-link-text ms-1">Historique</span>
           </a>
         </li>
+        @endif
+        @endif
       </ul>
     </div>
     <div class="sidenav-footer position-absolute w-100 bottom-0 ">
