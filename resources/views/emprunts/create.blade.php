@@ -22,12 +22,12 @@
                             <label for="nom" class="form-label">Nom Abonné(e)</label>
                             <select id="nom" name="abonnee" class="form-control px-2 border border-primary" required >
                                 @foreach ($abonnees as $abonnee)
-                                    <option value="{{ $abonnee->id }}">{{ $abonnee->nom_abonnee .' '. $abonnee->prenom_abonnee }}</option>
+                                    <option value="{{ $abonnee->id }}">{{ $abonnee->nom .' '. $abonnee->prenom }}</option>
                                 @endforeach
                             </select>           
                         </div>
                         <div class="form-group my-3">
-                            <label for="livre" class="form-label">Livre</label>
+                            <label  for="livre" class="form-label">Livre</label>
                             <select id="livre" name="livre[]" class="form-control px-2 border border-primary" required  multiple="">
                               @foreach ($livres as $livre)
                                 <option value="{{ $livre->id }}"> {{ $livre->titre }} </option>
@@ -60,3 +60,4 @@
  </div>
  
 @endsection('content')
+

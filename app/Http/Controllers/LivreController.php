@@ -85,13 +85,9 @@ class LivreController extends Controller
             <p class='text-center text-xs text-secondary mb-0'>$categorie->nom</p>
               </div>
         </td>
-        <td>
-            $action
-        </td>
         
         </tr>
     ";
-        return $html;
         }
       }
 

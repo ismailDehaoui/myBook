@@ -39,14 +39,14 @@
                     <tr>
                       <td>
                         
-                          <div>
+                          <div class="d-flex flex-column justify-content-center px-2">
                             <img src="{{ asset('storage/images/abonnés/'.$abonne->photo) }}" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
                           </div>
                         </td>
                         <td>
                           <div class="d-flex flex-column justify-content-center">
                             <a href="{{url('abonnée/'.$abonne->id.'/profile')}}">
-                              <h6 class="mb-0 text-sm">{{$abonne->nom}}</h6>
+                              <h6 class="mb-0 text-sm px-3">{{$abonne->nom}}</h6>
                             </a>
                             <!--<p class="text-xs text-secondary mb-0">john@creative-tim.com</p>-->
                           </div>
@@ -74,10 +74,13 @@
                           {{ method_field('DELETE') }}
                           <div class="btn-group">
                             <a href="{{url('/abonnés/'.$abonne->id.'/qrcode')}}" title="Qr Code">
-                              <i class="fas fa-qrcode me-sm-1"></i>  
+                              <i class="fas fa-qrcode me-sm-1 px-2"></i>  
                             </a>
                             <a href="{{url('/abonnés/'.$abonne->id.'/edit')}}" title="Modifier" >
-                              <i class="fas fa-edit me-sm-1"></i>
+                              <i class="fas fa-edit me-sm-1 px-2"></i>
+                            </a>
+                            <a href="{{url('/suppabon/'.$abonne->id)}}">
+                              <i class="fas fa-trash-alt me-sm-1 px-2"></i> 
                             </a>
                             <button type="submit" 
                             style="
@@ -143,7 +146,7 @@
             </div>
 
       </div>
-     
+
 @endsection('content')
 
 

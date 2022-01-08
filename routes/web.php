@@ -7,8 +7,14 @@ use App\Http\Controllers\LivreController;
 use App\Http\Controllers\AbonneController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuteurController;
-use App\Http\Controllers\SearchController;
 
+use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\ContactController;
+
+
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\Frontend\frontendController;
+use App\Models\NewsLetter;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +39,6 @@ Route::get('/', function(){
 Route::get('/cat', function () {
     return view('categorie.categories');
 });
-
 Route::get('/ajoutercat', function () {
     return view('categorie.ajoutercat');
 });
@@ -82,8 +87,6 @@ Route::post('auteurs','AuteurController@store')->name('auteurs.ajouter');
 //MotCle
 
 Route::post('motscles', 'MotscleController@store')->name('motscles.ajouter');
-Route::post('motscles/{id}/supprimer', 'MotscleController@destroy')->name('motscles.supprimer');
-
 
 
 
@@ -124,23 +127,24 @@ Route::post('auteurs/{id}/supprimer', 'AuteurController@destroy')->name('auteurs
 //Abonnées
 Route::get('abonnés','AbonneController@index');
 
-Route::get('abonnés/ajouter','AbonneController@create');
+    Route::get('abonnée/{id}/profile', 'AbonneController@profile');
 
-Route::get('abonnée/{id}/profile', 'AbonneController@profile');
+    Route::post('abonnés','AbonneController@store');
 
-Route::post('abonnés','AbonneController@store');
+    Route::put('modifier/{id}','AbonneController@update');    
 
 Route::put('abonnés/{id}/update','AbonneController@update');    
 
 Route::get('abonnés/{id}/edit','AbonneController@edit');
 
-Route::delete('abonnés/{id}', 'AbonneController@destroy');
+Route::get('/suppabon/{id}', 'AbonneController@deleteAbonne');
+Route::get('/abonne/confirmersupp/{id}', 'AbonneController@destroy');
 
 
-Route::get('abonnés/{id}/qrcode', 'QrCodeController@qrCodeAbonne');
 
 //QrCode
 
+Route::get('abonnés/{id}/qrcode', 'QrCodeController@qrCodeAbonne');
 Route::get('/generate-qrcode', 'QrCodeController@index');
 
 //Histo
@@ -175,4 +179,48 @@ Route::get('/login', function () {
 
 Route::get('/dashboard',[UserController::class,'index'])->middleware(['auth'])->name('dashboard');
 
+// Frontend
+Route::get('/',[frontendController::class,'index']);
+Route::get('/books',[frontendController::class,'livres'] );
+Route::get('/livre/categorie/{nom}', [frontendController::class,'livreCate']);
+Route::get('/livre/{titre}', [frontendController::class,'livreView']); 
+Route::get('/search',[frontendController::class,'search']);
+
+//about
+Route::get('/about', function () {
+    return view('Frontend.about');
+});
+
+
+
+//Newsletter
+
+
+
+//Route::get('/Newsletter',[NewsletterController::class, 'create']);
+//Route::post('/newsletter', 'NewsletterController@store');
+Route::post('/newsletter',[NewsletterController::class,'store']);
+
+
+
+//contact
+Route::get('/contact', [ContactController::class, 'create']);
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
+
+//covid
+Route::get('/covid', function () {
+    return view('Frontend.covid');
+});
+
+
+
 require __DIR__.'/auth.php';
+
+
+//front office
+/*Route::get('/home',function(){
+return view('Frontend.layouts.masterF');
+});*/
+
+
+

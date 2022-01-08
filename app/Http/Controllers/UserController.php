@@ -91,9 +91,12 @@ class UserController extends Controller
    //retours
     $ret = Emprunt::select('id','created_at')->where('est_rendu','=',1)->get()->groupBy(function($data)
       {return Carbon::parse($data->created_at)->format('M');});
+
+    $getm = Emprunt::select('created_at')->where('est_rendu','=',1)->orWhere('est_rendu','=',0)->get()->groupBy(function($d)
+      {return Carbon::parse($d->created_at)->format('M');});
     $monthsret = [];
     $monthCret = [];
-    foreach($ret as $month => $values){
+    foreach($getm as $month => $values){
       $monthsret[] = $month;
       $monthCret[]= count($values);
     }//nombre total
@@ -227,36 +230,34 @@ public function postProfilePassword(Request $request) {
         $user->name= $request->input('name');
         $user->email = $request->input('email');
         if(!empty($request->file('image'))){
-$filenameWithExt = $request->file('image')->getClientOriginalName();
-$filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-// Get just ext
-$extension = $request->file('image')->getClientOriginalExtension();
-// Filename to store
-$fileNameToStore= $filename.'_'.time().'.'.$extension;
-// Upload Image
-$path = $request->file('image')->storeAs('public/Admin', $fileNameToStore);
-$user->photo = $fileNameToStore;}
-   if(!empty($request->input('ancien_password')) || !empty($request->input('password'))||!empty($request->input('password_confirmation')))
-   {
-     $request->validate([
-        'ancien_password' => 'required',
-        'password' => 'min:8|required_with:password_confirmation|same:password_confirmation',
-        'password_confirmation' => 'required'
-    ]);
-    if(Hash::check(request('ancien_password'), $user->password)){
+              $filenameWithExt = $request->file('image')->getClientOriginalName();
+              $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+              // Get just ext
+              $extension = $request->file('image')->getClientOriginalExtension();
+              // Filename to store
+              $fileNameToStore= $filename.'_'.time().'.'.$extension;
+              // Upload Image
+              $path = $request->file('image')->storeAs('public/Admin', $fileNameToStore);
+              $user->photo = $fileNameToStore;}
+              if(!empty($request->input('ancien_password')) || !empty($request->input('password'))||!empty($request->input('password_confirmation')))
+              {
+                $request->validate([
+                    'ancien_password' => 'required',
+                    'password' => 'min:8|required_with:password_confirmation|same:password_confirmation',
+                    'password_confirmation' => 'required'
+                  ]);
+              if(Hash::check(request('ancien_password'), $user->password)){
         
-    $user->password = Hash::make($request->input('password'));
-    }
-     else{
-     Alert::error('Mot de passe actuel est incorrcet');
-     return view('authentification.modifierpassword',['pass'=>$user]);}
-    }
-    $user->save();
-     Alert::success('Vos informations sont bien modifiées');
-      return redirect('user/'.$user->id.'/profile');
+                $user->password = Hash::make($request->input('password'));
+              }
+              else{
+                Alert::error('Mot de passe actuel est incorrcet');
+                return view('authentification.modifierpassword',['pass'=>$user]);}
+              }
+              $user->save();
+              Alert::success('Vos informations sont bien modifiées');
+                return redirect('user/'.$user->id.'/profile');
 }
-
-
 
   function suppgest($id){
   alert()->error('Etes vous sure?','L\' utilisateur sera supprimé!')->showConfirmButton('<a class=""  href="/confirmersuppgest'.$id.'" >

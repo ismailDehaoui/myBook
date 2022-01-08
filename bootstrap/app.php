@@ -51,5 +51,11 @@ $app->singleton(
 | from the actual running of the application and sending responses.
 |
 */
+$app->register(Illuminate\Mail\MailServiceProvider::class);
 
+$app->alias('mail.manager', Illuminate\Mail\MailManager::class);
+$app->alias('mail.manager', Illuminate\Contracts\Mail\Factory::class);
+$app->alias('mailer', Illuminate\Mail\Mailer::class);
+$app->alias('mailer', Illuminate\Contracts\Mail\Mailer::class);
+$app->alias('mailer', Illuminate\Contracts\Mail\MailQueue::class);
 return $app;
