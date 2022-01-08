@@ -91,9 +91,12 @@ class UserController extends Controller
    //retours
     $ret = Emprunt::select('id','created_at')->where('est_rendu','=',1)->get()->groupBy(function($data)
       {return Carbon::parse($data->created_at)->format('M');});
+
+    $getm = Emprunt::select('created_at')->where('est_rendu','=',1)->orWhere('est_rendu','=',0)->get()->groupBy(function($d)
+      {return Carbon::parse($d->created_at)->format('M');});
     $monthsret = [];
     $monthCret = [];
-    foreach($ret as $month => $values){
+    foreach($getm as $month => $values){
       $monthsret[] = $month;
       $monthCret[]= count($values);
     }//nombre total

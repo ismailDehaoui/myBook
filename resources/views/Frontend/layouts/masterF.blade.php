@@ -23,7 +23,6 @@
   <link rel="stylesheet" href="{{asset('../Frontend/assets/vendor/fancybox/css/jquery.fancybox.css')}}">
 
   <link rel="stylesheet" href="{{asset('../Frontend/assets/css/theme.css')}}">
-
   <link rel="stylesheet" href="{{asset('../Frontend/assets/css/asideBar.css')}}">
   <link rel="stylesheet" href="{{asset('../Frontend/assets/css/animationPhoto.css')}}">
   <link rel="stylesheet" href="{{asset('../Frontend/assets/css/livreView.css')}}">
@@ -31,7 +30,7 @@
   <link rel="stylesheet" href="{{asset('../Frontend/assets/css/myCss.css')}}">
   <link rel="stylesheet" href="{{asset('../Frontend/assets/css/style.css')}}">
 
-  
+  <link href="{{asset('../assets/css/toastr.min.css')}}" rel="stylesheet" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,5 +46,6 @@
   <div class="content container">
       @yield('content')
   </div>
+
 
  

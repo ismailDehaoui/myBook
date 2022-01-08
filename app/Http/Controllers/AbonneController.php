@@ -96,7 +96,6 @@ class AbonneController extends Controller
           /*
             
           */
-          $abonne->created_at             = date(NOW());
           $abonne->save();
           Alert::success('Abonne est bien ajouté'); 
           return redirect('/abonnés');
@@ -137,20 +136,39 @@ class AbonneController extends Controller
     }
 
     public function update(Request $request,$id){
-      if (Abonne::where('email', $request->input('email'))->exists()) {
-           echo "Error";
-      }else{
+      
+      
       $abonne                 = Abonne::find($id);
       $abonne->nom            = $request->input('nom');
       $abonne->prenom         = $request->input('prenom');
       $abonne->email          = $request->input('email');
       $abonne->adresse        = $request->input('adresse');
+<<<<<<< HEAD
       $abonne->date_naissance = $request->input('date_de_naissance');
       $abonne->updated_at     = date(NOW());
       $abonne->save();
       return redirect('/');
     }
   }*/
+=======
+      $abonne->date_de_naissance = $request->input('date_de_naissance');
+      $filenameWithExt                 = $request->file('image')->getClientOriginalName();
+          // Get just filename
+          $filename                        = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+          // Get just ext
+          $extension                       = $request->file('image')->getClientOriginalExtension();
+          // Filename to store
+          $fileNameToStore                 = $filename.'_'.time().'.'.$extension;
+          // Upload Image
+          $path                            = $request->file('image')->storeAs('public/images/abonnés', $fileNameToStore);
+          $abonne->photo                  = $fileNameToStore;
+          
+          
+          $abonne->save();
+          Alert::success('Modifié avec succès!'); 
+          return redirect('/abonnés');  
+  }
+>>>>>>> c3a8a19fe5bfa1fcdc510ac5d9833565b898fffd
 
 
   public function listAbonsupp(){
@@ -159,6 +177,13 @@ class AbonneController extends Controller
         return view('Historique.abonsupp', ['abon'=>$l]);
     } 
 
+        function deleteAbonne($id){
+   Alert::error('Etes vous sure?','L\'abonné sera supprimé!')->showConfirmButton('<a class=""  href="/abonne/confirmersupp/'.$id.'" >
+                            <input type="hidden" name="afficher">Supprimer
+                        </a>', '#a085d6a')->toHtml()->showCancelButton('Annuler', '#aaa')->reverseButtons();
+   return redirect('abonnés');
+  }
+
   public function destroy($id){
     $emprunt = Emprunt::where('abonnes_id', $id)->where('est_rendu', false);
     if($emprunt->count() != 0){
@@ -166,9 +191,21 @@ class AbonneController extends Controller
       return redirect('/abonnés');  
     }
     $abonne = Abonne::find($id);
+       $user = auth()->user();
+       $abonne->acteur = $user->id;
+       $abonne->save();
     $abonne->delete();
     Alert::success('Succeès', 'Abonné supprimé avec succès!');
     return redirect('/abonnés');
   }
+<<<<<<< HEAD
+=======
+   function restoreabon($id){
+    $r = Abonne::withTrashed()->where('id',$id);
+    $r->restore();
+     Alert::success('Abonné est bien restauré');
+    return redirect('/abonsupp');
+  }
+>>>>>>> c3a8a19fe5bfa1fcdc510ac5d9833565b898fffd
 
 }

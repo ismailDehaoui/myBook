@@ -6,15 +6,11 @@
 @endsection
 @section('content')
 
-<style>
-        
-</style>
-
 <div class="ismail ">      
     <div class="row ">
         <div class="col-lg-6 py-4">
             <div class="wrapper d-flex align-items-stretch">
-                <div>
+                <div >
                     <nav id="sidebar" class="order-last" class="img" style="background-image: url(images/bg_1.jpg);">
                         <div class="oi">
                             <h1>

@@ -1,99 +1,69 @@
 <style>
-   .fixed-plugin .fixed-plugin-button {
-  background: #fff;
-  border-radius: 50%;
-  bottom: 30px;
-  right: 30px;
-  font-size: 1.25rem;
-  z-index: 990;
-  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.16);
-  cursor: pointer; }
-  .fixed-plugin .fixed-plugin-button i {
-    pointer-events: none; }
-
-.fixed-plugin .card {
-  position: fixed !important;
-  right: -360px;
-  top: 0;
-  height: 100%;
-  left: auto !important;
-  transform: unset !important;
-  width: 360px;
-  border-radius: 0;
-  padding: 0 10px;
-  transition: .2s ease;
-  z-index: 1020; }
-
-.fixed-plugin .badge {
-  border: 1px solid #fff;
-  border-radius: 50%;
-  cursor: pointer;
-  display: inline-block;
-  height: 23px;
-  margin-right: 5px;
-  position: relative;
-  width: 23px;
-  transition: all 0.2s ease-in-out; }
-  .fixed-plugin .badge:hover, .fixed-plugin .badge.active {
-    border-color: #344767; }
-
-.fixed-plugin .btn.bg-gradient-dark:not(:disabled):not(.disabled) {
-  border: 1px solid transparent; }
-  .fixed-plugin .btn.bg-gradient-dark:not(:disabled):not(.disabled):not(.active) {
-    background-color: transparent;
-    background-image: none;
-    border: 1px solid #344767;
-    color: #344767; }
-
-.fixed-plugin.show .card {
-  right: 0; }
-</style>
+  h5{
+    color: #fff;
+  }
+  </style>
 <footer class="page-footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3 py-3">
-          <img src="{{asset('../Frontend/assets/img/logo.png')}}" alt="" width="150px">
-        </div>
-        <div class="col-lg-3 py-3">
-          <h5>Information de contact</h5>
-          <p>301 Mon Livre bibliothèque, Cerisiers, Tlemcen, Algérie.</p>
-          <p>Email: MonLivre13@mail.com</p>
-          <p>Phone: +213 43581122</p>
-        </div>
-        <div class="col-lg-3 py-3">
-          <h5>Bibliothèque</h5>
-          <ul class="footer-menu">
-            <li><a href="#">Carrière</a></li>
-            <li><a href="#">Resources</a></li>
-            <li><a href="#">News & Feed</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-3 py-3">
-          <h5>Newsletter</h5>
-          <form action="#">
-            <input type="text" class="form-control" placeholder="Entrer votre email">
-            <button type="submit" class="btn btn-primary btn-sm mt-2">Envoyer</button>
-          </form>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 py-3">
+        <a href="{{url('/')}}" class="navbar-brand">
+          <img src="{{asset('../Frontend/assets/img/logo.png')}}" alt="" width="150px">  
+        </a>
       </div>
-
-      <hr>
-
-      <div class="row mt-4">
-        <div class="col-md-6">
-          <p>Copyright 2021.</p>
+      <div class="col-lg-3 py-3">
+        <h5>Information de contact</h5>
+        <p>301 Mon Livre bibliothèque, Cerisiers, Tlemcen, Algérie.</p>
+        <p>Email: MonLivre12@mail.com</p>
+        <p>Phone: 056012815</p>
+      </div>
+      <div class="col-lg-3 py-3">
+        <h5>Bibliothèque</h5>
+        <ul class="footer-menu">
+          <li><a href="{{url('/contact')}}">Contact</a></li>
+          <li><a href="{{url('/about')}}">About</a></li>
+          <li><a href="{{url('/covid')}}">Covid-19</a></li>
+        </ul>
+      </div>
+      
+  
+   
+   
+    <div class="col-lg-3 py-3">
+        <h5>Newsletter</h5>
+        <div class="row">
+        <form action="{{URL('/newsletter')}}" method="POST" id="form-newsletter">
+          <div class="form-group">
+          <label for="email">Email </label>
+          <input type="email" name="email" class="form-control" placeholder="Entrez votre email" style="width:190px;"></label>
         </div>
-        <div class="col-md-6 text-right">
-          <div class="sosmed-button">
-            <a href="https://www.facebook.com/275570925812221/posts/2235785053124122/"><span class="mai-logo-facebook-f"></span></a>
-            <a href="https://twitter.com/arwa109638/status/840514830037585921"><span class="mai-logo-twitter"></span></a>
-            <a href="https://www.youtube.com/watch?v=fma5QYNoFQk"><span class="mai-logo-youtube"></span></a>
-            <a href="https://dz.linkedin.com/in/saida-bouaoune-606789155"><span class="mai-logo-linkedin"></span></a>
-          </div>
+        {{csrf_field()}}
+          <button type="submit" class="btn btn-primary btn-sm mt-2">Soumettre</button>
+        
+        </form>
+      </div>
+     </div>
+  
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <p>Copyright 2022.</p>
+      </div>
+      <div class="col-md-6 text-right">
+        <div class="sosmed-button">
+          <a href="https://www.facebook.com/275570925812221/posts/2235785053124122/"><span class="mai-logo-facebook-f"></span></a>
+          <a href="https://twitter.com/arwa109638/status/840514830037585921"><span class="mai-logo-twitter"></span></a>
+          <a href="https://www.youtube.com/watch?v=fma5QYNoFQk"><span class="mai-logo-youtube"></span></a>
+          <a href="https://dz.linkedin.com/in/saida-bouaoune-606789155"><span class="mai-logo-linkedin"></span></a>
         </div>
       </div>
     </div>
-  </footer>
+  </div>
+</footer>  @include('sweetalert::alert')
 <script src="{{asset('../Frontend/assets/js/bootstrap.bundle.min.js')}}"></script>
 
 <script src="{{asset('../Frontend/assets/vendor/owl-carousel/js/owl.carousel.min.js')}}"></script>
@@ -117,3 +87,4 @@
 @yield('scripts')
 </body>
 </html> 
+

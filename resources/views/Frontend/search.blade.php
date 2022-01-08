@@ -138,9 +138,7 @@
         </div>
     </div>
     <div class="pagination">
-
         {{$livres->links()}}
-    
-     </div>
+    </div>
 </div>
 @endsection('content')

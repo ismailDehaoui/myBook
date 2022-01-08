@@ -596,6 +596,7 @@ pre {
   order: -1; }
 
 .order-last {
+  
   -webkit-box-ordinal-group: 14;
   -ms-flex-order: 13;
   order: 13; }
@@ -8177,9 +8178,13 @@ h1, h2, h3, h4, h5,
   background-position: center center; }
 
 .wrapper {
-  width: 100%; }
+  
+  width: 100%;
+  
+ }
 
 #sidebar {
+  
   min-width: 300px;
   max-width: 300px;
   color: #fff;

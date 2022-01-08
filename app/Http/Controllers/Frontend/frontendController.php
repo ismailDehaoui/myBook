@@ -20,36 +20,172 @@ class frontendController extends Controller
     
     public function search(Request $request){
         $auteurs = Auteur::orderBy('nom')->get();
+        
         $titre   = $request->input('titre');
         $langue  = $request->input('langue');
         $auteur =  $request->input('auteur');
         $motCle =  $request->input('mot-clé');
         $motCles = array();
         $motCles = explode(',',$motCle,PHP_INT_MAX);
-         
-        if(empty($titre)       && empty($langue)  && empty($auteur)  && empty($motCles)){
+
+        $a= 0;$b= 0;$c=0;$d=0;$e=0;$f=0;$g=0;$h=0;
+        if(empty($titre)       && empty($langue)  && empty($auteur)  && empty($motCle)){
             return redirect('/books');
-        }else{   
+        }elseif(!empty($titre) && empty($langue)  && empty($auteur)  && empty($motCle)){
+            $livres = Livre::where('titre','like','%'.$titre.'%')
+                            ->distinct()
+                            ->paginate(10);
+        }elseif(empty($titre)  && !empty($langue) && empty($auteur)  && empty($motCle)){
+            $livres = Livre::where('langue','like','%'.$langue.'%')
+                            ->distinct()
+                            ->paginate(10);
+        }elseif(empty($titre)  && empty($langue)  && !empty($auteur) && empty($motCle)){
+            $livres = Livre::
+                            join('auteurslivres','auteurslivres.livres_id','=','livres.id')
+                            ->join('auteurs','auteurs.id','=','auteurslivres.auteurs_id')
+                            ->where('nom','like','%'.$auteur.'%')
+                            ->orderBy('titre')
+                            ->distinct()                
+                            ->paginate(10);
+                            
+        }elseif(empty($titre)  && empty($langue)  && empty($auteur)  && !empty($motCle)){
+            foreach($motCles as $mot){
+                $livres = Livre::join('motscleslivres','motscleslivres.livres_id','=','livres.id')
+                            ->join('motscles','motscles.id','=','motscleslivres.motscles_id')
+                            ->where('motcle','like','%'.$mot.'%')
+                            ->orderBy('titre')
+                            ->distinct()
+                            ->paginate(10);
+                        }
+                        
+        }elseif(!empty($titre) && !empty($langue) && empty($auteur)  && empty($motCle)){
+            $livres = Livre::where('titre','like','%'.$titre.'%')
+                            ->where('langue','like','%'.$langue.'%')
+                            ->distinct()
+                            ->paginate(10);
+                           
+        }elseif(!empty($titre) && empty($langue)  && !empty($auteur) && empty($motCle)){
+            $livres = Livre::where('titre','like','%'.$titre.'%')
+                            ->join('auteurslivres','auteurslivres.livres_id','=','livres.id')
+                            ->join('auteurs','auteurs.id','=','auteurslivres.auteurs_id')
+                            ->where('nom','like','%'.$auteur.'%')
+                            ->distinct()
+                            ->paginate(10);
+                            $c++;
+        }elseif(empty($titre)  && !empty($langue) && empty($auteur)  && !empty($motCle)){
+            foreach($motCles as $mot){
+              $livres = Livre::where('langue','like','%'.$langue.'%')
+                            ->join('motscleslivres','motscleslivres.livres_id','=','livres.id')
+                            ->join('motscles','motscles.id','=','motscleslivres.motscles_id')
+                            ->where('motcle','like','%'.$mot.'%')
+                            ->distinct()
+                            ->paginate(10);
+            }            
+                
+        }elseif(empty($titre)  && empty($langue)  && !empty($auteur) && !empty($motCle)){
+           
+            foreach($motCles as $mot){
+                    $livres = Livre::join('motscleslivres','motscleslivres.livres_id','=','livres.id')
+                            ->join('motscles','motscles.id','=','motscleslivres.motscles_id')
+                            ->where('motcle','like','%'.$mot.'%')
+                            ->join('auteurslivres','auteurslivres.livres_id','=','livres.id')
+                            ->join('auteurs','auteurs.id','=','auteurslivres.auteurs_id')
+                            ->where('nom','like','%'.$auteur.'%')
+                            ->orderBy('titre')
+                            ->distinct()
+                            ->paginate(10);
+            }    
+            $d++;
+        }elseif(!empty($titre) && empty($langue)  && empty($auteur)  && !empty($motCle)){
+            foreach($motCles as $mot){
+                    $livres = Livre::where('titre','like','%'.$titre.'%')
+                            ->join('motscleslivres','motscleslivres.livres_id','=','livres.id')
+                            ->join('motscles','motscles.id','=','motscleslivres.motscles_id')
+                            ->where('motcle','like','%'.$mot.'%')
+                            ->distinct()
+                            ->paginate(10);
+            }  
+                      
+        }elseif(empty($titre)  && !empty($langue) && !empty($auteur) && empty($motCle)){
+            $livres = Livre::where('langue','like','%'.$langue.'%')
+                            ->join('auteurslivres','auteurslivres.livres_id','=','livres.id')
+                            ->join('auteurs','auteurs.id','=','auteurslivres.auteurs_id')
+                            ->where('nom','like','%'.$auteur.'%')
+                            ->distinct()
+                            ->paginate(10);
+                            $e++;
+        }elseif(!empty($titre) && !empty($langue) && !empty($auteur) && empty($motCle)){
+            $livres = Livre::where('titre','like','%'.$titre.'%')
+                            ->where('langue','like','%'.$langue.'%')
+                            ->join('auteurslivres','auteurslivres.livres_id','=','livres.id')
+                            ->join('auteurs','auteurs.id','=','auteurslivres.auteurs_id')
+                            ->where('nom','like','%'.$auteur.'%')
+                            ->distinct()
+                            ->paginate(10);
+                            $f++;
+        }elseif(!empty($titre) && empty($langue)  && !empty($auteur) && !empty($motCle)){
+           
+            foreach($motCles as $mot){
+                 $livres = Livre::where('titre','like','%'.$titre.'%')
+                            ->join('auteurslivres','auteurslivres.livres_id','=','livres.id')
+                            ->join('auteurs','auteurs.id','=','auteurslivres.auteurs_id')
+                            ->where('nom','like','%'.$auteur.'%')
+                            ->join('motscleslivres','motscleslivres.livres_id','=','livres.id')
+                            ->join('motscles','motscles.id','=','motscleslivres.motscles_id')
+                            ->where('motcle','like','%'.$mot.'%')
+                            ->distinct()
+                            ->paginate(10);
+            }  
+            $g++;   
+        }elseif(!empty($titre) && !empty($langue) && empty($auteur)  && !empty($motCle)){
+            
+            foreach($motCles as $mot){
+                $livres = Livre::where('titre','like','%'.$titre.'%')
+                            ->where('langue','like','%'.$langue.'%')
+                            ->join('motscleslivres','motscleslivres.livres_id','=','livres.id')
+                            ->join('motscles','motscles.id','=','motscleslivres.motscles_id')
+                            ->where('motcle','like','%'.$mot.'%')
+                            ->distinct()
+                            ->paginate(10);
+                }        
+        }elseif(empty($titre)  && !empty($langue) && !empty($auteur) && !empty($motCle)){
+            foreach($motCles as $mot){
+                 $livres = Livre::where('langue','like','%'.$langue.'%')
+                            ->join('motscleslivres','motscleslivres.livres_id','=','livres.id')
+                            ->join('motscles','motscles.id','=','motscleslivres.motscles_id')
+                            ->where('motcle','like','%'.$mot.'%')
+                            ->join('auteurslivres','auteurslivres.livres_id','=','livres.id')
+                            ->join('auteurs','auteurs.id','=','auteurslivres.auteurs_id')
+                            ->where('nom','like','%'.$auteur.'%')
+                            ->distinct()
+                            ->paginate(10);
+                        }
+                        $h++;        
+        }else{
+            
             foreach($motCles as $mot){
                     $livres = Livre::where('titre','like','%'.$titre.'%')
                             ->where('langue','like','%'.$langue.'%')
-                            ->join('motscleslivres','livres.id','=','motscleslivres.livres_id')
+                            ->join('motscleslivres','motscleslivres.livres_id','=','livres.id')
                             ->join('motscles','motscles.id','=','motscleslivres.motscles_id')
                             ->where('motcle','like','%'.$mot.'%')
-                            ->join('auteurslivres','livres.id','=','auteurslivres.livres_id')
+                            ->join('auteurslivres','auteurslivres.livres_id','=','livres.id')
                             ->join('auteurs','auteurs.id','=','auteurslivres.auteurs_id')
                             ->where('nom','like','%'.$auteur.'%')
-                            ->paginate(4);
-                    }        
+                            ->distinct()
+                            ->paginate(10);
+                    }
+                    $b++;
+                           
         }
-        //dd($livres);
+        // dd($a,$b,$c,$d,$e,$f,$g,$h);
         $categoreis = Categorie::orderBy('nom')->get();
-        return view ('Frontend.search',['categoreis'=>$categoreis,'livres'=>$livres,'auteurs'=>$auteurs]);
+        return view ('Frontend.search',['categoreis'=>$categoreis,'livres'=>$livres,'auteurs'=> $auteurs]);
     }   
      
     public function livres(){
         $auteurs = Auteur::orderBy('nom')->get();
-        $livres    = Livre::orderBy('titre')->paginate(4);
+        $livres    = Livre::orderBy('titre')->paginate(10);
         $categoreis = Categorie::orderBy('nom')->get();
         return view ('Frontend.livres',['categoreis'=>$categoreis,'livres'=>$livres , 'auteurs'=>$auteurs]);   
     }

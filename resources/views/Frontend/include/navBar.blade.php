@@ -9,7 +9,7 @@
       <div class="p-2">
         <b>COVID-19 Alert : </b> 
         Pour se protèger et protèger les autres ! - 
-        <a href = "#" class="text-dark">
+        <a href = "{{url('/covid')}}" class="text-dark">
           <b>Lire Plus</b>
         </a>
       </div>
@@ -54,22 +54,26 @@
               <a href="{{url('/')}}" class="nav-link">Accueil</a>
             </li>
             <li class="nav-item">
-              <a href="about.html" class="nav-link">A propos</a>
+              <a href="{{url('/about')}}" class="nav-link">A propos</a>
             </li>
             <li class="nav-item">
               <a href="{{url('/books')}}" class="nav-link">Les livres</a>
             </li>
-            <!--<li class="nav-item">
-              <a href="{{url('/livre/categories')}}" class="nav-link">Categoreis</a>
-            </li>-->
+            
             <li class="nav-item">
-              <a href="blog.html" class="nav-link">News</a>
+              <a href="{{url('/contact')}}" class="nav-link">Contact</a>
             </li>
+            
             <li class="nav-item">
-              <a href="contact.html" class="nav-link">Contact</a>
+              <a href="{{url('/covid')}}" class="nav-link">Covid-19</a>
             </li>
           </ul>
         </div>
       </div> <!-- .container -->
     </nav> <!-- .navbar -->
   </header>
+
+
+
+
+  
