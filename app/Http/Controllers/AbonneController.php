@@ -110,6 +110,9 @@ class AbonneController extends Controller
       $abonne->email          = $request->input('email');
       $abonne->adresse        = $request->input('adresse');
       $abonne->date_de_naissance = $request->input('date_de_naissance');
+      
+      if($request->input('image') != $abonne->photo && $request->input('image')){
+      
       $filenameWithExt                 = $request->file('image')->getClientOriginalName();
           // Get just filename
           $filename                        = pathinfo($filenameWithExt, PATHINFO_FILENAME);
@@ -121,10 +124,11 @@ class AbonneController extends Controller
           $path                            = $request->file('image')->storeAs('public/images/abonnés', $fileNameToStore);
           $abonne->photo                  = $fileNameToStore;
           
-          
+      }
           $abonne->save();
           Alert::success('Modifié avec succès!'); 
           return redirect('/abonnés');  
+
   }
 
 

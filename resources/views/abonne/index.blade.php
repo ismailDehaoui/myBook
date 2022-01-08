@@ -79,7 +79,17 @@
                             <a href="{{url('/abonnés/'.$abonne->id.'/edit')}}" title="Modifier" >
                               <i class="fas fa-edit me-sm-1"></i>
                             </a>
-                            <button type="submit">
+                            <button type="submit" 
+                            style="
+                            background-color: transparent; 
+                            background-repeat: no-repeat;
+                            border: none;
+                            cursor: pointer;
+                            overflow: hidden;
+                            outline: none;
+                            padding:0;
+                            margin:0;
+                            ">
                               <i class="fas fa-trash-alt me-sm-1"></i> 
                             </button>
                           </div>

@@ -1,5 +1,5 @@
 @Section('form')
- <form action="{{url('/rechercheUti')}}" method="POST" >
+<form action="{{url('/rechercheUti')}}" method="POST" >
 @endsection
 @extends('layouts.master')
 @Section('content')

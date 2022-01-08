@@ -213,7 +213,7 @@
 
                             <div class="form-group my-3">
                                 <label for="image">image</label>
-                                <input type="file" name="image" class="form-control border border-primary px-2" accept="image/jpg,image/jpeg,image/png">
+                                <input required type="file" name="image" class="form-control border border-primary px-2" accept="image/jpg,image/jpeg,image/png">
                             </div>
 
 

@@ -132,7 +132,7 @@
                                 
                               
                             <div class="form-group my-3">
-                               
+
                               <label for="mot-cle">Mot(s)-clé(s)</label>
                               <select id="mot-cle" name="motcle[]" class="form-control border border-primary" multiple>
                                   @foreach ($motscles as $motcle)

@@ -16,23 +16,14 @@
           <div class="card-body px-0 pb-2">
             <div class="container">
                 <div class="row">
-
-
-
-
-
-
-                   
                     <div class="col-md-12">
                         <form action="{{ url('abonnés') }}" method="POST"  enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group my-3">
-                                    
                                         <label for="nom" class="form-label">Nom</label>
                                         <input type="text" class="form-control border border-primary px-2" name="nom" required>
-                                    
                                 </div>
 
                             <div class="form-group my-3">
@@ -84,7 +75,7 @@
 
                             <div class="form-group my-3">
                                 <label for="image">image</label>
-                                <input type="file" name="image" class="form-control border border-primary px-2">
+                                <input required type="file" name="image" class="form-control border border-primary px-2">
                             </div>
 
 
