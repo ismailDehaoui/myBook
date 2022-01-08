@@ -9,9 +9,8 @@
 @include('Frontend.include.slider')
 <div class="page-section">
     <div class="container">
-      <div class="row align-items-center">
+      <div class="row align-items-center bg-light">
         <div class="col-md-6 py-3">
-          <div class="subhead"></div>
           <h2 class="title-section">Les livres récents</h2>
         </div>
         <div class="col-md-6 py-3 text-md-right">
@@ -22,9 +21,11 @@
         @foreach ($livresN as $livre)
               <div class="col-md-4">  
                 <div class="card my-2" style="width: 18rem;">
-                  <img class="card-img-top" src="{{asset('storage/images/livres/'.$livre->photo)}}" alt="Card image cap">
+                  <img style="width: 100%;
+                  height: 15vw;
+                  object-fit: cover;" class="card-img-top" src="{{asset('storage/images/livres/'.$livre->photo)}}" alt="Card image cap">
                   <div class="card-body">
-                    <h5 class="card-title text-truncate">{{$livre->titre}}</h5>
+                    <h4 class="card-title text-truncate">{{$livre->titre}}</h4>
                       <p class="card-text text-truncate">
                         {{$livre->resume}}
                       </p>
@@ -38,7 +39,7 @@
 </div>
 <div class="page-section">
     <div class="container">
-      <div class="row align-items-center">
+      <div class="row align-items-center bg-light">
         <div class="col-md-6 py-3">
           <div class="subhead"></div>
           <h2 class="title-section">Les livres les plus vus</h2>
@@ -51,9 +52,11 @@
         @foreach ($livresV as $livre)          
           <div class="col-md-4">  
             <div class="card my-2" style="width: 18rem;">
-              <img class="card-img-top" src="{{asset('storage/images/livres/'.$livre->photo)}}" alt="Card image cap">
+              <img style="width: 100%;
+              height: 15vw;
+              object-fit: cover;" class="card-img-top" src="{{asset('storage/images/livres/'.$livre->photo)}}" alt="Card image cap">
               <div class="card-body">
-                <h5 class="card-title text-truncate">{{$livre->titre}}</h5>
+                <h4 class="card-title text-truncate">{{$livre->titre}}</h4>
                   <p class="card-text text-truncate">
                     {{$livre->resume}}
                   </p>
@@ -67,7 +70,7 @@
 </div>
 <div class="page-section">
   <div class="container">
-    <div class="row align-items-center">
+    <div class="row align-items-center bg-light">
       <div class="col-md-6 py-3">
         <div class="subhead"></div>
         <h2 class="title-section">Les nouvelles catégories</h2>

@@ -278,7 +278,7 @@ class LivreController extends Controller
       $nombreLivresEmpruntes = Emprunt::where('livres_id','=',$id)->count();
       $nombreTotalLivre = $nombreLivresEmpruntes + $livre->nombre_exemplaires_disponibles;
       $motscles = Motscleslivre::join('motscles', 'motscles.id', '=', 'motscleslivres.motscles_id')->where('motscleslivres.livres_id','=',$id)->where('motscles.deleted_at', null)->get();
-      $empruntsNonRendus = Emprunt::join('abonnes', 'abonnes.id', '=', 'emprunts.abonnes_id')->where('livres_id', $id)->where('est_rendu', false)->paginate(10);      
+      $empruntsNonRendus = Emprunt::join('abonnes', 'abonnes.id', '=', 'emprunts.abonnes_id')->where('date_fin','<',date(now()))->where('livres_id', $id)->where('est_rendu', false)->paginate(10);      
       $categorie = Categorie::find($livre->categories_id);
       return view('livre.profile',['livre'=>$livre, 'nbTotal'=>$nombreTotalLivre, 'nbEmprunt'=>$nombreLivresEmpruntes, 'motscles'=>$motscles, 'empruntsNonRendus'=>$empruntsNonRendus, "nomCategorie"=>$categorie->nom]);
     }
