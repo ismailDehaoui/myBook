@@ -8,6 +8,8 @@
 
   <meta name="copyright" content="MACode ID, https://macodeid.com/">
 
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+
   <title>Mon livre</title>
 
   <link rel="stylesheet" href="{{asset('../Frontend/assets/css/bootstrap.css')}}">
@@ -22,6 +24,8 @@
 
   <link rel="stylesheet" href="{{asset('../Frontend/assets/css/theme.css')}}">
 
+  <link href="{{asset('../assets/css/toastr.min.css')}}" rel="stylesheet" />
+
 </head>
 <body>
 
@@ -34,10 +38,10 @@
         <div class="row align-items-center">
           <div class="col-md-8">
             <div class="d-inline-block">
-              <span class="mai-mail fg-primary"></span> <a href="mailto:contact@mail.com">MonLivre13@mail.com</a>
+              <span class="mai-mail fg-primary"></span> <a href="mailto:monlivre12@mail.com">MonLivre12@mail.com</a>
             </div>
             <div class="d-inline-block ml-2">
-              <span class="mai-call fg-primary"></span> <a href="tel:+0011223495"> +213 43581122</a>
+              <span class="mai-call fg-primary"></span> <a href="tel:0560128158"> 0560128158</a>
             </div>
           </div>
           <div class="col-md-4 text-right d-none d-md-block">
@@ -54,7 +58,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container">
-        <a href="index.html" class="navbar-brand">Reve<span class="text-primary">Tive.</span></a>
+        <a href="index.html" class="navbar-brand">Mon<span class="text-primary">Livre.</span></a>
 
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -66,24 +70,27 @@
               <a href="index.html" class="nav-link">Accueil</a>
             </li>
             <li class="nav-item">
-              <a href="about.html" class="nav-link">A propos</a>
+              <a href="{{url('/about')}}" class="nav-link">A propos</a>
             </li>
             <li class="nav-item">
-              <a href="services.html" class="nav-link">Services</a>
+              <a href="{{url('/contact')}}" class="nav-link">Contact</a>
             </li>
             <li class="nav-item">
-              <a href="portfolio.html" class="nav-link">Projects</a>
+              <a href="portfolio.html" class="nav-link">Catégories</a>
             </li>
             <li class="nav-item">
-              <a href="blog.html" class="nav-link">News</a>
+              <a href="{{url('/covid')}}" class="nav-link">Covid-19</a>
             </li>
-            <li class="nav-item">
+            <!-- .contact -->
+           <!--<li class="nav-item">
               <a href="contact.html" class="nav-link">Contact</a>
-            </li>
+            </li>!-->
           </ul>
         </div>
       </div> <!-- .container -->
     </nav> <!-- .navbar -->
+      @if((Request::url() !='http://mybook.test/contact')&&(Request::url() !='http://mybook.test/covid'))
+    
 
     <div class="page-banner home-banner mb-5">
       <div class="slider-wrapper">
@@ -92,17 +99,16 @@
             <img src="https://cdn.britannica.com/92/216092-131-5FF4D1E7/custom-library.jpg" alt="">
             <div class="img-caption">
               <h1 class="mb-4">je fais partie de tout ce que j'ai lu.</h1>
-              <div class="subhead">Theodor Resovelt</div>
               
-              <a href="#services" class="btn btn-outline-light">Get Started</a>
+              
+              
             </div>
           </div>
           <div class="hero-carousel-item">
             <img src="{{asset('../Frontend/assets/img/b.jpg')}}" alt="">
             <div class="img-caption">
-              <h1 class="mb-4">continuez à lire c'est l'une des aventures les plus merveilleuses que n'importe qui puisse avoircccc</h1>
-              <a href="#services" class="btn btn-outline-light">Get Started</a>
-              <a href="#services" class="btn btn-primary">See Pricing</a>
+              <h1 class="mb-4">continuez à lire c'est l'une des aventures les plus merveilleuses que n'importe qui puisse avoir</h1>
+              
             </div>
           </div>
           <div class="hero-carousel-item">
@@ -110,23 +116,24 @@
             <div class="img-caption">
               <div class="subhead"></div>
               <h1 class="mb-4">Today a reader,Tomorrow a leader.</h1>
-              <a href="#services" class="btn btn-primary">Read More</a>
+              
             </div>
           </div>
         </div>
       </div> <!-- .slider-wrapper -->
     </div> <!-- .page-banner -->
+    @endif
   </header>
 
   <main>
     <div class="page-section">
       <div class="container">
        @yield('content')
-        <div class="text-center">
+       <!-- <div class="text-center">
           <h2 class="title-section mb-3">Restez en contact</h2>
           <p>Dites simplement bonjour ou envoyez-nous un message. Vous pouvez nous envoyer manuellement un e-mail sur<a href="mailto:MonLivre13@mail.com">MonLivre13@mail.com</a></p>
         </div>
-        <div class="row justify-content-center mt-5">
+       <!-- <div class="row justify-content-center mt-5">
           <div class="col-lg-8">
             <form action="#" class="form-contact">
               <div class="row">
@@ -184,28 +191,41 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-3 py-3">
-          <h3>Reve<span class="fg-primary">Tive.</span></h3>
+          <h3>Mon<span class="fg-primary">Livre.</span></h3>
         </div>
         <div class="col-lg-3 py-3">
           <h5>Information de contact</h5>
           <p>301 Mon Livre bibliothèque, Cerisiers, Tlemcen, Algérie.</p>
-          <p>Email: MonLivre13@mail.com</p>
-          <p>Phone: +213 43581122</p>
+          <p>Email: MonLivre12@mail.com</p>
+          <p>Phone: 056012815</p>
         </div>
         <div class="col-lg-3 py-3">
           <h5>Bibliothèque</h5>
           <ul class="footer-menu">
-            <li><a href="#">Carrière</a></li>
-            <li><a href="#">Resources</a></li>
-            <li><a href="#">News & Feed</a></li>
+            <li><a href="{{url('/contact')}}">Contact</a></li>
+            <li><a href="{{url('/about')}}">About</a></li>
+            <li><a href="{{url('/covid')}}">Covid-19</a></li>
           </ul>
         </div>
-        <div class="col-lg-3 py-3">
+        
+    
+     
+     
+      <div class="col-lg-3 py-3">
           <h5>Newsletter</h5>
-          <form action="#">
-            <input type="text" class="form-control" placeholder="Entrer votre email">
-            <button type="submit" class="btn btn-primary btn-sm mt-2">Envoyer</button>
+          <div class="row">
+          <form action="{{URL('/newsletter')}}" method="POST" id="form-newsletter">
+            <div class="form-group">
+            <label for="email">Email </label>
+            <input type="email" name="email" class="form-control" placeholder="Entrez votre email" style="width:190px;"></label>
+          </div>
+          {{csrf_field()}}
+            <button type="submit" class="btn btn-primary btn-sm mt-2">Soumettre</button>
+          
           </form>
+        </div>
+       </div>
+    
         </div>
       </div>
 
@@ -226,7 +246,7 @@
       </div>
     </div>
   </footer>
-
+ @include('sweetalert::alert');
   
 <script src="{{asset('../Frontend/assets/js/jquery-3.5.1.min.js')}}"></script>
 
@@ -243,6 +263,10 @@
 <script src="{{asset('../Frontend/assets/js/google-maps.js')}}"></script>
 
 <script src="{{asset('../Frontend/assets/js/theme.js')}}"></script>
+
+ <script src="{{asset('../assets/js/newsletter.js')}}"></script>
+
+ <script src="{{asset('../assets/js/toastr.min.js')}}"></script>
 
 <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIA_zqjFMsJM_sxP9-6Pde5vVCTyJmUHM&callback=initMap"></script> -->
 

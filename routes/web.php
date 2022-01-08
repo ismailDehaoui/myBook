@@ -7,7 +7,13 @@ use App\Http\Controllers\LivreController;
 use App\Http\Controllers\AbonneController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuteurController;
+<<<<<<< HEAD
+use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\ContactController;
+
+=======
 use App\Http\Controllers\SearchController;
+>>>>>>> 6a52052351999713f815e00440a5d3638b191f34
 
 
 /*
@@ -176,4 +182,46 @@ Route::get('/login', function () {
 
 Route::get('/dashboard',[UserController::class,'index'])->middleware(['auth'])->name('dashboard');
 
+<<<<<<< HEAD
 require __DIR__.'/auth.php';
+     
+
+
+
+//front office
+Route::get('/home',function(){
+return view('Frontend.layouts.masterF');
+});
+
+//about
+Route::get('/about', function () {
+    return view('Frontend.about');
+});
+
+
+
+//Newsletter
+
+
+
+//Route::get('/Newsletter',[NewsletterController::class, 'create']);
+Route::post('/newsletter', 'NewsletterController@store');
+
+
+
+
+//contact
+Route::get('/contact', [ContactController::class, 'create']);
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
+
+//covid
+Route::get('/covid', function () {
+    return view('Frontend.covid');
+});
+
+
+
+?>
+=======
+require __DIR__.'/auth.php';
+>>>>>>> 6a52052351999713f815e00440a5d3638b191f34
