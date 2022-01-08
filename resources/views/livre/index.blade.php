@@ -36,6 +36,10 @@
 
                       @foreach ($livres as $livre)
                       
+<<<<<<< HEAD
+=======
+                     
+>>>>>>> b0046746644bd69f40f2593b76bc1115c2ec5bba
                       <?php $categorie = \App\Models\Categorie::withTrashed()->find($livre->categories_id); ?>
 
                     <tr>
@@ -130,3 +134,17 @@
       </div>
      
 @endsection('content')
+<?php 
+  $user = auth()->user();?>
+  @if($user->est_super_admin)
+    @Section('admin')
+      <li class="nav-item">
+        <a class="nav-link text-white " href="{{url('/affgest')}}">
+          <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="material-icons opacity-10">engineering</i>
+          </div>
+          <span class="nav-link-text ms-1">Les utilisateurs</span>
+        </a>
+      </li>
+    @endsection('admin')
+  @endif

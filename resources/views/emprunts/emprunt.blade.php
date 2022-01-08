@@ -31,9 +31,16 @@
             <tbody>
               
               @foreach($emprunts as $emprunt)
+<<<<<<< HEAD
+              <?php 
+                    $abonne = \App\Models\Abonnee::find($emprunt->abonnes_id); 
+                    $livre = \App\Models\Livre::find($emprunt->livres_id);
+=======
               <?php $abonne = \App\Models\Abonnee::find($emprunt->abonnes_id); 
                     $livre = \App\Models\Livres::find($emprunt->livres_id);
+>>>>>>> 68846299e89951f8e30eb2d1757361740881908d
               ?>
+              
                 <tr>
                   <td>
                     <div class="d-flex px-2 py-1">

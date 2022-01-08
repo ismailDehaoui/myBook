@@ -1,3 +1,4 @@
+@extends('Frontend.layouts.footer')
 @extends('Frontend.layouts.masterF')
 @section('content')
 <div class="page-banner home-banner mb-5">
@@ -7,8 +8,6 @@
             <img src="../assets/img/covid/covid1.jpg" alt="">
             <div class="img-caption">
               <h1 class="mb-4">Protéger vous contre le covi-19 en suivant les conseils de sécurité.</h1>
-              
-            
             </div>
           </div>
           <div class="hero-carousel-item">

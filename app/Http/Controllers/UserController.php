@@ -230,36 +230,34 @@ public function postProfilePassword(Request $request) {
         $user->name= $request->input('name');
         $user->email = $request->input('email');
         if(!empty($request->file('image'))){
-$filenameWithExt = $request->file('image')->getClientOriginalName();
-$filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-// Get just ext
-$extension = $request->file('image')->getClientOriginalExtension();
-// Filename to store
-$fileNameToStore= $filename.'_'.time().'.'.$extension;
-// Upload Image
-$path = $request->file('image')->storeAs('public/Admin', $fileNameToStore);
-$user->photo = $fileNameToStore;}
-   if(!empty($request->input('ancien_password')) || !empty($request->input('password'))||!empty($request->input('password_confirmation')))
-   {
-     $request->validate([
-        'ancien_password' => 'required',
-        'password' => 'min:8|required_with:password_confirmation|same:password_confirmation',
-        'password_confirmation' => 'required'
-    ]);
-    if(Hash::check(request('ancien_password'), $user->password)){
+              $filenameWithExt = $request->file('image')->getClientOriginalName();
+              $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+              // Get just ext
+              $extension = $request->file('image')->getClientOriginalExtension();
+              // Filename to store
+              $fileNameToStore= $filename.'_'.time().'.'.$extension;
+              // Upload Image
+              $path = $request->file('image')->storeAs('public/Admin', $fileNameToStore);
+              $user->photo = $fileNameToStore;}
+              if(!empty($request->input('ancien_password')) || !empty($request->input('password'))||!empty($request->input('password_confirmation')))
+              {
+                $request->validate([
+                    'ancien_password' => 'required',
+                    'password' => 'min:8|required_with:password_confirmation|same:password_confirmation',
+                    'password_confirmation' => 'required'
+                  ]);
+              if(Hash::check(request('ancien_password'), $user->password)){
         
-    $user->password = Hash::make($request->input('password'));
-    }
-     else{
-     Alert::error('Mot de passe actuel est incorrcet');
-     return view('authentification.modifierpassword',['pass'=>$user]);}
-    }
-    $user->save();
-     Alert::success('Vos informations sont bien modifiées');
-      return redirect('user/'.$user->id.'/profile');
+                $user->password = Hash::make($request->input('password'));
+              }
+              else{
+                Alert::error('Mot de passe actuel est incorrcet');
+                return view('authentification.modifierpassword',['pass'=>$user]);}
+              }
+              $user->save();
+              Alert::success('Vos informations sont bien modifiées');
+                return redirect('user/'.$user->id.'/profile');
 }
-
-
 
   function suppgest($id){
   alert()->error('Etes vous sure?','L\' utilisateur sera supprimé!')->showConfirmButton('<a class=""  href="/confirmersuppgest'.$id.'" >

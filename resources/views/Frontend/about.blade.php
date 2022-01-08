@@ -1,3 +1,4 @@
+@extends('Frontend.layouts.footer')
 @extends('Frontend.layouts.masterF')
 @section('content')
     <div class="page-section">

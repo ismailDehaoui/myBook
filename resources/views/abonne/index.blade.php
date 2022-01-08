@@ -82,6 +82,19 @@
                             <a href="{{url('/suppabon/'.$abonne->id)}}">
                               <i class="fas fa-trash-alt me-sm-1 px-2"></i> 
                             </a>
+                            <button type="submit" 
+                            style="
+                            background-color: transparent; 
+                            background-repeat: no-repeat;
+                            border: none;
+                            cursor: pointer;
+                            overflow: hidden;
+                            outline: none;
+                            padding:0;
+                            margin:0;
+                            ">
+                              <i class="fas fa-trash-alt me-sm-1"></i> 
+                            </button>
                           </div>
 
                           
@@ -133,7 +146,7 @@
             </div>
 
       </div>
-     
+
 @endsection('content')
 
 

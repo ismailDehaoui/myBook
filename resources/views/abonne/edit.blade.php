@@ -27,7 +27,6 @@
                                     
                                         <label for="nom" class="form-label">Nom</label>
                                         <input type="text" class="px-2 form-control border border-primary" name="nom" value="{{ $abonne->nom }}" required>
-                                    
                                 </div>
 
                             <div class="form-group my-3">
@@ -40,45 +39,22 @@
                             <div class="form-group my-3">
                                 
                                     <label for="email" class="form-label">Email</label>
-                                    <input type="text" class="px-2 form-control border border-primary" name="email" value="{{ $abonne->email }}" required>
-                                
+                                    <input type="text" class="px-2 form-control border border-primary" name="email" value="{{ $abonne->email }}" required>                                
                             </div>
-
-                        
-
-
                             </div>
-
-
-
-
-
-
                             <div class="col-md-6">
-                                
-                                
-                            
-                            
-
                               <div class="form-group my-3">
                                 
                                 <label id="date_naissance" for="année" class="form-label">Date de naissance</label>
                                 <input 
                                   type="date"  
-                                  name="date_naissance" 
+                                  name="date_de_naissance" 
+                                  value="{{ Carbon\Carbon::parse($abonne->date_de_naissance)->format('Y-m-d') }}"
                                   class="form-control border px-2 border-primary" 
-                                  
-               
                                   required
                                 >
-                              
-                        
-                        
-                           
                         </div>
-
                         <div class="form-group my-3">
-                                
                           <label for="année" class="form-label">Adresse</label>
                           <input 
                                   type="text"  
@@ -87,7 +63,6 @@
                                   value="{{$abonne->adresse}}"
                                   required
                                 >
-                     
                   </div>
                   <div class="form-group my-3">
                     <div class="col-md-12">
@@ -101,19 +76,9 @@
                         </div>
                       </div>
                     </div>
-                  </div>
-                                            
+                  </div>                                           
                                 </div>
-
-
-
-
-
                             </div>
-
-                            
-
-
                             <div class="row">
                                 <div class="form-group my-4">
                                     <input type="submit" class="form-control btn btn-danger" value="Modifier" required>
@@ -122,9 +87,6 @@
                         </form>
                     </div>
                     </div>
-
-
-               
                 </div>
                 <div class="row">
                 <div class="card-footer text-center pt-0 px-lg-2 px-1">

@@ -1,4 +1,6 @@
+@extends('Frontend.layouts.footer')
 @extends('Frontend.layouts.masterF')
+
 @section('content')
       
       
@@ -8,7 +10,7 @@
     <div class=" alert alert-success">
         {{ session('status') }}
     </div>
-  @endif
+    @endif
     <div class="page-section">
       <div class="container">
         <div class="text-center">
@@ -62,3 +64,4 @@
     </div> <!-- .page-section -->
 
      @endsection('content')
+

@@ -7,10 +7,20 @@ use App\Http\Controllers\LivreController;
 use App\Http\Controllers\AbonneController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuteurController;
+<<<<<<< HEAD
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\SearchController;
+=======
 
+use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\ContactController;
+
+>>>>>>> b0046746644bd69f40f2593b76bc1115c2ec5bba
+
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\Frontend\frontendController;
+use App\Models\NewsLetter;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +45,6 @@ Route::get('/', function(){
 Route::get('/cat', function () {
     return view('categorie.categories');
 });
-
 Route::get('/ajoutercat', function () {
     return view('categorie.ajoutercat');
 });
@@ -84,8 +93,6 @@ Route::post('auteurs','AuteurController@store')->name('auteurs.ajouter');
 //MotCle
 
 Route::post('motscles', 'MotscleController@store')->name('motscles.ajouter');
-Route::post('motscles/{id}/supprimer', 'MotscleController@destroy')->name('motscles.supprimer');
-
 
 
 
@@ -126,11 +133,11 @@ Route::post('auteurs/{id}/supprimer', 'AuteurController@destroy')->name('auteurs
 //Abonnées
 Route::get('abonnés','AbonneController@index');
 
-Route::get('abonnés/ajouter','AbonneController@create');
+    Route::get('abonnée/{id}/profile', 'AbonneController@profile');
 
-Route::get('abonnée/{id}/profile', 'AbonneController@profile');
+    Route::post('abonnés','AbonneController@store');
 
-Route::post('abonnés','AbonneController@store');
+    Route::put('modifier/{id}','AbonneController@update');    
 
 Route::put('abonnés/{id}/update','AbonneController@update');    
 
@@ -178,6 +185,7 @@ Route::get('/login', function () {
 
 Route::get('/dashboard',[UserController::class,'index'])->middleware(['auth'])->name('dashboard');
 
+<<<<<<< HEAD
 
 require __DIR__.'/auth.php';
      
@@ -188,6 +196,14 @@ require __DIR__.'/auth.php';
 Route::get('/home',function(){
 return view('Frontend.layouts.masterF');
 });
+=======
+// Frontend
+Route::get('/',[frontendController::class,'index']);
+Route::get('/books',[frontendController::class,'livres'] );
+Route::get('/livre/categorie/{nom}', [frontendController::class,'livreCate']);
+Route::get('/livre/{titre}', [frontendController::class,'livreView']); 
+Route::get('/search',[frontendController::class,'search']);
+>>>>>>> b0046746644bd69f40f2593b76bc1115c2ec5bba
 
 //about
 Route::get('/about', function () {
@@ -201,8 +217,8 @@ Route::get('/about', function () {
 
 
 //Route::get('/Newsletter',[NewsletterController::class, 'create']);
-Route::post('/newsletter', 'NewsletterController@store');
-
+//Route::post('/newsletter', 'NewsletterController@store');
+Route::post('/newsletter',[NewsletterController::class,'store']);
 
 
 
@@ -217,4 +233,17 @@ Route::get('/covid', function () {
 
 
 
+<<<<<<< HEAD
 ?>
+=======
+require __DIR__.'/auth.php';
+
+
+//front office
+/*Route::get('/home',function(){
+return view('Frontend.layouts.masterF');
+});*/
+
+
+
+>>>>>>> b0046746644bd69f40f2593b76bc1115c2ec5bba

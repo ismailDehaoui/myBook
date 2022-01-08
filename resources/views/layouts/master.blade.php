@@ -1,5 +1,7 @@
+
 <?php $user = auth()->user();?>
  @if(!empty($user))
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,6 +34,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <!-- CSS Files -->
   <link id="pagestyle" href="{{asset('../assets/css/material-dashboard.css?v=3.0.0')}}" rel="stylesheet" />
+  <link href="{{asset('../assets/css/toastr.min.css')}}" rel="stylesheet" /> 
   <link href="{{asset('../assets/css/toastr.min.css')}}" rel="stylesheet" />
 
 </head>
@@ -75,15 +78,7 @@
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">category</i>
             </div>
-            <span class="nav-link-text ms-1">Mes catégories</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="{{url('livres')}}">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">menu_book</i>
-            </div>
-            <span class="nav-link-text ms-1">Mes livres</span>
+            <span class="nav-link-text ms-1">Catégories</span>
           </a>
         </li>
         
@@ -94,6 +89,14 @@
               <i class="material-icons opacity-10">groups</i>
             </div>
             <span class="nav-link-text ms-1">Les abonnés</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="{{url('/livres')}}"">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">how_to_vote</i>
+            </div>
+            <span class="nav-link-text ms-1">Les livres</span>
           </a>
         </li>
         <li class="nav-item">
@@ -408,6 +411,7 @@ this.closest('form').submit();">
   <script src="{{asset('../assets/js/motcle-auteur.js')}}"></script>
   <script src="{{asset('../assets/js/emprunt.js')}}"></script>
   <script src="{{asset('../assets/js/sweetalert2.min.js')}}"></script>
+<script src="{{asset('../assets/js/toastr.min.js')}}"></script>-->
   <script src="{{asset('../assets/js/toastr.min.js')}}"></script>
 
 

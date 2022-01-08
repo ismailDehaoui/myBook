@@ -110,6 +110,9 @@ class AbonneController extends Controller
       $abonne->email          = $request->input('email');
       $abonne->adresse        = $request->input('adresse');
       $abonne->date_de_naissance = $request->input('date_de_naissance');
+      
+      if($request->input('image') != $abonne->photo && $request->input('image')){
+      
       $filenameWithExt                 = $request->file('image')->getClientOriginalName();
           // Get just filename
           $filename                        = pathinfo($filenameWithExt, PATHINFO_FILENAME);
@@ -121,10 +124,11 @@ class AbonneController extends Controller
           $path                            = $request->file('image')->storeAs('public/images/abonnés', $fileNameToStore);
           $abonne->photo                  = $fileNameToStore;
           
-          
+      }
           $abonne->save();
           Alert::success('Modifié avec succès!'); 
           return redirect('/abonnés');  
+
   }
 
 
@@ -134,13 +138,6 @@ class AbonneController extends Controller
         return view('Historique.abonsupp', ['abon'=>$l]);
     } 
 
-        function deleteAbonne($id){
-   Alert::error('Etes vous sure?','L\'abonné sera supprimé!')->showConfirmButton('<a class=""  href="/abonne/confirmersupp/'.$id.'" >
-                            <input type="hidden" name="afficher">Supprimer
-                        </a>', '#a085d6a')->toHtml()->showCancelButton('Annuler', '#aaa')->reverseButtons();
-   return redirect('abonnés');
-  }
-
   public function destroy($id){
     $emprunt = Emprunt::where('abonnes_id', $id)->where('est_rendu', false);
     if($emprunt->count() != 0){
@@ -148,18 +145,8 @@ class AbonneController extends Controller
       return redirect('/abonnés');  
     }
     $abonne = Abonne::find($id);
-       $user = auth()->user();
-       $abonne->acteur = $user->id;
-       $abonne->save();
     $abonne->delete();
     Alert::success('Succeès', 'Abonné supprimé avec succès!');
     return redirect('/abonnés');
   }
-   function restoreabon($id){
-    $r = Abonne::withTrashed()->where('id',$id);
-    $r->restore();
-     Alert::success('Abonné est bien restauré');
-    return redirect('/abonsupp');
-  }
-
 }
